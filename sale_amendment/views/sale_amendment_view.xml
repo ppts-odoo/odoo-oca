@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record model="ir.ui.view" id="sale_amendment_form" >
+            <field name="name">sale.amendment.form</field>
+            <field name="type">form</field>
+            <field name="model">sale.amendment</field>
+            <field name="arch" type="xml">
+		      	<form string="Sale Amendment">
+		      	    <group>
+                    	<field name="amendment"/>
+					    <field name="name"/>
+                        <field name="quotation_date"/>
+                    </group>
+               		<notebook colspan="4">
+                    	<page string="Products">                    
+                        	<field colspan="4" mode="tree" name="amendment_line" nolabel="1" widget="one2many_list">
+							 	<form string="Products">
+                               		<field name="product_id"/>                           
+                               		<field name="product_uom_qty"/>  
+                               		<field name="product_uom"/>
+                               		<field name="discount"/>
+                               		<field name="unit_price"/>
+                               		<field name="subtotal"/>
+                             	</form>                          
+                             	<tree string="Products" editable="bottom">
+                               		<field name="product_id"/>                                  
+                               		<field name="product_uom_qty"/>  
+                               		<field name="product_uom"/>
+                               		<field name="discount"/>
+                               		<field name="unit_price"/>
+                               		<field name="subtotal"/>    
+                             	</tree>
+                        	</field> 
+                    	</page>
+					</notebook>
+                	<group col="13" colspan="10">
+                    	<field name="amount_untaxed" sum="Untaxed amount"/>
+                    	<field name="amount_tax"/>
+                    	<field name="amount_total"/>
+                	</group>
+			  	</form>	                      
+	        </field>	
+		</record>
+		
+	    <record model="ir.ui.view" id="sale_amendment_tree">
+            <field name="name">sale.amendment.tree</field>
+            <field name="type">tree</field>
+            <field name="model">sale.amendment</field>
+            <field name="arch" type="xml">
+                <tree string ="sale Amendment">
+                    <field name="amendment"/> 
+                    <field name="name" string ="Quotation"/>   
+                    <field name="quotation_date"/>                                
+                </tree>
+            </field>	
+		</record>
+		
+		<record id="action_sale_amendment_form" model="ir.actions.act_window">
+            <field name="name">Sale amendment</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.amendment</field>
+            <field name="view_type">form</field>   
+            <field name="view_id" ref="sale_amendment_tree"/>              
+        </record>
+
+		<act_window
+	            domain="[('sale_amendment_id', '=', active_id)]"
+	            id="act_sale_amendment"
+	            name="Amendment"
+	            res_model="sale.amendment"
+	            src_model="sale.order"
+	            context="{'contact_display': 'partner'}" />
+    </data>
+</odoo>
