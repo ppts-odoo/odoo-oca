@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="purchase_order_view_inherit" model="ir.ui.view">
+        <field name="name">purchase.order.view.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <field name="invoice_status" position="after">
+                <field name="revision" string='Amendment Revision' readonly="1"/>
+            </field>
+
+            <button name='button_cancel' position='before'>
+                <button name="button_amend" string="Amendment" type="object" attrs="{'invisible':[('state', 'in', ('draft','sent','to approve','done','cancel','amendment'))]}" groups="base.group_user"/>
+            </button>
+
+            <button name='button_draft' position='attributes'>
+                <attribute name='states'>amendment</attribute>
+            </button>
+
+            <xpath expr="//notebook" position="inside">
+                    <page string="Order Amendments">
+                        <field name="po_amendment_ids" readonly="1">
+                            <tree string="Order Amendments">
+                                <field name="amendment"/>
+                                <field name="name" string="Order Ref"/>
+                                <field name="quotation_date" string="Order Date"/>
+                                <field name="amendment_date"/>
+                                <field name="amount_untaxed"/>
+                                <field name="add_disc"/>
+                                <field name="amount_net"/>
+                                <field name="amount_tax"/>
+                                <field name="amount_total"/>
+                            </tree>
+                        </field>
+                    </page>
+            </xpath>
+
+
+
+        </field>
+    </record>
+
+</odoo>
