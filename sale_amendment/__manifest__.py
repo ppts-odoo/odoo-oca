@@ -12,7 +12,7 @@ In the form view, a new tab is added that lists the previous revisions, with the
 The old revisions/amendments of a sale order are flagged as inactive, so they don't clutter up searches.
 """,
     'category': 'Sales',
-    'author': 'P P T S [India] Pvt.Ltd.',
+    'author': 'PPTS [India] Pvt.Ltd.',
     'website': 'https://www.pptssolutions.com',
     'images' : [],
     'depends' : ['base_setup', 'sale', 'sales_team'],

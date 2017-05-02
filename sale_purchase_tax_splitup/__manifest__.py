@@ -14,7 +14,7 @@ Manage Sales/Purchase Tax Split-up
 This application allows you to manage your "Sales/Purchase Tax Split-up".
 
     """,
-    'author': 'P P T S [India] Pvt.Ltd.',
+    'author': 'PPTS [India] Pvt.Ltd.',
     'depends': ['sale', 'purchase', 'account'],
     'data': [
         'views/sale_views.xml',
