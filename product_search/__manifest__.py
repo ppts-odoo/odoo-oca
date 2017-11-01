@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Global Product Search',
+    'name': 'Product Global Search',
     'version': '1.0',
     'category': 'Website',
     "author": "PPTS [India] Pvt.Ltd.",
     "website": "http://www.pptssolutions.com",
     'description':"""
-                Global Product Search
+                Product Global Search
         """,
     'depends': ['base','product','sale','website_sale', 'website_mail'],
     'data': [
