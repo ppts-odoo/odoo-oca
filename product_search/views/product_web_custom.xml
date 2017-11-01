@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    Customise shop product page-->
+    <template id="asset_front_end_inherited_view" inherit_id="web.assets_frontend">
+        <xpath expr="." position="inside">
+          <script type="text/javascript" src="/product_search/static/src/js/custom.js"></script>
+          <link href="/product_search/static/src/css/custom.css" rel="stylesheet"/>
+        </xpath>
+    </template>
+</odoo>

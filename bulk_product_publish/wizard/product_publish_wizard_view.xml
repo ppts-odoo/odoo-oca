@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="product_publish_wizard_view_form" model="ir.ui.view">
+		<field name="name">product.publish.wizard</field>
+		<field name="model">product.publish.wizard</field>
+		<field name="arch" type="xml">
+			<form string="Publish a product" style="width:450px">
+				<group>
+					<field name="state"/>
+					<footer>
+						<button string='Update' name="publishing_state" type="object" class="oe_highlight" 
+							/>  or
+						<button string="Cancel" class="btn-default" special="cancel" />
+					</footer>
+				</group>
+			</form>
+		</field>
+	</record>
+	<record id="product_publish_wizard_action" model="ir.actions.act_window">
+		<field name="name">Publish/Unpublish Products</field>
+		<field name="res_model">product.publish.wizard</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">form</field>
+		<field name="view_id" ref="product_publish_wizard_view_form" />
+		<field name="target">new</field>
+	</record>
+</odoo>
