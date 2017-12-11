@@ -9,7 +9,6 @@
                 <form string="Assign Followers Settings" version="7.0">
                     <header>
                         <button name="create_action" string="Add Action" type="object" attrs="{'invisible':[('ref_ir_act_window','!=',False)]}"/>
-                        <button name="unlink_action" string="Remove Action" type="object" attrs="{'invisible':[('ref_ir_act_window','=',False)]}"/>
                     </header>
                     <sheet>
                         <group>
@@ -37,7 +36,7 @@
                 </tree>
             </field>
         </record>
-
+        
         <record model='ir.actions.act_window' id='action_assign_followers_settings'>
             <field name="name">Assign Followers Settings</field>
             <field name="res_model">assign.followers.settings</field>
@@ -63,6 +62,6 @@
                 </form>
             </field>
         </record>
-
+        
     </data>
 </odoo>

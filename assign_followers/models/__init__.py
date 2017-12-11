@@ -1,1 +1,1 @@
-import assign_followers
+from . import assign_followers

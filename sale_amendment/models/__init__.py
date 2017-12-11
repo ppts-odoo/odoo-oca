@@ -2,5 +2,5 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 
-import sale_order
-import sale_amendment
+from . import sale_order
+# from . import sale_amendment

@@ -1,3 +1,0 @@
-
-import product_publish
-
