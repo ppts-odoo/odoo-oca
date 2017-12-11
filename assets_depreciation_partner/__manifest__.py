@@ -28,7 +28,8 @@
         When an assets are depreciated, the product should be included on the depreciation expense in addition to the account in journal entries. 
         For this we are adding the product field in Asset  Types and bring it into the Journal entries.
     """,
-    'author': 'PPTS',
+    "author": "PPTS [India] Pvt.Ltd.",
+    "website": "http://www.pptssolutions.com",
     'depends': ['base', 'account', 'account_asset'],
     'data': [
         'views/account_asset_view.xml',
