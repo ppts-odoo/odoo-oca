@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record id="product_category_company_form" model="ir.ui.view">
+			<field name="name">Product Category Company</field>
+			<field name="model">prodect.category.company</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Product Category Company">
+					<group>
+						<group>
+							<field name='company_id' />
+						</group>
+						<group>
+							<field name='income_account_id' domain="[('company_id', '=', company_id)]" />
+							<field name='expense_account_id' domain="[('company_id', '=', company_id)]" />
+						</group>
+					</group>
+
+					<group>
+						<field name='include_asset' string='Include Asset Category' />
+						<field name='asset_category_id' domain="[('company_id', '=', company_id)]"
+							attrs="{'invisible': [('include_asset','!=', True)]}" />
+					</group>
+					<footer>
+						<button string='Apply' name='confirm' type='object' class="oe_highlight"
+							groups="account.group_account_invoice,account.group_account_manager" />
+						<button string="Cancel" class="btn-default" special="cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="product_account_entries_warnig_form" model="ir.ui.view">
+			<field name="name">product.category.account.entries</field>
+			<field name="model">product.category.account.entries</field>
+			<field name="arch" type="xml">
+				<form string="Set Accounts">
+
+					<div>Already accounts been mapped, entering new account will
+						replaces/updates the exisitng account(s)</div>
+					<div>Do you want to continue? </div>
+
+					<footer>
+						<button name="continue_to_new_product_entry" string="Yes"
+							type="object" class="btn btn-sm btn-primary" />
+						<button string="Cancel" class="btn btn-sm btn-default"
+							special="cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+
+
+		<act_window id="action_product_category_company" multi="True"
+			key2="client_action_multi" name="Account &amp; Asset Properties"
+			res_model="prodect.category.company" src_model="product.category"
+			view_mode="form" target="new" view_type="form" />
+
+	</data>
+</odoo>
