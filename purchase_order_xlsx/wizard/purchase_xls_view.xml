@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+		<record id="purchase_excel_view" model="ir.ui.view">
+			<field name="name">wizard.reports</field>
+			<field name="model">wizard.reports</field>
+			<field name="arch" type="xml">
+				<form string="Export Purchase Order">
+				<p class="oe_grey">
+				You want to Print Purchase Excel Report?
+				</p>			  
+					<footer>
+						<button string="Print Excel Report" class="btn-primary" name="action_purchase_report" type="object" />
+						<button string="Cancel" class="btn-primary" special="cancel"/>
+					</footer>
+				</form>						
+			</field>
+		</record>
+
+
+	<record id="purchase_excel_views" model="ir.ui.view">
+		<field name="name">purchase.report.out</field>
+		<field name="model">purchase.report.out</field>
+		<field name="arch" type="xml">
+			<form string="Export Purchase Orders">
+				<group>
+					<field name="file_name" filename="purchase_data" />
+					<field name="purchase_data" invisible="1" />
+					<field name="file_names" filename="purchase_work" />
+					<field name="purchase_work" invisible="1" />
+				</group>
+				<footer>
+					<button string="Cancel" class="btn-primary" special="cancel"/>
+				</footer>
+			</form>
+		</field>
+	</record>	
+		
+
+		<act_window id="action_purchase_excel" key2="client_action_multi"
+			name="Purchase Order Excel Report " res_model="wizard.reports" src_model="purchase.order"
+			view_mode="form" target="new" />
+
+</odoo>
