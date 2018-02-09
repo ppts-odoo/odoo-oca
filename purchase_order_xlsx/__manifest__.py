@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-# This file is part of OpenERP. The COPYRIGHT file at the top level of
-# this module contains the full copyright notices and license terms.
+# Part of Odoo. See LICENSE file for full copyright and licensing details.
 {
     'name' : 'Purchase Excel Report',
     'version': '10.0',
