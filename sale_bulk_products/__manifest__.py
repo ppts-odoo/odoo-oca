@@ -2,8 +2,8 @@
 # See LICENSE file for full copyright and licensing details.
 
 {
-    'name': 'Bulk products',
-    'version': '10.0.2.0.0',
+    'name': 'SO Line Bulk products Add',
+    'version': '10.0',
     'category': 'Sale',
     'depends': ['base', 'sale','product','stock'],
     'author': 'PPTS [India] Pvt.Ltd.',
