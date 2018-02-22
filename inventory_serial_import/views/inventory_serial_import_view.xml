@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+	<record id="view_pack_operation_lot_form_inherited" model="ir.ui.view">
+		<field name="name">stock pack operation inherited</field>
+		<field name="model">stock.pack.operation</field>
+		<field name="inherit_id" ref="stock.view_pack_operation_lot_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//span[1]" position="inside">
+				<label for="file_import" style='padding-left:280px' class="oe_form_label oe_inline o_form_label oe_align_right o_align_right"/>
+				<span class="oe_inline">
+					<field name='file_name' class="oe_inline" invisible='1' />
+					<field name='file_import' style="margin-left:10px" class="oe_inline" filename='file_name' />
+					<button class='btn btn-primary oe_inline' style="margin-left:10px" name='input_file' type='object' string='Validate' />
+				</span>
+			</xpath>
+		</field>
+	</record>
+</odoo>
