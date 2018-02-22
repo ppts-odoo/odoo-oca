@@ -6,7 +6,7 @@
     'version': '1.1',
     'author': 'PPTS [India] Pvt.Ltd.',
     'website' : 'http://www.pptssolutions.com',
-    'category': 'sales',
+    'category': 'Sales',
     'depends' : ['base','sale'],
     'description': """
            Sales Tracking

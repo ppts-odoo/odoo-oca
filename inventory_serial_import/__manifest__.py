@@ -4,8 +4,9 @@
 {
     'name' : 'Serial Number Import',
     'version': '1.1',
+    'author': 'PPTS [India] Pvt.Ltd.',
     'website' : 'http://www.pptssolutions.com',
-    'category': 'inventory',
+    'category': 'Warehouse',
     'depends' : ['base','stock'],
     'description': """
            Serial Number Import
