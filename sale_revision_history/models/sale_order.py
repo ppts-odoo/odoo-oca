@@ -6,7 +6,7 @@ class SaleOrder(models.Model):
     current_revision_id = fields.Many2one('sale.order','Current revision',readonly=True,copy=True)
     old_revision_ids = fields.One2many('sale.order','current_revision_id','Old revisions',readonly=True,context={'active_test': False})
     revision_number = fields.Integer('Revision',copy=False)
-    unrevisioned_name = fields.Char('Order Reference',copy=False,readonly=True)
+    unrevisioned_name = fields.Char('Order Reference',copy=True,readonly=True)
     active = fields.Boolean('Active',default=True,copy=True)    
     
     @api.model
@@ -48,9 +48,6 @@ class SaleOrder(models.Model):
         if self.env.context.get('sale_revision_history'):
             prev_name = self.name
             revno = self.revision_number
-            # if sale order exist and amendment name sent as false. replace current sale name
-            if self.unrevisioned_name == False :
-                self.unrevisioned_name = self.name
             self.write({'revision_number': revno + 1,'name': '%s-%02d' % (self.unrevisioned_name,revno + 1)})
             defaults.update({'name': prev_name,'revision_number': revno,'active': False,'state': 'cancel','current_revision_id': self.id,'unrevisioned_name': self.unrevisioned_name,})
         return super(SaleOrder, self).copy(defaults)

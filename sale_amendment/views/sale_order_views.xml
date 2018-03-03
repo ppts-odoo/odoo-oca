@@ -6,6 +6,7 @@
 		<field name="model">sale.order</field>
 		<field name="inherit_id" ref="sale.view_order_form" />
 		<field name="arch" type="xml">
+
 			<button name='action_cancel' position="before">
 				<button name="go_amendment" type="object" string="Amendment"
 					attrs="{'invisible':[('state', 'in', ('draft','sent','done','cancel','amendment'))]}"

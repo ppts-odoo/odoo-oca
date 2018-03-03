@@ -1,15 +1,17 @@
 # -*- encoding: utf-8 -*-
 {
-	"name": "Assign Followers",
-	"version": "1.0",
+	"name": "Assign and Unassign Followers",
+	"version": "1.1",
 	"author": "PPTS [India] Pvt.Ltd.",
 	"website": "http://www.pptssolutions.com",
 	"sequence": 0,
 	"depends": [
-		"base"
+		"base","mail"
 	],
 	"category": "Settings",
 	"complexity": "easy",
+	'license': 'LGPL-3',
+    'support': 'business@pptservices.com',
 	"description": """
 	Assign Followers to a Record of any Model
 	""",

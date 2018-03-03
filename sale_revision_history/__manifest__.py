@@ -5,9 +5,11 @@
 	"author": "PPTS [India] Pvt.Ltd.",
 	"website": "http://www.pptssolutions.com",
 	"sequence": 0,
-	"depends": ["sale", 'sale_amendment'],
+	"depends": ["sale"],
 	"category": "Sales,Invoicing",
 	"complexity": "easy",
+	'license': 'LGPL-3',
+    'support': 'business@pptservices.com',
 	"description": """
 Quotation sale revision history
 	""",

@@ -60,11 +60,8 @@ class SaleOrder(models.Model):
             defaults = {}
         if self.env.context.get('new_sale_amendment'):
             prev_name = self.name
-            revno = self.amendment_no
-# if sale order exist and amendment name sent as false. replace current sale name
-            if self.amendment_name == False:
-                self.amendment_name = self.name
-# Assign default values for views
+            revno = self.amendment_no 
+            # Assign default values for views
             self.write({'amendment_no': revno + 1,'name': '%s-%02d' % (self.amendment_name,revno + 1)})
             defaults.update({'name': prev_name,'amendment_no': revno,'state': 'cancel','invoice_count': 0,'current_amendment_id': self.id,'amendment_name': self.amendment_name,})
         return super(SaleOrder, self).copy(defaults)

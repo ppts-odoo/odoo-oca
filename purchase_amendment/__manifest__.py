@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 {
     'name' : 'Purchase Amendment',
-    'version' : '1.0',
+    'version' : '1.1',
     'summary': 'Purchase Amendment',
     'sequence': 1,
     'description': """ Purchase Order Amendment
@@ -13,9 +13,10 @@ The old revisions/amendments of a purchase order are flagged as inactive, so the
     'category': 'Purchase',
     'author': 'PPTS [India] Pvt.Ltd.',
     'website': 'https://www.pptssolutions.com',
+    'license': 'LGPL-3',
+    'support': 'business@pptservices.com',
     'depends' : ['base_setup', 'purchase'],
-    'data': [
-             'views/purchase_views.xml',
+    'data': ['views/purchase_views.xml',
              'security/ir.model.access.csv',
             ],
     'installable': True,
