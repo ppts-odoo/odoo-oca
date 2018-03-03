@@ -14,6 +14,8 @@ The old revisions/amendments of a sale order are flagged as inactive, so they do
     'category': 'Sales',
     'author': 'PPTS [India] Pvt.Ltd.',
     'website': 'https://www.pptssolutions.com',
+    'license': 'LGPL-3',
+    'support': 'business@pptservices.com',
     'images' : [],
     'depends' : ['base_setup', 'sale', 'sales_team'],
     'data': ['views/sale_order_views.xml',

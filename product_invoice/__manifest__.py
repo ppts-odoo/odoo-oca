@@ -4,9 +4,11 @@
     'summary': 'Product Invoicing',
     'sequence': 1,
     'description': """Calculating the total amount invoiced""",
-    'category': 'Sales',
+    'category': 'Product',
     'author': 'PPTS [India] Pvt.Ltd.',
     'website': 'https://www.pptssolutions.com',
+    'license': 'LGPL-3',
+    'support': 'business@pptservices.com',
     'images' : [],
       'depends': [
         'account',

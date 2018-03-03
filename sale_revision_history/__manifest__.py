@@ -10,6 +10,8 @@
 	],
 	"category": "Sales,Invoicing",
 	"complexity": "easy",
+	'license': 'LGPL-3',
+    'support': 'business@pptservices.com',
 	"description": """
 Quotation sale revision history
 	""",

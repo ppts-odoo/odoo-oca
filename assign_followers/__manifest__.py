@@ -9,6 +9,8 @@
 		"base"
 	],
 	"category": "Settings",
+	'license': 'LGPL-3',
+    'support': 'business@pptservices.com',
 	"complexity": "easy",
 	"description": """
 	Assign Followers to a Record of any Model

@@ -13,6 +13,8 @@ The old revisions/amendments of a purchase order are flagged as inactive, so the
     'category': 'Purchase',
     'author': 'PPTS [India] Pvt.Ltd.',
     'website': 'https://www.pptssolutions.com',
+    'license': 'LGPL-3',
+    'support': 'business@pptservices.com',
     'images' : [],
     'depends' : ['base_setup', 'purchase'],
     'data': ['views/purchase_views.xml',

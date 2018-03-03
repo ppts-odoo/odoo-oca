@@ -6,7 +6,9 @@
     'version': '1.1',
     'author': 'PPTS [India] Pvt.Ltd.',
     'website' : 'http://www.pptssolutions.com',
-    'category': 'Sales',
+    'category': 'sales',
+    'license': 'LGPL-3',
+    'support': 'business@pptservices.com',
     'depends' : ['base','sale'],
     'description': """
            Sales Tracking
