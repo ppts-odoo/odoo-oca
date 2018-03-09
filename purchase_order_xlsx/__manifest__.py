@@ -5,6 +5,8 @@
     'version': '11.0',
     'author': 'PPTS [India] Pvt.Ltd.',
     'category': 'Purchase',
+    'license': 'LGPL-3',
+    'support': 'business@pptservices.com',
     'website': 'https://www.pptssolutions.com',
     'summary': 'Excel sheet for Purchase Order',
     'description': """ Purchase order excel report
