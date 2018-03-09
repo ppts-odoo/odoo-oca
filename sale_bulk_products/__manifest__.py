@@ -4,6 +4,8 @@
     'name': 'SO Line Bulk products Add',
     'version': '10.0',
     'category': 'Sale',
+    'license': 'LGPL-3',
+    'support': 'business@pptservices.com',
     'depends': ['base', 'sale','product','stock'],
     'author': 'PPTS [India] Pvt.Ltd.',
     'summary': 'Multiple Products in line item',
