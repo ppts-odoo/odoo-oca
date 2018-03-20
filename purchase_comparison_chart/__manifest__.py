@@ -9,6 +9,7 @@
     'description': """
     Purchase Comparison Chart
     """,
+    'license': 'LGPL-3',
     'summary': 'Purchase Comparison Chart',
     'depends': ['purchase','website', 'purchase_requisition'],
     'website': 'https://www.pptssolutions.com',
