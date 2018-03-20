@@ -1,0 +1,162 @@
+<odoo>
+	<data>
+
+		<template id="assets_frontend_result1" inherit_id="website.assets_frontend" name="Purchase Terms and Condition">
+			<xpath expr="." position="inside">
+				<script type="text/javascript" src="/purchase_comparison_chart/static/src/js/validate_bid.js" />
+				<link href="/purchase_comparison_chart/static/src/css/validate_bid.css" rel="stylesheet" type="text/css">
+				</link>
+			</xpath>
+		</template>
+
+		<template id="purchase_comparison" name="Purchase Comparison Chart">
+			<t t-call="website.layout">
+				<style>
+					footer{display:none !important;}
+				</style>
+				<div class="wrap">
+					<div class="wrap">
+						<div class="container">
+							<br />
+							<div t-ignore="true" class="pull-right">
+								<a t-attf-href="/web#view_type=form&amp;model=purchase.requisition&amp;id=#{purchase_requisition_id.id}&amp;action=purchase_requisition.action_purchase_requisition" class="btn btn-default bk_butn">Back to Purchase Requisition</a>
+							</div>
+							<div id="myModal" class="modal">
+								<!-- Modal content -->
+								<div class="modal-content">
+									<div class="modal-header">
+										<span class="close">&amp;times;</span>
+										<h2>Notes</h2>
+									</div>
+									<div class="modal-body">
+										<p id="my_vals">
+										</p>
+									</div>
+								</div>
+							</div>
+							<div style="float:left">
+								<table>
+									<tr>
+										<th>
+											PRC No
+											<td style="font-weight:bold;">:</td>
+											<td>
+												<span t-field="purchase_requisition_id.name" />
+											</td>
+										</th>
+									</tr>
+									<tr>
+										<th>
+											Date
+											<td style="font-weight:bold;">:</td>
+											<td>
+												<span t-field="purchase_requisition_id.ordering_date" />
+											</td>
+										</th>
+									</tr>
+								</table>
+							</div>
+							<div>
+								<h2 style="text-align: center;">Purchase Comparison Chart</h2>
+							</div>
+							<br />
+							<br />
+							<!-- Product and its details -->
+
+							<div class="pdiv1">
+								<table style="width:100%">
+									<thead>
+										<tr class="table_tr1 success">
+											<th colspan="4" style="text-align:center" class="table_td">Supplier</th>
+										</tr>
+										<tr class="new_row">
+											<th class="table_td">S#</th>
+											<th class="table_td">Material</th>
+											<th class="table_td">UOM</th>
+											<th class="table_td">QTY</th>
+										</tr>
+									</thead>
+									<tbody class="sale_tbody">
+										<t t-set="i" t-value="1" />
+										<t t-foreach="data" t-as="question">
+											<tr class="row2">
+												<td class="table_td">
+													<span t-esc="i" />
+												</td>
+												<td style="border:solid #d1cfcf 1px;padding:5px;line-height: 13px;">
+													<span t-esc="question['product_name']" />
+												</td>
+												<td class="table_td">
+													<span t-esc="question['uom']" />
+												</td>
+												<td class="table_td">
+													<span t-esc="question['qty']" />
+												</td>
+												<t t-set="i" t-value="i+1" />
+											</tr>
+										</t>
+										<tr>
+											<th colspan="4" class="total_row">Total</th>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+							<!-- Rate and Amount -->
+							<div class="pdiv2">
+								<table style="width:80%">
+									<thead>
+										<tr class="table_tr">
+											<t t-foreach="supplier" t-as="name">
+												<th class="table_th" colspan="2">
+													<span t-esc="name['sname']" />
+												</th>
+											</t>
+										</tr>
+										<tr class="new_row">
+											<t t-foreach="number" t-as="num">
+												<th class="table_td">Rate</th>
+												<th class="table_td">Amount</th>
+											</t>
+										</tr>
+									</thead>
+									<tbody class="sale_tbody">
+										<t t-set="i" t-value="1" />
+										<t t-foreach="data" t-as="question">
+											<tr class="row2">
+												<t t-foreach="question['amt']" t-as="amount">
+													<td class="table_td">
+														<span t-esc="amount['price']" />
+													</td>
+													<td class="table_td">
+														<span t-esc="amount['total_amount']" />
+													</td>
+												</t>
+												<t t-set="i" t-value="i+1" />
+											</tr>
+										</t>
+										<tr class="last_row">
+											<t t-foreach="to_no" t-as="number">
+												<t t-if="number in column_no">
+													<td style="padding:15px;border:solid #d1cfcf 1px;">
+														<span t-esc="supplier_amount_total_1[number-1]" />
+													</td>
+												</t>
+												<t t-if="number in odd_number">
+													<td style="text-align:center">
+														<button id="b3" class="btn btn_st btn-default" t-att-value="[supplier_amount_total_1[number-1],supplier_amount_total_1[number-1],purchase_requisition_id.id,purchase_requisition_id]">View Notes</button>
+													</td>
+												</t>
+											</t>
+										</tr>
+									</tbody>
+								</table>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</t>
+		</template>
+	</data>
+</odoo>
