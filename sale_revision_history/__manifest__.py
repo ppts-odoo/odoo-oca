@@ -5,7 +5,7 @@
 	"author": "PPTS [India] Pvt.Ltd.",
 	"website": "http://www.pptssolutions.com",
 	"sequence": 0,
-	"depends": ["sale"],
+	"depends": ["sale","sale_stock"],
 	"category": "Sales,Invoicing",
 	"complexity": "easy",
 	'license': 'LGPL-3',
