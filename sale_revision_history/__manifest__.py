@@ -6,7 +6,7 @@
 	"website": "http://www.pptssolutions.com",
 	"sequence": 0,
 	"depends": [
-		"sale"
+		"sale","sale_stock"
 	],
 	"category": "Sales,Invoicing",
 	"complexity": "easy",
