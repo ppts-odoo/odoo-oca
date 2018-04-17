@@ -5,7 +5,7 @@
     'name' : 'Work Order multi user',
     'version': '11.0',
     'author': 'PPTS [India] Pvt.Ltd.',
-    'category': 'Manufacture',
+    'category': 'Manufacturing',
     'website':  'https://www.pptssolutions.com',
     'summary': 'More users in work order',
     'license': 'LGPL-3',
