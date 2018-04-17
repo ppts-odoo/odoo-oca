@@ -2,7 +2,7 @@
 # This file is part of OpenERP. The COPYRIGHT file at the top level of
 # this module contains the full copyright notices and license terms.
 {
-    'name' : 'Work Order multi user',
+    'name' : 'Work Order Multi User',
     'version': '11.0',
     'author': 'PPTS [India] Pvt.Ltd.',
     'category': 'Manufacturing',
