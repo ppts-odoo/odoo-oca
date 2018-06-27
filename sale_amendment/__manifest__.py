@@ -17,7 +17,7 @@ The old revisions/amendments of a sale order are flagged as inactive, so they do
     'license': 'LGPL-3',
     'support': 'business@pptservices.com',
     'images' : [],
-    'depends' : ['base_setup', 'sale', 'sales_team'],
+    'depends' : ['base_setup', 'sale', 'sales_team', 'website_quote'],
     'data': ['views/sale_order_views.xml',
              'views/sale_amendment_view.xml',
              'security/ir.model.access.csv',
