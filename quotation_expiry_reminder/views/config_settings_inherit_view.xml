@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_sales_config_inherit" model="ir.ui.view">
+		<field name="name">sale settings</field>
+		<field name="model">sale.config.settings</field>
+		<field name="inherit_id"
+			ref="sales_team.view_sale_config_settings" />
+		<field name="arch" type="xml">
+			<div id="main" position="inside">
+				<group string="Quotation Expiry Reminder">
+					<label for="reminder_frequency" string="Reminder Frequency" />
+					<div>
+						<field name="reminder_frequency" class="oe_inline"
+							widget="radio" />
+					</div>
+				</group>
+			</div>
+		</field>
+	</record>
+
+</odoo>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<odoo>
+	<data noupdate="1">
+		<record model="ir.cron" id="product_expiration_cron_send_mail">
+			<field name="name">Quotation Expiry</field>
+			<field name="interval_number">1</field>
+			<field name="interval_type">days</field>
+			<field name="numbercall">-1</field>
+			<field name="doall" eval="False" />
+			<field name="model" eval="'sale.order'" />
+			<field name="function" eval="'_action_cron'" />
+			<field name="args" eval="'()'" />
+			<field name="active" eval="True" />
+		</record>
+	</data>
+</odoo>
