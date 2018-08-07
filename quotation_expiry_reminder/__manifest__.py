@@ -13,14 +13,6 @@ It handles the full Quotation Expiry Reminder:
 
 * **Quotation** -> **Sales order** -> **Quotation**
 
-Preferences (only with Quotation Expiry Reminder installed)
------------------------------------------------------------
-
-If you also installed the Quotation Expiry Reminder, you can deal with the following preferences:
-
-* Quotation: Choice of delivery at once or partial delivery
-* Expiration: choose how invoices will be paid
-
 You can choose flexible Expiration date methods:
 ------------------------------------------------
 
@@ -28,13 +20,15 @@ You can choose flexible Expiration date methods:
 * *Two weeks before*
 * *One month before*
 
-With this module you can personnalize the sale order and Quotation Expiry Reminder with
+With this module you can personalize the sale order and Quotation Expiry Reminder with
 expiry date. Automatically send mail to user from the Salesperson. 
 
     """,
-    'author': 'PPTS India Ltd',
-    'website': 'http://www.pptssolutions.com',
-    'category': 'Sales',
+    'author': 'PPTS [India] Pvt.Ltd.',
+    'category': 'Sale',
+    'website': 'https://www.pptssolutions.com',
+    'license': 'LGPL-3',
+    'support': 'business@pptservices.com',
     'depends': ['sale'],
     'data': [
         'data/sale_expiration_cron.xml',

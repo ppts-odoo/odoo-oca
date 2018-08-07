@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 {
-    'name': 'Custom Sale Mass Mailing',
+    'name': 'SO/Quotation Mass Mailing',
     'version': '10.0',
     'author': 'PPTS [India] Pvt.Ltd.',
     'category': 'Sale',
@@ -15,7 +15,6 @@ It helps, when user select the records and by triggering the action server menu 
     'website': 'www.pptssolution.com',
     'depends': ['base','sale'],
     'data': [
-        
         'wizard/so_bulk_mail.xml',
         'views/sale_action_menu.xml',  
     ],
