@@ -17,7 +17,9 @@ user need to click the "Quotation Expiry Reminder" in settings for generating th
         'data/expiration_mail_template_data.xml',
         'views/config_settings_inherit_view.xml',
     ],
+'images': ['static/description/banner.png'],
     'installable': True,
     'auto_install': False,
     'application': True,
     }
+
