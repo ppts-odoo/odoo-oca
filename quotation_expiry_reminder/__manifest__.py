@@ -35,6 +35,7 @@ expiry date. Automatically send mail to user from the Salesperson.
         'data/expiration_mail_template_data.xml',
         'views/config_settings_inherit_view.xml',
     ],
+    'images': ['static/description/banner.png'],
     'demo': [],
     'installable': True,
     'auto_install': False,
