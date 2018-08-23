@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 {
-    'name' : 'Serial Number Import',
+    'name' : 'Import Serial Numbers on Delivery Orders',
     'version': '1.1',
     'author': 'PPTS [India] Pvt.Ltd.',
     'website': 'https://www.pptssolutions.com',
@@ -13,7 +13,7 @@
     'support': 'business@pptservices.com',
     'depends' : ['base','stock'],
     'description': """
-           Serial Number Import
+          Product Serial Numbers Import on Delivery Orders
     """,
     'data': [
         
