@@ -18,7 +18,7 @@ It helps, when user select the records and by triggering the action server menu 
         'wizard/so_bulk_mail.xml',
         'views/sale_action_menu.xml',  
     ],
-    
+    'images': ['static/description/banner.png'],
     'installable': True,
     'application': True,
     'auto_install': False,

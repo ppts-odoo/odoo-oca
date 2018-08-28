@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Custom Product Search',
+    'name': 'Global Product Search on website',
     'version': '1.0',
     'category': 'Website',
     "author": "PPTS [India] Pvt.Ltd.",
@@ -15,6 +15,7 @@
                'views/product_web_custom.xml',
                'views/advance_search.xml',         
     ],
+    'images': ['static/description/banner.png'],
     'installable': True,
     'application': True,
     'auto_install': False,

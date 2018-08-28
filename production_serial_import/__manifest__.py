@@ -18,6 +18,7 @@
         'views/production_serial_import_view.xml',
         
     ],
+    'images': ['static/description/banner.png'],
     'installable': True,
     'auto_install': False,
     'application':True
