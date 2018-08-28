@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 {
-    'name': 'Sales',
+    'name': 'Quotations/Sales Orders Approval',
     'version': '1.0',
     'category': 'Sales',
     'author': 'PPTS',
