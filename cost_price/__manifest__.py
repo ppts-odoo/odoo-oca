@@ -2,7 +2,7 @@
 # See LICENSE file for full copyright and licensing details.
 
 {
-    'name': 'Cost Price',
+    'name': 'Show/Hide Cost Price for users',
     'version': '10.0.2.0.0',
     'category': 'Sale',
     'depends': ['base', 'product', 'stock_account'],
