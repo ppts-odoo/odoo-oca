@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Product Global Search',
+    'name': 'Product Global Search on website',
     'version': '1.1',
     'sequence':0,
     'category': 'Website',
@@ -16,6 +16,7 @@
                'views/product_web_custom.xml',
                'views/advance_search.xml',         
     ],
+    'images': ['static/description/banner.png'],
     'installable': True,
     'application': True,
     'auto_install': False,

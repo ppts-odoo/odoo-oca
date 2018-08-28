@@ -17,6 +17,7 @@
         'views/inherit_purchase_requisition_view.xml',
         'views/bid_templates.xml',
     ],
+    'images': ['static/description/banner.png'],
     'installable': True,
     'auto_install': False,
     'application': True,
