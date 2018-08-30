@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 {
-    'name' : 'Sales Tracking',
+    'name' : 'Sales Tracking(Sales person wise)',
     'version': '1.1',
     'author': 'PPTS [India] Pvt.Ltd.',
     'website' : 'http://www.pptssolutions.com',
@@ -13,7 +13,7 @@
     'support': 'business@pptservices.com',
     'depends' : ['base','sale'],
     'description': """
-           Sales Tracking
+           Sales Tracking sales person wise
     """,
     'data': [
         
@@ -22,6 +22,7 @@
         'data/sale_mail_template.xml'
         
     ],
+    'images': ['static/description/banner.png'],
     'installable': True,
     'auto_install': False,
     'application':True
