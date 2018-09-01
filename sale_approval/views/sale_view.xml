@@ -143,5 +143,5 @@
         </record>
         <menuitem action="action_orders_extends"
             id="sale.menu_sale_order" parent="sales_team.menu_sales"
-            sequence="12" groups="sales_team.group_sale_salesman,sales_team.group_sale_manager"/>
+            sequence="12" groups="sales_team.group_sale_salesman,sales_team.group_sale_manager"/> 
 </odoo>

@@ -5,7 +5,7 @@ from odoo.tools import float_is_zero, float_compare, DEFAULT_SERVER_DATETIME_FOR
 
 class SaleOrder(models.Model):
     _inherit = "sale.order"
-    
+     
     state = fields.Selection([
         ('draft', 'Quotation'),
         ('sent', 'Quotation Sent'),

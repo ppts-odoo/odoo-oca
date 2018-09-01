@@ -24,7 +24,7 @@
           </field>
        </record>
 
-
+ 
        <record id="action_sales_approvals" model="ir.actions.act_window">
           <field name="name">Sale Approvals</field>
           <field name="type">ir.actions.act_window</field>
