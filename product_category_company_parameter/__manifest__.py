@@ -13,6 +13,7 @@
         'wizard/wizard_company_categ_view.xml',
         'views/product_category_view.xml',
     ],
+    'images': ['static/description/banner.png'],
     'installable': True,
     'application': True,
     'auto_install': False,
