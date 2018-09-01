@@ -22,6 +22,7 @@
 	],
 	"test": [
 	],
+    'images': ['static/description/banner.png'],
 	"auto_install": False,
 	"installable": True,
 	"application": False,
