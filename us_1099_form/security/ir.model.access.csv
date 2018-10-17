@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sent_1099_form_user,sent.1099.forms.user,model_sent_1099_forms,account.group_account_user,1,0,0,0
+access_sent_1099_form_manager,sent.1099.forms.manager,model_sent_1099_forms,account.group_account_manager,1,1,1,1

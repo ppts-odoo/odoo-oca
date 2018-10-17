@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	 <record id="base_view_partner_form_inherit" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit</field>
+        <field name="model">res.partner</field>
+	 	<field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+			<xpath expr="//form/sheet" position="before">
+				<header>
+					<button name="%(us_1099_form.action_send_1099_vendor)d" string="Send 1099" context="{'partner_id': active_id}" type="action" class="oe_highlight" attrs="{'invisible': [('x_1099', '!=', True)]}"/>
+				</header>
+			</xpath>
+			<xpath expr="//field[@name='ref']" position="before">
+				<field name="vat"/>
+			</xpath>
+			<xpath expr="///group[@name='purchase']" position="inside">
+				<field name="x_1099" attrs="{'invisible': [('supplier', '!=', True)]}"/>
+			</xpath>
+		</field>
+	 </record>
+
+</odoo>

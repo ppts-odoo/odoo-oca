@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report
+            id="report_1099_form"
+            string="1099 Form"
+            model="res.partner"
+            report_type="qweb-pdf"
+            file="us_1099_form.report_1099"
+            name="us_1099_form.report_1099"
+            menu="False"
+        />
+    </data>
+</odoo>

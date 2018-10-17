@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<template id="assets_backend"
+			name="dynamic_report_extended_level assets"
+			inherit_id="web.assets_backend">
+			<xpath expr="." position="inside">
+				<link rel="stylesheet"
+					href="/dynamic_report_extended_level/static/src/less/account_financial_report.less" />
+			</xpath>
+		</template>
+
+		<template id="account_reports.report_financial_line">
+			<t t-set="trclass" t-value="''" />
+			<t t-if="a['type'] in ['line', 'total']">
+				<t t-set="trclass" t-value="'o_account_reports_default_style'" />
+			</t>
+			<t t-if="a.get('level') == 0 and a['type'] in ['line', 'total']">
+				<t t-set="trclass" t-value="'o_account_reports_level0'" />
+			</t>
+			<t t-if="a.get('level') == 1 and a['type'] in ['line', 'total']">
+				<t t-set="trclass" t-value="'o_account_reports_level1'" />
+			</t>
+			<t t-if="a.get('level') == 2 and a['type'] in ['line', 'total']">
+				<t t-set="trclass" t-value="'o_account_reports_level2'" />
+			</t>
+			<t t-if="a.get('level') == 3 and a['type'] in ['line', 'total']">
+				<t t-set="trclass" t-value="'o_account_reports_level3'" />
+			</t>
+			<t t-if="a.get('level') == 4 and a['type'] in ['line', 'total']">
+				<t t-set="trclass" t-value="'o_account_reports_level4'" />
+			</t>
+			<t t-if="a.get('level') == 5 and a['type'] in ['line', 'total']">
+				<t t-set="trclass" t-value="'o_account_reports_level5'" />
+			</t>
+			<t t-if="a.get('level') == 6 and a['type'] in ['line', 'total']">
+				<t t-set="trclass" t-value="'o_account_reports_level6'" />
+			</t>
+			<t t-if="a.get('level') == 7 and a['type'] in ['line', 'total']">
+				<t t-set="trclass" t-value="'o_account_reports_level7'" />
+			</t>
+			<t t-if="a.get('level') == 8 and a['type'] in ['line', 'total']">
+				<t t-set="trclass" t-value="'o_account_reports_level8'" />
+			</t>
+			<t t-if="a.get('level') == 9 and a['type'] in ['line', 'total']">
+				<t t-set="trclass" t-value="'o_account_reports_level9'" />
+			</t>
+			<t t-if="a.get('level') == 10 and a['type'] in ['line', 'total']">
+				<t t-set="trclass" t-value="'o_account_reports_level10'" />
+			</t>
+
+			<t t-set="domainClass" t-value="'o_account_reports_domain_line_2'" />
+			<t t-if="a['type'] not in ['line', 'total']">
+				<t t-if="'level' in a">
+					<t t-if="a['level'] == 1">
+						<t t-set="domainClass"
+							t-value="'o_account_reports_domain_line_1'" />
+					</t>
+					<t t-if="a['level'] == 3">
+						<t t-set="domainClass"
+							t-value="'o_account_reports_domain_line_3'" />
+					</t>
+					<t t-if="a['level'] == 4">
+						<t t-set="domainClass"
+							t-value="'o_account_reports_domain_line_4'" />
+					</t>
+					<t t-if="a['level'] == 5">
+						<t t-set="domainClass"
+							t-value="'o_account_reports_domain_line_5'" />
+					</t>
+					<t t-if="a['level'] == 6">
+						<t t-set="domainClass"
+							t-value="'o_account_reports_domain_line_6'" />
+					</t>
+					<t t-if="a['level'] == 0">
+						<t t-set="domainClass"
+							t-value="'o_account_reports_domain_line_0'" />
+					</t>
+				</t>
+			</t>
+			<t t-set="column" t-value="0" />
+			<tr t-att-data-type="a['type']" t-att-data-id="a['id']"
+				t-att-class="trclass + ' ' + a['type'] + ' ' + ((a.get('unfoldable') and a.get('unfolded')) and 'o_account_reports_unfolded' or '')">
+				<t t-set="tdclass" t-value="''" />
+				<t t-if="a.get('unfoldable') and a.get('unfolded')">
+					<t t-set="tdclass" t-value="'o_account_reports_foldable'" />
+				</t>
+				<t t-if="a.get('unfoldable') and not a.get('unfolded')">
+					<t t-set="tdclass" t-value="'o_account_reports_unfoldable'" />
+				</t>
+				<td t-att-data-id="a.get('id')" t-att-class="tdclass"
+					t-att-colspan="a.get('colspan', 1)">
+					<t t-if="mode != 'print'">
+						<t t-if="a.get('unfoldable') and a.get('unfolded')">
+							<span t-att-data-id="a['id']"
+								t-att-class="' '.join(['o_account_reports_foldable', 'o_account_reports_caret_icon'])">
+								<i class="fa fa-fw fa-caret-down"></i>
+							</span>
+						</t>
+						<t t-if="a.get('unfoldable') and not a.get('unfolded')">
+							<span t-att-data-id="a['id']"
+								t-att-class="' '.join(['o_account_reports_unfoldable', 'o_account_reports_caret_icon'])">
+								<i class="fa fa-fw fa-caret-right"></i>
+							</span>
+						</t>
+					</t>
+					<t t-if="mode == 'print' and a['type'] not in ['line', 'total']">
+						<span t-att-data-id="a.get('id')"
+							t-att-class="a.get('type') + ' ' + domainClass">
+							<t t-esc="a.get('name')" />
+						</span>
+						<t t-call="account_reports.report_financial_footnote_sup" />
+					</t>
+					<t
+						t-if="a['type'] not in ['account_id', 'line', 'tax_id', 'unreconciled_aml', 'bank_statement_id', 'partner_id', 'move_line_id', 'too_many', 'too_many_partners', 'payment', 'total'] and mode != 'print'">
+						<span t-att-data-id="a.get('id')"
+							t-att-class="a.get('type') + ' ' + domainClass">
+							<t t-esc="a.get('name')" />
+							<t t-call="account_reports.report_financial_footnote_sup" />
+						</span>
+					</t>
+					<a t-if="a['type'] == 'too_many' and mode != 'print'">
+						<span t-att-data-action-domain="a.get('domain')"
+							data-res-model="account.move.line"
+							data-action-name="account.action_move_line_select"
+							t-att-class="'o_account_reports_web_action ' + domainClass">
+							<t t-esc="a.get('name')" />
+						</span>
+					</a>
+					<a t-if="a['type'] == 'too_many_partners' and mode != 'print'">
+						<span t-att-data-action-domain="a.get('domain')"
+							data-res-model="account.move.line"
+							data-action-name="account.action_move_line_select_by_partner"
+							t-att-class="'o_account_reports_web_action ' + domainClass">
+							<t t-esc="a.get('name')" />
+						</span>
+					</a>
+					<div class="dropdown"
+						t-if="(a['type'] in ['account_id', 'tax_id', 'bank_statement_id', 'move_line_id', 'partner_id']) and mode != 'print'">
+						<a data-toggle="dropdown" href='#'>
+							<span t-att-data-id="a.get('id')"
+								t-att-class="' '.join([a['type'], domainClass])">
+								<t t-esc="a.get('name')" />
+								<i
+									t-if="report.get_title() == 'Aged Receivable' and a['type'] == 'partner_id' and a['trust'] == 'bad'"
+									class="fa fa-circle" style="color: red; font-size: 0.8em;"></i>
+								<i
+									t-if="report.get_title() == 'Aged Receivable' and a['type'] == 'partner_id' and a['trust'] == 'good'"
+									class="fa fa-circle" style="color: green; font-size: 0.8em;"></i>
+							</span>
+							<span class="caret"></span>
+						</a>
+						<t t-call="account_reports.report_financial_footnote_sup" />
+						<ul class="dropdown-menu o_account_reports_domain_dropdown"
+							role="menu" aria-labelledby="dLabel">
+							<li role="presentation"
+								t-if="a['type'] == 'partner_id' and a['id'] and report.get_title() == 'Aged Receivable'">
+								<a role="menuitem" tabindex="-1"
+									t-att-data-active-id="a.get('id')"
+									data-action-name="account_reports.action_account_followup"
+									class="o_account_reports_web_action">Customer Statement</a>
+							</li>
+							<li role="presentation"
+								t-if="a['type'] == 'partner_id' and a['id'] and report.get_title() == 'Aged Receivable'">
+								<a role="menuitem" tabindex="-1"
+									t-att-data-active-id="a.get('id')"
+									data-action-name="account.act_account_partner_ledger_receivable"
+									class="o_account_reports_web_action">Partner Ledger</a>
+							</li>
+							<li role="presentation"
+								t-if="a['type'] == 'partner_id' and not a['id'] and report.get_title() == 'Aged Receivable'">
+								<a role="menuitem" tabindex="-1"
+									t-att-data-active-id="a.get('id')"
+									data-action-name="account.act_account_partner_ledger_receivable_no_partner"
+									class="o_account_reports_web_action">Journal Items</a>
+							</li>
+							<li role="presentation"
+								t-if="a['type'] == 'partner_id' and a['id'] and report.get_title() == 'Aged Payable'">
+								<a role="menuitem" tabindex="-1"
+									t-att-data-active-id="a.get('id')"
+									data-action-name="account.act_account_partner_ledger_payable"
+									class="o_account_reports_web_action">Partner Ledger</a>
+							</li>
+							<li role="presentation"
+								t-if="a['type'] == 'partner_id' and not a['id'] and report.get_title() == 'Aged Payable'">
+								<a role="menuitem" tabindex="-1"
+									t-att-data-active-id="a.get('id')"
+									data-action-name="account.act_account_partner_ledger_payable_no_partner"
+									class="o_account_reports_web_action">Journal Items</a>
+							</li>
+							<li role="presentation" t-if="a['type'] == 'account_id'">
+								<a role="menuitem" tabindex="-1"
+									t-att-data-active-id="a.get('id')"
+									data-action-name="account_reports.action_account_general_ledger_force_account"
+									data-force-context='true' class="o_account_reports_web_action">General Ledger</a>
+							</li>
+							<li role="presentation"
+								t-if="a['type'] == 'account_id' and a.get('account_type') == 'receivable'">
+								<a class='o_account_reports_web_action'
+									data-action-name='account_reports.action_account_report_ar'
+									data-force-context='true' role="menuitem" tabindex="-1">Aged
+									Receivable</a>
+							</li>
+							<li role="presentation"
+								t-if="a['type'] == 'account_id' and a.get('account_type') == 'payable'">
+								<a class='o_account_reports_web_action'
+									data-action-name='account_reports.action_account_report_ap'
+									data-force-context='true' role="menuitem" tabindex="-1">Aged Payable
+								</a>
+							</li>
+							<li role="presentation"
+								t-if="a['type'] == 'tax_id' and not context.env.context.get('cash_basis')">
+								<a role="menuitem" tabindex="-1"
+									t-att-data-res-model="context.get_tax_action('net', a.get('id'))['res_model']"
+									t-att-data-action-name="context.get_tax_action('net', a.get('id'))['name']"
+									t-att-data-action-domain="context.get_tax_action('net', a.get('id'))['domain']"
+									class="o_account_reports_web_action">Net Audit</a>
+							</li>
+							<li role="presentation"
+								t-if="a['type'] == 'tax_id' and not context.env.context.get('cash_basis')">
+								<a role="menuitem" tabindex="-1"
+									t-att-data-res-model="context.get_tax_action('tax', a.get('id'))['res_model']"
+									t-att-data-action-name="context.get_tax_action('tax', a.get('id'))['name']"
+									t-att-data-action-domain="context.get_tax_action('tax', a.get('id'))['domain']"
+									class="o_account_reports_web_action">Tax Audit</a>
+							</li>
+							<li role="presentation"
+								t-if="a['type'] == 'bank_statement_id'">
+								<a role="menuitem" tabindex="-1"
+									data-res-model="account.bank.statement"
+									t-att-data-active-id="a.get('statement_id')"
+									class="o_account_reports_web_action">See bank statement</a>
+							</li>
+							<li role="presentation" t-if="a['type'] == 'move_line_id'">
+								<a role="menuitem" tabindex="-1"
+									t-att-data-active-id="a.get('action')[1]"
+									t-att-data-res-model="a.get('action')[0]"
+									t-att-data-view-id="a.get('action')[3]"
+									class="o_account_reports_web_action">
+									<t t-esc="a.get('action')[2]" />
+								</a>
+							</li>
+							<li role="presentation"
+								t-if="a['type'] == 'move_line_id' and a.get('action')[0] != 'account.move'">
+								<a role="menuitem" tabindex="-1"
+									t-att-data-active-id="a.get('move_id')"
+									data-res-model="account.move"
+									class="o_account_reports_web_action">View Journal Entry</a>
+							</li>
+							<li role="presentation">
+								<a role="menuitem" tabindex="-1"
+									class="o_account_reports_add-footnote">Annotate</a>
+							</li>
+						</ul>
+					</div>
+					<t t-if="a['type'] in ['line', 'total']">
+						<span>
+							<a t-if="a.get('action_id') and mode != 'print'"
+								data-force-context='true'
+								t-att-data-action-id="a.get('action_id')"
+								class="o_account_reports_web_action">
+								<t t-esc="a.get('name')" />
+							</a>
+							<t t-if="'action_id' not in a or mode == 'print'">
+								<t t-esc="a.get('name')" />
+								<t
+									t-if="report.get_name() == 'general_ledger' and mode != 'print'">
+									&amp;nbsp;
+									<a t-att-data-active-id="a.get('id')"
+										data-action-name="account.action_move_select"
+										class="o_account_reports_web_action o_account_reports_display_when_unfolded"> ⇒ journal entries</a>
+								</t>
+							</t>
+							<t t-call="account_reports.report_financial_footnote_sup" />
+						</span>
+					</t>
+				</td>
+				<t t-set="columns_types"
+					t-value="context.get_columns_types()[-len(a['columns']):]" />
+				<t t-foreach="a['columns']" t-as="c">
+					<t t-set="column" t-value="column + 1" />
+					<t t-if="isinstance(c, tuple)">
+						<t t-set="style" t-value="c[1]" />
+						<t t-set="c" t-value="c[0]" />
+					</t>
+					<t t-if="a['type'] != 'total'">
+						<td
+							t-att-class="columns_types[column - 1] == 'number' and  'text-right' or columns_types[column - 1] == 'text' and  'text-left' or 'text-center'"
+							style="white-space: nowrap;"
+							t-att-summary="context._get_summary(column)">
+							<span class="annotable" t-att-style="style">
+								<t t-esc="c" />
+								<t t-call="account_reports.report_financial_footnote_sup" />
+							</span>
+						</td>
+					</t>
+					<t t-if="a['type'] == 'total'">
+						<td
+							t-att-class="columns_types[column - 1] == 'number' and  'text-right' or columns_types[column - 1] == 'text' and  'text-left' or 'text-center'"
+							style="white-space: nowrap;"
+							t-att-summary="column in (1,2) and context._get_summary(1) or ''">
+							<span class="annotable" t-att-style="style">
+								<t t-raw="c" />
+								<t t-call="account_reports.report_financial_footnote_sup" />
+							</span>
+						</td>
+					</t>
+				</t>
+			</tr>
+		</template>
+	</data>
+</odoo>
