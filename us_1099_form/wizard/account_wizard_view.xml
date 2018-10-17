@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="view_1099_mail_wizard" model="ir.ui.view">
+		<field name="name">acc.mail.wizard.form</field>
+		<field name="model">acc.mail.wizard</field>
+		<field name="arch" type="xml">
+			<form string="Send 1099 Mail">
+				<sheet>
+					<group>
+						<label for="year_from"/>
+						<div>
+							<field name="year_from" required="1" style="width:150px !important;" class="oe_inline"/>
+							<span style="margin-left:10px;margin-right:10px;font-weight:bold;">To</span>
+							<field name="year_to" style="width:150px !important;" required="1" class="oe_inline"/>
+							<button name="find_vendors" style="margin-left:20px;" type="object" class="oe_highlight" string="Find Vendors"/>
+						</div>
+					</group>
+					<notebook>
+						<page string="Vendors">
+							<div style="padding:10px;"><field name="select_all"/> <strong>Select All</strong></div>
+							<field name="vendor_ids">
+								<tree editable="bottom" create="false">
+									<field name="select"/>
+									<field name="partner_id" readonly="1"/>
+									<field name="amount" readonly="1"/>
+									<field name="file" filename="file_name" readonly="1" widget='binary'/>
+									<field name="file_name" invisible="True"/>
+								</tree>
+							</field>
+						</page>
+					</notebook>
+				</sheet>
+				<footer>
+					<button name="send_1099_mail" type="object" string="Send 1099" class="oe_highlight"/>
+					or
+					<button name="cancel" string="Cancel" special="cancel" class="oe_link"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+
+	<record id="action_send_1099_form" model="ir.actions.act_window">
+		<field name="name">Send 1099</field>
+		<field name="res_model">acc.mail.wizard</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">form</field>
+		<field name="target">new</field>
+		<field name="view_id" ref="view_1099_mail_wizard"/>
+	</record>
+
+</odoo>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="view_1099_vendor_wizard" model="ir.ui.view">
+		<field name="name">vendor.wizard.form</field>
+		<field name="model">vendor.1099.form</field>
+		<field name="arch" type="xml">
+			<form string="Send 1099 Mail">
+				<sheet>
+					<group>
+						<label for="year"/>
+						<div>
+							<field name="year" style="width:200px !important;" class="oe_inline" required="1"/>
+							<button name="generate_1099" style="margin-left:20px;" type="object" string="Generate 1099" class="oe_inline oe_highlight"/>
+						</div>
+					</group>
+					<group>
+						<group>
+							<field name="currency_id" invisible="1"/>
+							<field name="amount" readonly="1"/>
+						</group>
+						<group>
+							<field name="pdf_file" readonly="1" filename="file_name" widget='binary'/>
+							<field name="file_name" invisible="1"/>
+						</group>
+						<field name="partner_id" invisible="1"/>
+						<field name="success_msg" nolabel="1" readonly="1" attrs="{'invisible': [('success_msg', '=',False)]}" style="margin-top: 20px;color: #448a56;font-size: 25px;text-align: center;font-weight: 500;"/>
+						<field name="warning_msg" nolabel="1" readonly="1" attrs="{'invisible': [('warning_msg', '=',False)]}" style="margin-top: 20px;color: red;font-size: 25px;text-align: center;font-weight: 500;"/>
+					</group>
+				</sheet>
+				<footer>
+					<button name="send_1099" type="object" string="Send 1099" class="oe_highlight"/>
+					or
+					<button name="cancel" string="Cancel" special="cancel" class="oe_link"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+
+	<record id="action_send_1099_vendor" model="ir.actions.act_window">
+		<field name="name">Send 1099</field>
+		<field name="res_model">vendor.1099.form</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">form</field>
+		<field name="target">new</field>
+		<field name="view_id" ref="view_1099_vendor_wizard"/>
+	</record>
+
+</odoo>

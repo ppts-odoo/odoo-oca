@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!--Email template -->
+		<record id="template_send_1099" model="mail.template">
+			<field name="name">Send 1099 Mail</field>
+			<field name="email_from">${(object.user_id.email and '%s &lt;%s&gt;' % (object.user_id.name, object.user_id.email) or '')|safe}</field>
+			<field name="subject">${(object.name)+" 1099 Form"}</field>
+			<field name="email_to">${object.email}</field>
+			<field name="model_id" ref="us_1099_form.model_res_partner"/>
+			<field name="report_template" ref="report_1099_form"/>
+			<field name="report_name">${(object.name)+"_1099 Form"}</field>
+			<field name="body_html"><![CDATA[
+					<p>Dear ${object.name}
+
+					<p>Your 1099 Form is attached. Please check the attachment</p>
+					<p>Please get back to us for any queries.</p>
+					<p>Thank you,</p>
+
+				]]></field>
+		</record>
+	</data>
+</odoo>

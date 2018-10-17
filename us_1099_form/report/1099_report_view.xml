@@ -1,0 +1,1744 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="report_1099_document">
+		<div class="article">
+			<div class="page" style="top:-80px;">
+				<div class="row" style="page-break-after: always;">
+					<style>
+						.custom_border, .custom_border tr, .custom_border
+						td{border:1px solid
+						red;font-family: Arial, Helvetica, sans-serif;}
+						table, tr, td{vertical-align:top !important;}
+					</style>
+					<table
+						style="font-family: Arial, Helvetica, sans-serif;;font-size:15px;"
+						cellspacing="0" cellpadding="0">
+						<tbody>
+							<tr>
+								<td style="width:150px;text-align:center;">
+									<p style="letter-spacing: 3px;font-family:Comic Sans MS">9595</p>
+								</td>
+								<td style="width:150px;color:red;">
+									<p>
+										<input type="checkbox" style="float:left" />
+										<span
+											style="float:left;padding-left:5px;padding-top:2px;">VOID</span>
+									</p>
+								</td>
+								<td style="width:150px;color:red;">
+									<p>
+										<input type="checkbox" style="float:left" />
+										<span
+											style="float:left;padding-left:5px;padding-top:2px;">CORRECTED</span>
+									</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<table
+						style="width:100%;border-collapse: collapse;font-family: Arial, Helvetica, sans-serif;;font-size:12px;color:red;"
+						border="0">
+						<tbody>
+							<tr>
+								<td
+									style="text-align: left;border:1px solid red;padding-left:3px;"
+									rowspan="3">
+									<p>PAYER'S name, street address, city or town, state or
+										province, country, ZIP or foreign postal code, and telephone
+										no.
+									</p>
+									<br />
+									<br />
+									<div style="font-family:Comic Sans MS;">
+										<p style="line-height:10px;" t-if="doc.company_id.name">
+											<span t-field="doc.company_id.name" />
+										</p>
+										<p style="line-height:10px;" t-if="doc.company_id.street">
+											<span t-field="doc.company_id.street" />
+											,
+											<span t-field="doc.company_id.street2" />
+										</p>
+										<p style="line-height:10px;" t-if="doc.company_id.city">
+											<span t-field="doc.company_id.city" />
+											,
+											<span t-field="doc.company_id.state_id.name" />
+										</p>
+										<p style="line-height:10px;"
+											t-if="doc.company_id.country_id">
+											<span t-field="doc.company_id.country_id.name" />
+											<t t-if="doc.company_id.zip">
+												,
+												<t t-esc="doc.company_id.zip" />
+											</t>
+										</p>
+										<p style="line-height:12px;" t-if="doc.company_id.phone">
+											Phone:
+											<span t-field="doc.company_id.phone" />
+										</p>
+									</div>
+								</td>
+								<td
+									style="text-align: left;border:1px solid red;padding-left:3px;">
+									<p>1 Rents</p>
+									<br />
+									<p>$</p>
+								</td>
+								<td valign="bottom"
+									style="border:1px solid red;padding-left:3px;" rowspan="2">
+									<p>
+										OMB No. 1545-0115
+										<br />
+									</p>
+									<p style="text-align: center;font-size:27px;">
+										<span style="font-weight:bold;">
+											<t t-esc="doc._get_year('year')" />
+										</span>
+									</p>
+									<p
+										style="padding-top:35px;margin-bottom:-25px;text-align:center">
+										Form
+										<strong>1099-MISC</strong>
+									</p>
+								</td>
+								<td
+									style="text-align:right;padding-left:3px;padding-top:40px;"
+									rowspan="2">
+									<p style="font-size:28px">
+										<strong>Miscellaneous Income</strong>
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid red;padding-left:3px;">
+									<p>2 Royalties</p>
+									<p>$</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid red;padding-left:3px;">
+									<p>3 Other income</p>
+									<br />
+									<p>$</p>
+								</td>
+								<td style="border:1px solid red;padding-left:3px;">
+									<p>4 Federal income tax withheld</p>
+									<p>$</p>
+								</td>
+								<td
+									style="text-align: right;border-top:1px solid red;border-bottom:1px solid red;padding-left:3px;font-size:15px;"
+									rowspan="2">
+									<p>
+										<strong>
+											<span style="font-size:19px;">Copy A</span>
+											<br />
+											For Internal Revenue Service Center
+										</strong>
+									</p>
+									<p style="margin-top:15px;">
+										<strong>File with Form 1096.</strong>
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid red;">
+									<div
+										style="float:left;border-right: 1px solid red;width:50%;height:68px;">
+										<p style="padding-left:3px;">PAYER’S TIN</p>
+										<p
+											style="margin-top:8px;text-align:center;font-family:Comic Sans MS"
+											t-if="doc.company_id.vat">
+											<span t-field="doc.company_id.vat" />
+										</p>
+									</div>
+									<div style="width:50%;float:left;height:68px;">
+										<p style="padding-left:3px;">RECIPIENT’S TIN</p>
+										<p
+											style="margin-top:8px;text-align:center;font-family:Comic Sans MS"
+											t-if="doc.vat">
+											<span t-field="doc.vat" />
+										</p>
+									</div>
+								</td>
+								<td style="border:1px solid red;padding-left:3px;">
+									<p style="padding-left:3px;">5 Fishing boat proceeds.</p>
+									<p style="padding-top:10px;">$</p>
+								</td>
+								<td style="border:1px solid red;padding-left:3px;">
+									<p style="padding-left:3px;">6 Medical and health care payments</p>
+									<p>$</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid red;padding-left:3px;">
+									<p>RECIPIENT'S name</p>
+									<br />
+									<p style="font-family:Comic Sans MS;" t-if="doc.name">
+										<span t-field="doc.name" />
+									</p>
+								</td>
+								<td style="border:1px solid red;padding-left:3px;">
+									<p>7 Nonemployee compensation</p>
+									<br />
+									<br />
+									<!-- <span t-esc="doc._context['date_from']"></span> -->
+									<p>
+										$
+										<t t-esc="'%.2f'% doc._get_total_value('amount')" />
+									</p>
+								</td>
+								<td style="border:1px solid red;padding-left:3px;">
+									<p>8 Substitute payments in lieu of dividends or interest</p>
+									<p>$</p>
+								</td>
+								<td
+									style="text-align: right;border-top:1px solid red;border-bottom:1px solid red;font-size:15px;line-height: 20px;padding-top:40px;"
+									rowspan="4">
+									For Privacy Act and Paperwork Reduction Act Notice, see the
+									<br />
+									<strong>2018 General Instructions for Certain Information
+										Returns.
+									</strong>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid red;padding-left:3px;">
+									<p>Street address (including apt. no.)</p>
+									<div style="font-family:Comic Sans MS;">
+										<p style="line-height:10px;" t-if="doc.street">
+											<span t-field="doc.street" />
+											,
+											<span t-field="doc.street2" />
+										</p>
+									</div>
+								</td>
+								<td style="border:1px solid red;padding-left:3px;">
+									<p>
+										9 Payer made direct sales of $5,000 or more of consumer
+										products to a buyer (recipient) for resale
+										<span style="float:right;padding-right:6px;">
+											<input type="checkbox" />
+										</span>
+									</p>
+								</td>
+								<td style="border:1px solid red;padding-left:3px;">
+									<p>10 Crop insurance proceeds</p>
+									<p>$</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid red;padding-left:3px;">
+									<p>City or town, state or province, country, and ZIP or foreign
+										postal code
+									</p>
+									<div style="font-family:Comic Sans MS;">
+										<p style="line-height:10px;" t-if="doc.city">
+											<span t-field="doc.city" />
+											,
+											<span t-field="doc.state_id.name" />
+											<t t-if="doc.zip">
+												,
+												<t t-esc="doc.zip" />
+											</t>
+										</p>
+									</div>
+								</td>
+								<td style="border:1px solid red;padding-left:3px;">
+									<p>11</p>
+								</td>
+								<td style="border:1px solid red;padding-left:3px;">
+									<p>12</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid red;padding-left:3px;">
+
+									<div
+										style="float:left;height:68px;border-right: 1px solid red;width:40%">
+										<p>Account number (see instructions)</p>
+									</div>
+									<div
+										style="width:30%;float:left;height:68px;border-right: 1px solid red;">
+										<p style="padding-left:3px;">
+											FATCA filing
+											<br />
+											requirement
+										</p>
+										<p style="text-align:center;">
+											<input type="checkbox" />
+										</p>
+									</div>
+									<div style="width:28%;float:left;height:68px;">
+										<p style="padding-left:3px;">2nd TIN not</p>
+										<p style="text-align:center;">
+											<input type="checkbox" />
+										</p>
+									</div>
+
+								</td>
+								<td style="border:1px solid red;padding-left:3px;">
+									<p>13 Excess golden parachute payments</p>
+									<br />
+									<p>$</p>
+								</td>
+								<td style="border:1px solid red;padding-left:3px;">
+									<p>14 Gross proceeds paid to an attorney</p>
+									<p>$</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid red;padding-left:3px;">
+									<div
+										style="float:left;border-right: 1px solid red;width:50%;height:108px;">
+										15a Section 409A deferrals
+										<br />
+										<br />
+										<br />
+										<br />
+										<br />
+										<p style="padding-top:10px;">$</p>
+									</div>
+									<div
+										style="width:50%%;float:left;height:108px;padding-left:3px;">
+										15b Section 409A deferrals
+										<br />
+										<br />
+										<br />
+										<br />
+										<br />
+										<p style="padding-top:10px;">$</p>
+									</div>
+								</td>
+								<td style="border:1px solid red;padding-left:3px;">
+									<p>16 State tax withheld</p>
+									$
+									<hr style="border: 0;border-bottom: 1px dashed red;" />
+									$
+								</td>
+								<td style="border:1px solid red;padding-left:3px;">
+									<p style="margin-bottom:30px;">17 State/Payers state no.</p>
+									<hr style="border: 0;border-bottom: 1px dashed red;" />
+								</td>
+								<td
+									style="border-top:1px solid red;border-bottom:1px solid red;padding-left:3px;">
+									<p>18 State income</p>
+									$
+									<hr style="border: 0;border-bottom: 1px dashed red;" />
+									$
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<table
+						style="font-family: Arial, Helvetica, sans-serif;font-size:14px; width:100%;color:red">
+						<tbody>
+							<tr>
+								<td style="width:150px;">
+									<p>
+										Form
+										<strong>1099-MISC</strong>
+									</p>
+								</td>
+								<td style="width:150px;text-align:center;">
+									Cat. No. 14425J
+								</td>
+								<td style="width:150px;text-align:left;">
+									www.irs.gov/Form1099MISC
+								</td>
+								<td style="text-align:right;">
+									<p style="float:right">Department of the Treasury - Internal Revenue
+										Service
+									</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<table style="width:100%;color:red">
+						<tbody>
+							<tr>
+								<td>
+									<strong>
+										<p
+											style="font-family: Arial, Helvetica, sans-serif;letter-spacing:2px;font-size:15px; ">Do Not Cut or Separate Forms on This Page — Do Not Cut
+											or Separate Forms on This Page
+										</p>
+									</strong>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+
+
+				<div class="row" style="page-break-after: always;">
+					<style>
+						.custom_border, .custom_border tr, .custom_border
+						td{border:1px solid
+						#000;font-family: Arial, Helvetica,
+						sans-serif;}
+						table, tr, td{vertical-align:top !important;}
+					</style>
+					<table
+						style="font-family: Arial, Helvetica, sans-serif;;font-size:15px;"
+						cellspacing="0" cellpadding="0">
+						<tbody>
+							<tr>
+								<td style="width:150px;text-align:center;">
+								</td>
+								<td style="width:150px;color:#000;">
+									<p>
+										<input type="checkbox" style="float:left" />
+										<span
+											style="float:left;padding-left:5px;padding-top:2px;">VOID</span>
+									</p>
+								</td>
+								<td style="width:150px;color:#000;">
+									<p>
+										<input type="checkbox" style="float:left" />
+										<span
+											style="float:left;padding-left:5px;padding-top:2px;">CORRECTED</span>
+									</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<table
+						style="width:100%;border-collapse: collapse;font-family: Arial, Helvetica, sans-serif;;font-size:12px;color:#000;"
+						border="0">
+						<tbody>
+							<tr>
+								<td
+									style="text-align: left;border:1px solid #000;padding-left:3px;"
+									rowspan="3">
+									<p>PAYER'S name, street address, city or town, state or
+										province, country, ZIP or foreign postal code, and telephone
+										no.
+									</p>
+									<br />
+									<br />
+									<div style="font-family:Comic Sans MS;">
+										<p style="line-height:10px;" t-if="doc.company_id.name">
+											<span t-field="doc.company_id.name" />
+										</p>
+										<p style="line-height:10px;" t-if="doc.company_id.street">
+											<span t-field="doc.company_id.street" />
+											,
+											<span t-field="doc.company_id.street2" />
+										</p>
+										<p style="line-height:10px;" t-if="doc.company_id.city">
+											<span t-field="doc.company_id.city" />
+											,
+											<span t-field="doc.company_id.state_id.name" />
+										</p>
+										<p style="line-height:10px;"
+											t-if="doc.company_id.country_id">
+											<span t-field="doc.company_id.country_id.name" />
+											<t t-if="doc.company_id.zip">
+												,
+												<t t-esc="doc.company_id.zip" />
+											</t>
+										</p>
+										<p style="line-height:12px;" t-if="doc.company_id.phone">
+											Phone:
+											<span t-field="doc.company_id.phone" />
+										</p>
+									</div>
+								</td>
+								<td
+									style="text-align: left;border:1px solid #000;padding-left:3px;">
+									<p>1 Rents</p>
+									<br />
+									<p>$</p>
+								</td>
+								<td valign="bottom"
+									style="border:1px solid #000;padding-left:3px;" rowspan="2">
+									<p>
+										OMB No. 1545-0115
+										<br />
+									</p>
+									<p style="text-align: center;font-size:27px;">
+										<span style="font-weight:bold;">
+											<t t-esc="doc._get_year('year')" />
+										</span>
+									</p>
+									<p
+										style="padding-top:35px;margin-bottom:-25px;text-align:center">
+										Form
+										<strong>1099-MISC</strong>
+									</p>
+								</td>
+								<td
+									style="text-align:right;padding-left:3px;padding-top:40px;"
+									rowspan="2">
+									<p style="font-size:28px">
+										<strong>Miscellaneous Income</strong>
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>2 Royalties</p>
+									<p>$</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>3 Other income</p>
+									<br />
+									<p>$</p>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>4 Federal income tax withheld</p>
+									<p>$</p>
+								</td>
+								<td
+									style="text-align: right;border-top:1px solid #000;border-bottom:1px solid #000;padding-left:3px;font-size:15px;"
+									rowspan="2">
+									<p>
+										<strong>
+											<span style="font-size:19px;">Copy 1</span>
+											<br />
+											For State Tax Department
+										</strong>
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<div
+										style="float:left;border-right: 1px solid #000;width:50%;height:68px;">
+										<p style="padding-left:3px;">PAYER’S TIN</p>
+										<p
+											style="margin-top:8px;text-align:center;font-family:Comic Sans MS"
+											t-if="doc.company_id.vat">
+											<span t-field="doc.company_id.vat" />
+										</p>
+									</div>
+									<div
+										style="width:50%;float:left;height:68px;padding-left:3px;">
+										<p style="padding-left:3px;">RECIPIENT’S TIN</p>
+										<p
+											style="margin-top:8px;text-align:center;font-family:Comic Sans MS"
+											t-if="doc.vat">
+											<span t-field="doc.vat" />
+										</p>
+									</div>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p style="padding-left:3px;">5 Fishing boat proceeds.</p>
+									<p style="padding-top:10px;">$</p>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p style="padding-left:3px;">6 Medical and health care payments</p>
+									<p>$</p>
+								</td>
+							</tr>
+							<tr>
+								<td
+									style="border:1px solid #000;padding-left:3px;padding-left:3px;">
+									<p>RECIPIENT'S name</p>
+									<br />
+									<p style="font-family:Comic Sans MS;" t-if="doc.name">
+										<span t-field="doc.name" />
+									</p>
+								</td>
+								<td
+									style="border:1px solid #000;padding-left:3px;padding-left:3px;">
+									<p>7 Nonemployee compensation</p>
+									<br />
+									<br />
+									<p>
+										$
+										<t t-esc="'%.2f'% doc._get_total_value('amount')" />
+									</p>
+								</td>
+								<td
+									style="border:1px solid #000;padding-left:3px;padding-left:3px;">
+									<p>8 Substitute payments in lieu of dividends or interest</p>
+									<p>$</p>
+								</td>
+								<td
+									style="text-align: right;border-top:1px solid #000;border-bottom:1px solid #000;font-size:15px;line-height: 20px;padding-top:40px;"
+									rowspan="4">
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>Street address (including apt. no.)</p>
+									<div style="font-family:Comic Sans MS;">
+										<p style="line-height:10px;" t-if="doc.street">
+											<span t-field="doc.street" />
+											,
+											<span t-field="doc.street2" />
+										</p>
+									</div>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>
+										9 Payer made direct sales of $5,000 or more of consumer
+										products to a buyer (recipient) for resale
+										<span style="float:right;padding-right:6px;">
+											<input type="checkbox" />
+										</span>
+									</p>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>10 Crop insurance proceeds</p>
+									<p>$</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>City or town, state or province, country, and ZIP or foreign
+										postal code
+									</p>
+									<div style="font-family:Comic Sans MS;">
+										<p style="line-height:10px;" t-if="doc.city">
+											<span t-field="doc.city" />
+											,
+											<span t-field="doc.state_id.name" />
+											<t t-if="doc.zip">
+												,
+												<t t-esc="doc.zip" />
+											</t>
+										</p>
+									</div>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>11</p>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>12</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;padding-left:3px;">
+
+									<div
+										style="float:left;height:68px;border-right: 1px solid #000;width:40%">
+										<p>Account number (see instructions)</p>
+									</div>
+									<div
+										style="width:30%;float:left;height:68px;border-right: 1px solid #000;">
+										<p style="padding-left:3px;">
+											FATCA filing
+											<br />
+											requirement
+										</p>
+										<p style="text-align:center;">
+											<input type="checkbox" />
+										</p>
+									</div>
+									<div style="width:28%;float:left;height:68px;">
+									</div>
+
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>13 Excess golden parachute payments</p>
+									<br />
+									<p>$</p>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>14 Gross proceeds paid to an attorney</p>
+									<p>$</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<div
+										style="float:left;height:108px;border-right: 1px solid #000;width:50%">
+										15a Section 409A deferrals
+										<br />
+										<br />
+										<br />
+										<br />
+										<br />
+										<p style="padding-top:10px;">$</p>
+									</div>
+									<div
+										style="width:50%;height:108px;float:left;padding-left:3px;">
+										15b Section 409A deferrals
+										<br />
+										<br />
+										<br />
+										<br />
+										<br />
+										<p style="padding-top:10px;">$</p>
+									</div>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>16 State tax withheld</p>
+									$
+									<hr style="border: 0;border-bottom: 1px dashed #000;" />
+									$
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p style="margin-bottom:44px;">17 State/Payers state no.</p>
+									<hr style="border: 0;border-bottom: 1px dashed #000;" />
+								</td>
+								<td
+									style="border-top:1px solid #000;border-bottom:1px solid #000;padding-left:3px;">
+									<p>18 State income</p>
+									$
+									<hr style="border: 0;border-bottom: 1px dashed #000;" />
+									$
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<table
+						style="font-family: Arial, Helvetica, sans-serif;font-size:14px; width:100%;color:#000">
+						<tbody>
+							<tr>
+								<td style="width:150px;">
+									<p>
+										Form
+										<strong>1099-MISC</strong>
+									</p>
+								</td>
+								<td style="width:150px;text-align:center;">
+									Cat. No. 14425J
+								</td>
+								<td style="width:150px;text-align:left;">
+									www.irs.gov/Form1099MISC
+								</td>
+								<td style="text-align:right;">
+									<p style="float:right">Department of the Treasury - Internal Revenue
+										Service
+									</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+
+
+				<div class="row" style="page-break-after: always;">
+					<style>
+						.custom_border, .custom_border tr, .custom_border
+						td{border:1px solid
+						#000;font-family: Arial, Helvetica,
+						sans-serif;}
+						table, tr, td{vertical-align:top !important;}
+					</style>
+					<table
+						style="font-family: Arial, Helvetica, sans-serif;;font-size:15px;"
+						cellspacing="0" cellpadding="0">
+						<tbody>
+							<tr>
+								<td style="width:150px;text-align:center;">
+								</td>
+								<td style="width:150px;color:#000;">
+								</td>
+								<td style="width:250px;color:#000;">
+									<p>
+										<input type="checkbox" style="float:left;" />
+										<span
+											style="float:left;padding-left:5px;padding-top:2px;">CORRECTED(if checked)</span>
+									</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<table
+						style="width:100%;border-collapse: collapse;font-family: Arial, Helvetica, sans-serif;;font-size:12px;color:#000;"
+						border="0">
+						<tbody>
+							<tr>
+								<td
+									style="text-align: left;border:1px solid #000;padding-left:3px;"
+									rowspan="3">
+									<p>PAYER'S name, street address, city or town, state or
+										province, country, ZIP or foreign postal code, and telephone
+										no.
+									</p>
+									<br />
+									<br />
+									<div style="font-family:Comic Sans MS;">
+										<p style="line-height:10px;" t-if="doc.company_id.name">
+											<span t-field="doc.company_id.name" />
+										</p>
+										<p style="line-height:10px;" t-if="doc.company_id.street">
+											<span t-field="doc.company_id.street" />
+											,
+											<span t-field="doc.company_id.street2" />
+										</p>
+										<p style="line-height:10px;" t-if="doc.company_id.city">
+											<span t-field="doc.company_id.city" />
+											,
+											<span t-field="doc.company_id.state_id.name" />
+										</p>
+										<p style="line-height:10px;"
+											t-if="doc.company_id.country_id">
+											<span t-field="doc.company_id.country_id.name" />
+											<t t-if="doc.company_id.zip">
+												,
+												<t t-esc="doc.company_id.zip" />
+											</t>
+										</p>
+										<p style="line-height:12px;" t-if="doc.company_id.phone">
+											Phone:
+											<span t-field="doc.company_id.phone" />
+										</p>
+									</div>
+								</td>
+								<td
+									style="text-align: left;border:1px solid #000;padding-left:3px;">
+									<p>1 Rents</p>
+									<br />
+									<p>$</p>
+								</td>
+								<td valign="bottom"
+									style="border:1px solid #000;padding-left:3px;" rowspan="2">
+									<p>
+										OMB No. 1545-0115
+										<br />
+									</p>
+									<p style="text-align: center;font-size:27px;">
+										<span style="font-weight:bold;">
+											<t t-esc="doc._get_year('year')" />
+										</span>
+									</p>
+									<p
+										style="padding-top:35px;margin-bottom:-25px;text-align:center">
+										Form
+										<strong>1099-MISC</strong>
+									</p>
+								</td>
+								<td
+									style="text-align:right;padding-left:3px;padding-top:40px;"
+									rowspan="2">
+									<p style="font-size:28px">
+										<strong>Miscellaneous Income</strong>
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>2 Royalties</p>
+									<p>$</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>3 Other income</p>
+									<br />
+									<p>$</p>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>4 Federal income tax withheld</p>
+									<p>$</p>
+								</td>
+								<td
+									style="text-align: right;border-top:1px solid #000;border-bottom:1px solid #000;padding-left:3px;font-size:15px;"
+									rowspan="2">
+									<p>
+										<strong>
+											<span style="font-size:19px;">Copy B</span>
+											<br />
+											For Recipient
+										</strong>
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;">
+									<div
+										style="float:left;border-right: 1px solid #000;width:50%;height:68px;">
+										<p style="padding-left:3px;">PAYER’S TIN</p>
+										<p
+											style="margin-top:8px;text-align:center;font-family:Comic Sans MS"
+											t-if="doc.company_id.vat">
+											<span t-field="doc.company_id.vat" />
+										</p>
+									</div>
+									<div style="width:50%;float:left;height:68px;">
+										<p style="padding-left:3px;">RECIPIENT’S TIN</p>
+										<p
+											style="margin-top:8px;text-align:center;font-family:Comic Sans MS"
+											t-if="doc.vat">
+											<span t-field="doc.vat" />
+										</p>
+									</div>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p style="padding-left:3px;">5 Fishing boat proceeds.</p>
+									<p style="padding-top:10px;">$</p>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p style="padding-left:3px;">6 Medical and health care payments</p>
+									<p>$</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>RECIPIENT'S name</p>
+									<br />
+									<p style="font-family:Comic Sans MS;" t-if="doc.name">
+										<span t-field="doc.name" />
+									</p>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>7 Nonemployee compensation</p>
+									<br />
+									<br />
+									<p>
+										$
+										<t t-esc="'%.2f'% doc._get_total_value('amount')" />
+									</p>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>8 Substitute payments in lieu of dividends or interest</p>
+									<p>$</p>
+								</td>
+								<td
+									style="text-align: right;border-top:1px solid #000;border-bottom:1px solid #000;font-size:15px;line-height: 20px;padding-top:15px;width:150px;"
+									rowspan="4">
+									<p>This is important tax information and is being furnished to
+										the IRS. If you are required to file a return, a negligence
+										penalty or other sanction may be imposed on you if this income
+										is taxable and the IRS determines that it has not been
+										reported.
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>Street address (including apt. no.)</p>
+									<div style="font-family:Comic Sans MS;">
+										<p style="line-height:10px;" t-if="doc.street">
+											<span t-field="doc.street" />
+											,
+											<span t-field="doc.street2" />
+										</p>
+									</div>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>
+										9 Payer made direct sales of $5,000 or more of consumer
+										products to a buyer (recipient) for resale
+										<span style="float:right;padding-right:6px;">
+											<input type="checkbox" />
+										</span>
+									</p>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>10 Crop insurance proceeds</p>
+									<p>$</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>City or town, state or province, country, and ZIP or foreign
+										postal code
+									</p>
+									<div style="font-family:Comic Sans MS;">
+										<p style="line-height:10px;" t-if="doc.city">
+											<span t-field="doc.city" />
+											,
+											<span t-field="doc.state_id.name" />
+											<t t-if="doc.zip">
+												,
+												<t t-esc="doc.zip" />
+											</t>
+										</p>
+									</div>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>11</p>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>12</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;padding-left:3px;">
+
+									<div
+										style="float:left;height:68px;border-right: 1px solid #000;width:40%">
+										<p>Account number (see instructions)</p>
+									</div>
+									<div
+										style="width:30%;float:left;height:68px;border-right: 1px solid #000;">
+										<p style="padding-left:3px;">
+											FATCA filing
+											<br />
+											requirement
+										</p>
+										<p style="text-align:center;">
+											<input type="checkbox" />
+										</p>
+									</div>
+									<div style="width:28%;float:left;height:68px;">
+									</div>
+
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>13 Excess golden parachute payments</p>
+									<br />
+									<p>$</p>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>14 Gross proceeds paid to an attorney</p>
+									<p>$</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<div
+										style="float:left;height:108px;border-right: 1px solid #000;width:50%">
+										15a Section 409A deferrals
+										<br />
+										<br />
+										<br />
+										<br />
+										<br />
+										<p style="padding-top:10px;">$</p>
+									</div>
+									<div
+										style="width:50%;height:108px;float:left;padding-left:3px;">
+										15b Section 409A deferrals
+										<br />
+										<br />
+										<br />
+										<br />
+										<br />
+										<p style="padding-top:10px;">$</p>
+									</div>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>16 State tax withheld</p>
+									$
+									<hr style="border: 0;border-bottom: 1px dashed #000;" />
+									$
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p style="margin-bottom:44px;">17 State/Payers state no.</p>
+									<hr style="border: 0;border-bottom: 1px dashed #000;" />
+								</td>
+								<td
+									style="border-top:1px solid #000;border-bottom:1px solid #000;padding-left:3px;">
+									<p>18 State income</p>
+									$
+									<hr style="border: 0;border-bottom: 1px dashed #000;" />
+									$
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<table
+						style="font-family: Arial, Helvetica, sans-serif;font-size:14px; width:100%;color:#000">
+						<tbody>
+							<tr>
+								<td style="width:150px;">
+									<p>
+										Form
+										<strong>1099-MISC</strong>
+									</p>
+								</td>
+								<td style="width:170px;text-align:center;">
+									(keep for your records)
+								</td>
+								<td style="width:150px;text-align:center;">
+									www.irs.gov/Form1099MISC
+								</td>
+								<td style="text-align:right;">
+									<p style="float:right">Department of the Treasury - Internal Revenue
+										Service
+									</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div class="row" style="page-break-after: always;">
+					<style>
+						.custom_border, .custom_border tr, .custom_border
+						td{border:1px solid
+						#000;font-family: Arial, Helvetica,
+						sans-serif;}
+						table, tr, td{vertical-align:top !important;}
+					</style>
+					<table
+						style="font-family: Arial, Helvetica, sans-serif;;font-size:15px;"
+						cellspacing="0" cellpadding="0">
+						<tbody>
+							<tr>
+								<td style="width:150px;text-align:center;">
+								</td>
+								<td style="width:150px;color:#000;">
+								</td>
+								<td style="width:250px;color:#000;">
+									<p>
+										<input type="checkbox" style="float:left;" />
+										<span
+											style="float:left;padding-left:5px;padding-top:2px;">CORRECTED(if checked)</span>
+									</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<table
+						style="width:100%;border-collapse: collapse;font-family: Arial, Helvetica, sans-serif;;font-size:12px;color:#000;"
+						border="0">
+						<tbody>
+							<tr>
+								<td
+									style="text-align: left;border:1px solid #000;padding-left:3px;"
+									rowspan="3">
+									<p>PAYER'S name, street address, city or town, state or
+										province, country, ZIP or foreign postal code, and telephone
+										no.
+									</p>
+									<br />
+									<br />
+									<div style="font-family:Comic Sans MS;">
+										<p style="line-height:10px;" t-if="doc.company_id.name">
+											<span t-field="doc.company_id.name" />
+										</p>
+										<p style="line-height:10px;" t-if="doc.company_id.street">
+											<span t-field="doc.company_id.street" />
+											,
+											<span t-field="doc.company_id.street2" />
+										</p>
+										<p style="line-height:10px;" t-if="doc.company_id.city">
+											<span t-field="doc.company_id.city" />
+											,
+											<span t-field="doc.company_id.state_id.name" />
+										</p>
+										<p style="line-height:10px;"
+											t-if="doc.company_id.country_id">
+											<span t-field="doc.company_id.country_id.name" />
+											<t t-if="doc.company_id.zip">
+												,
+												<t t-esc="doc.company_id.zip" />
+											</t>
+										</p>
+										<p style="line-height:12px;" t-if="doc.company_id.phone">
+											Phone:
+											<span t-field="doc.company_id.phone" />
+										</p>
+									</div>
+								</td>
+								<td
+									style="text-align: left;border:1px solid #000;padding-left:3px;">
+									<p>1 Rents</p>
+									<br />
+									<p>$</p>
+								</td>
+								<td valign="bottom"
+									style="border:1px solid #000;padding-left:3px;" rowspan="2">
+									<p>
+										OMB No. 1545-0115
+										<br />
+									</p>
+									<p style="text-align: center;font-size:27px;">
+										<span style="font-weight:bold;">
+											<t t-esc="doc._get_year('year')" />
+										</span>
+									</p>
+									<p
+										style="padding-top:35px;margin-bottom:-25px;text-align:center">
+										Form
+										<strong>1099-MISC</strong>
+									</p>
+								</td>
+								<td
+									style="text-align:right;padding-left:3px;padding-top:40px;"
+									rowspan="2">
+									<p style="font-size:28px">
+										<strong>Miscellaneous Income</strong>
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>2 Royalties</p>
+									<p>$</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>3 Other income</p>
+									<br />
+									<p>$</p>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>4 Federal income tax withheld</p>
+									<p>$</p>
+								</td>
+								<td
+									style="text-align: right;border-top:1px solid #000;border-bottom:1px solid #000;padding-left:3px;font-size:15px;"
+									rowspan="2">
+									<p>
+										<strong>
+											<span style="font-size:19px;">Copy 2</span>
+											<br />
+											To be filed with recipient's state income tax return, when
+											required.
+										</strong>
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;">
+									<div
+										style="float:left;border-right: 1px solid #000;width:50%;height:68px;">
+										<p style="padding-left:3px;">PAYER’S TIN</p>
+										<p
+											style="margin-top:8px;text-align:center;font-family:Comic Sans MS"
+											t-if="doc.company_id.vat">
+											<span t-field="doc.company_id.vat" />
+										</p>
+									</div>
+									<div style="width:50%;float:left;height:68px;">
+										<p style="padding-left:3px;">RECIPIENT’S TIN</p>
+										<p
+											style="margin-top:8px;text-align:center;font-family:Comic Sans MS"
+											t-if="doc.vat">
+											<span t-field="doc.vat" />
+										</p>
+									</div>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p style="padding-left:3px;">5 Fishing boat proceeds.</p>
+									<p style="padding-top:10px;">$</p>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p style="padding-left:3px;">6 Medical and health care payments</p>
+									<p>$</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>RECIPIENT'S name</p>
+									<br />
+									<p style="font-family:Comic Sans MS;" t-if="doc.name">
+										<span t-field="doc.name" />
+									</p>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>7 Nonemployee compensation</p>
+									<br />
+									<br />
+									<!-- <span t-esc="doc._context['date_from']"></span> -->
+									<p>
+										$
+										<t t-esc="'%.2f'% doc._get_total_value('amount')" />
+									</p>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>8 Substitute payments in lieu of dividends or interest</p>
+									<p>$</p>
+								</td>
+								<td
+									style="text-align: right;border-top:1px solid #000;border-bottom:1px solid #000;font-size:15px;line-height: 20px;padding-top:15px;width:150px;"
+									rowspan="4">
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>Street address (including apt. no.)</p>
+									<div style="font-family:Comic Sans MS;">
+										<p style="line-height:10px;" t-if="doc.street">
+											<span t-field="doc.street" />
+											,
+											<span t-field="doc.street2" />
+										</p>
+									</div>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>
+										9 Payer made direct sales of $5,000 or more of consumer
+										products to a buyer (recipient) for resale
+										<span style="float:right;padding-right:6px;">
+											<input type="checkbox" />
+										</span>
+									</p>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>10 Crop insurance proceeds</p>
+									<p>$</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>City or town, state or province, country, and ZIP or foreign
+										postal code
+									</p>
+									<div style="font-family:Comic Sans MS;">
+										<p style="line-height:10px;" t-if="doc.city">
+											<span t-field="doc.city" />
+											,
+											<span t-field="doc.state_id.name" />
+											<t t-if="doc.zip">
+												,
+												<t t-esc="doc.zip" />
+											</t>
+										</p>
+									</div>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>11</p>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>12</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;padding-left:3px;">
+
+									<div
+										style="float:left;height:68px;border-right: 1px solid #000;width:40%">
+										<p>Account number (see instructions)</p>
+									</div>
+									<div
+										style="width:30%;float:left;height:68px;border-right: 1px solid #000;">
+										<p style="padding-left:3px;">
+											FATCA filing
+											<br />
+											requirement
+										</p>
+										<p style="text-align:center;">
+											<input type="checkbox" />
+										</p>
+									</div>
+									<div style="width:28%;float:left;height:68px;">
+									</div>
+
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>13 Excess golden parachute payments</p>
+									<br />
+									<p>$</p>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>14 Gross proceeds paid to an attorney</p>
+									<p>$</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<div
+										style="float:left;height:108px;border-right: 1px solid #000;width:50%">
+										15a Section 409A deferrals
+										<br />
+										<br />
+										<br />
+										<br />
+										<p style="padding-top:8px;">$</p>
+									</div>
+									<div
+										style="width:50%;height:108px;float:left;padding-left:3px;">
+										15b Section 409A deferrals
+										<br />
+										<br />
+										<br />
+										<br />
+										<p style="padding-top:8px;">$</p>
+									</div>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>16 State tax withheld</p>
+									$
+									<hr style="border: 0;border-bottom: 1px dashed #000;" />
+									$
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p style="margin-bottom:30px;">17 State/Payers state no.</p>
+									<hr style="border: 0;border-bottom: 1px dashed #000;" />
+								</td>
+								<td
+									style="border-top:1px solid #000;border-bottom:1px solid #000;padding-left:3px;">
+									<p>18 State income</p>
+									$
+									<hr style="border: 0;border-bottom: 1px dashed #000;" />
+									$
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<table
+						style="font-family: Arial, Helvetica, sans-serif;font-size:14px; width:100%;color:#000">
+						<tbody>
+							<tr>
+								<td style="width:150px;">
+									<p>
+										Form
+										<strong>1099-MISC</strong>
+									</p>
+								</td>
+								<td style="width:170px;text-align:center;">
+								</td>
+								<td style="width:150px;text-align:center;">
+									www.irs.gov/Form1099MISC
+								</td>
+								<td style="text-align:right;">
+									<p style="float:right">Department of the Treasury - Internal Revenue
+										Service
+									</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div class="row" style="page-break-after: always;">
+					<style>
+						.custom_border, .custom_border tr, .custom_border
+						td{border:1px solid
+						#000;font-family: Arial, Helvetica,
+						sans-serif;}
+						table, tr, td{vertical-align:top !important;}
+					</style>
+					<table
+						style="font-family: Arial, Helvetica, sans-serif;;font-size:15px;"
+						cellspacing="0" cellpadding="0">
+						<tbody>
+							<tr>
+								<td style="width:150px;text-align:center;">
+								</td>
+								<td style="width:150px;color:#000;">
+									<p>
+										<input type="checkbox" style="float:left" />
+										<span
+											style="float:left;padding-left:5px;padding-top:2px;">VOID</span>
+									</p>
+								</td>
+								<td style="width:250px;color:#000;">
+									<p>
+										<input type="checkbox" style="float:left;" />
+										<span
+											style="float:left;padding-left:5px;padding-top:2px;">CORRECTED</span>
+									</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<table
+						style="width:100%;border-collapse: collapse;font-family: Arial, Helvetica, sans-serif;;font-size:12px;color:#000;"
+						border="0">
+						<tbody>
+							<tr>
+								<td
+									style="text-align: left;border:1px solid #000;padding-left:3px;"
+									rowspan="3">
+									<p>PAYER'S name, street address, city or town, state or
+										province, country, ZIP or foreign postal code, and telephone
+										no.
+									</p>
+									<br />
+									<br />
+									<div style="font-family:Comic Sans MS;">
+										<p style="line-height:10px;" t-if="doc.company_id.name">
+											<span t-field="doc.company_id.name" />
+										</p>
+										<p style="line-height:10px;" t-if="doc.company_id.street">
+											<span t-field="doc.company_id.street" />
+											,
+											<span t-field="doc.company_id.street2" />
+										</p>
+										<p style="line-height:10px;" t-if="doc.company_id.city">
+											<span t-field="doc.company_id.city" />
+											,
+											<span t-field="doc.company_id.state_id.name" />
+										</p>
+										<p style="line-height:10px;"
+											t-if="doc.company_id.country_id">
+											<span t-field="doc.company_id.country_id.name" />
+											<t t-if="doc.company_id.zip">
+												,
+												<t t-esc="doc.company_id.zip" />
+											</t>
+										</p>
+										<p style="line-height:12px;" t-if="doc.company_id.phone">
+											Phone:
+											<span t-field="doc.company_id.phone" />
+										</p>
+									</div>
+								</td>
+								<td
+									style="text-align: left;border:1px solid #000;padding-left:3px;">
+									<p>1 Rents</p>
+									<br />
+									<p>$</p>
+								</td>
+								<td valign="bottom"
+									style="border:1px solid #000;padding-left:3px;" rowspan="2">
+									<p>
+										OMB No. 1545-0115
+										<br />
+									</p>
+									<p style="text-align: center;font-size:27px;">
+										<span style="font-weight:bold;">
+											<t t-esc="doc._get_year('year')" />
+										</span>
+									</p>
+									<p
+										style="padding-top:35px;margin-bottom:-25px;text-align:center">
+										Form
+										<strong>1099-MISC</strong>
+									</p>
+								</td>
+								<td
+									style="text-align:right;padding-left:3px;padding-top:40px;"
+									rowspan="2">
+									<p style="font-size:28px">
+										<strong>Miscellaneous Income</strong>
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>2 Royalties</p>
+									<p>$</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>3 Other income</p>
+									<br />
+									<p>$</p>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>4 Federal income tax withheld</p>
+									<p>$</p>
+								</td>
+								<td
+									style="text-align: right;border-top:1px solid #000;border-bottom:1px solid #000;padding-left:3px;font-size:15px;"
+									rowspan="2">
+									<p>
+										<strong>
+											<span style="font-size:19px;">Copy C</span>
+											<br />
+											For Payer
+										</strong>
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;">
+									<div
+										style="float:left;border-right: 1px solid #000;width:50%;height:68px;">
+										<p style="padding-left:3px;">PAYER’S TIN</p>
+										<p
+											style="margin-top:8px;text-align:center;font-family:Comic Sans MS"
+											t-if="doc.company_id.vat">
+											<span t-field="doc.company_id.vat" />
+										</p>
+									</div>
+									<div style="width:50%;float:left;height:68px;">
+										<p style="padding-left:3px;">RECIPIENT’S TIN</p>
+										<p
+											style="margin-top:8px;text-align:center;font-family:Comic Sans MS"
+											t-if="doc.vat">
+											<span t-field="doc.vat" />
+										</p>
+									</div>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p style="padding-left:3px;">5 Fishing boat proceeds.</p>
+									<p style="padding-top:10px;">$</p>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p style="padding-left:3px;">6 Medical and health care payments</p>
+									<p>$</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>RECIPIENT'S name</p>
+									<br />
+									<p style="font-family:Comic Sans MS;" t-if="doc.name">
+										<span t-field="doc.name" />
+									</p>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>7 Nonemployee compensation</p>
+									<br />
+									<br />
+									<!-- <span t-esc="doc._context['date_from']"></span> -->
+									<p>
+										$
+										<t t-esc="'%.2f'% doc._get_total_value('amount')" />
+									</p>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>8 Substitute payments in lieu of dividends or interest</p>
+									<p>$</p>
+								</td>
+								<td
+									style="text-align: right;border-top:1px solid #000;border-bottom:1px solid #000;font-size:15px;line-height: 20px;padding-top:15px;width:150px;"
+									rowspan="4">
+									<p>
+										For Privacy Act and Paperwork Reduction Act Notice, see the
+										<strong>2018 General Instructions for Certain Information
+											Returns.
+										</strong>
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>Street address (including apt. no.)</p>
+									<div style="font-family:Comic Sans MS;">
+										<p style="line-height:10px;" t-if="doc.street">
+											<span t-field="doc.street" />
+											,
+											<span t-field="doc.street2" />
+										</p>
+									</div>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>
+										9 Payer made direct sales of $5,000 or more of consumer
+										products to a buyer (recipient) for resale
+										<span style="float:right;padding-right:6px;">
+											<input type="checkbox" />
+										</span>
+									</p>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>10 Crop insurance proceeds</p>
+									<p>$</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>City or town, state or province, country, and ZIP or foreign
+										postal code
+									</p>
+									<div style="font-family:Comic Sans MS;">
+										<p style="line-height:10px;" t-if="doc.city">
+											<span t-field="doc.city" />
+											,
+											<span t-field="doc.state_id.name" />
+											<t t-if="doc.zip">
+												,
+												<t t-esc="doc.zip" />
+											</t>
+										</p>
+									</div>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>11</p>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>12</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;padding-left:3px;">
+
+									<div
+										style="float:left;height:68px;border-right: 1px solid #000;width:40%">
+										<p>Account number (see instructions)</p>
+									</div>
+									<div
+										style="width:30%;float:left;height:68px;border-right: 1px solid #000;">
+										<p style="padding-left:3px;">
+											FATCA filing
+											<br />
+											requirement
+										</p>
+										<p style="text-align:center;">
+											<input type="checkbox" />
+										</p>
+									</div>
+									<div style="width:28%;float:left;height:68px;">
+									</div>
+
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>13 Excess golden parachute payments</p>
+									<br />
+									<p>$</p>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>14 Gross proceeds paid to an attorney</p>
+									<p>$</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<div
+										style="float:left;height:108px;border-right: 1px solid #000;width:50%">
+										15a Section 409A deferrals
+										<br />
+										<br />
+										<br />
+										<br />
+										<br />
+										<p style="padding-top:10px;">$</p>
+									</div>
+									<div
+										style="width:50%;height:108px;float:left;padding-left:3px;">
+										15b Section 409A deferrals
+										<br />
+										<br />
+										<br />
+										<br />
+										<br />
+										<p style="padding-top:10px;">$</p>
+									</div>
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p>16 State tax withheld</p>
+									$
+									<hr style="border: 0;border-bottom: 1px dashed #000;" />
+									$
+								</td>
+								<td style="border:1px solid #000;padding-left:3px;">
+									<p style="margin-bottom:44px;">17 State/Payers state no.</p>
+									<hr style="border: 0;border-bottom: 1px dashed #000;" />
+								</td>
+								<td
+									style="border-top:1px solid #000;border-bottom:1px solid #000;padding-left:3px;">
+									<p>18 State income</p>
+									$
+									<hr style="border: 0;border-bottom: 1px dashed #000;" />
+									$
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<table
+						style="font-family: Arial, Helvetica, sans-serif;font-size:14px; width:100%;color:#000">
+						<tbody>
+							<tr>
+								<td style="width:150px;">
+									<p>
+										Form
+										<strong>1099-MISC</strong>
+									</p>
+								</td>
+								<td style="width:170px;text-align:center;">
+								</td>
+								<td style="width:150px;text-align:center;">
+									www.irs.gov/Form1099MISC
+								</td>
+								<td style="text-align:right;">
+									<p style="float:right">Department of the Treasury - Internal Revenue
+										Service
+									</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+		</div>
+
+	</template>
+
+	<template id="report_1099">
+		<t t-call="web.html_container">
+			<t t-foreach="docs" t-as="doc">
+				<t t-call="us_1099_form.report_1099_document" />
+			</t>
+		</t>
+	</template>
+	</odoo>
