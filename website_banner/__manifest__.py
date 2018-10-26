@@ -5,10 +5,10 @@
     'name': 'Dynamic Website Banner',
     'category': 'Website',
     'sequence': 140,
-    'website': '',
     'summary': 'Website Banner',
     'website': 'http://www.pptssolutions.com',
-    'version': '1.1',
+    'author': 'PPTS [India] Pvt.Ltd.',
+    'version': '10.1',
     'description': """
         Adding time based banner to the website
         """,
