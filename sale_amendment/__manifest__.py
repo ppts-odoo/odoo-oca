@@ -27,4 +27,5 @@ The old revisions/amendments of a sale order are flagged as inactive, so they do
     'installable': True,
     'application': True,
     'auto_install': False,
+    'images': ['static/description/banner.png'],
 }

@@ -26,4 +26,5 @@ This application allows you to manage your "Sales/Purchase Tax Split-up".
     'installable': True,
     'auto_install': False,
     'application': True,
+    'images': ['static/description/banner.png'],
 }

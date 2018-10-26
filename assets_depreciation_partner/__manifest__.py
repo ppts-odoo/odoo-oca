@@ -40,5 +40,6 @@
     'application': True,
     'installable': True,
     'active': False,
+    'images': ['static/description/banner.png'],
     'auto_install': False,
 }

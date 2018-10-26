@@ -22,6 +22,7 @@ Manage sales quotations and orders Approval.
         'views/res_user_views.xml',
         'views/sale_view.xml',
     ],
+    'images': ['static/description/banner.png'],
     'installable': True,
     'auto_install': False,
     'application': True,
