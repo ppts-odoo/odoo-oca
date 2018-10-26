@@ -22,4 +22,5 @@ The old revisions/amendments of a purchase order are flagged as inactive, so the
     'installable': True,
     'application': True,
     'auto_install': False,
+    'images': ['static/description/banner.png'],
 }

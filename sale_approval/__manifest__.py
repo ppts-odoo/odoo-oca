@@ -25,4 +25,5 @@ Manage sales quotations and orders Approval.
     'installable': True,
     'auto_install': False,
     'application': True,
+    'images': ['static/description/banner.png'],
 }
