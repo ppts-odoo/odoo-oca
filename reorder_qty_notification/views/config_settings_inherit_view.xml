@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_purchase_config_inherit" model="ir.ui.view">
+		<field name="name">Purchase settings</field>
+		<field name="model">base.config.settings</field>
+		<field name="inherit_id"
+			ref="base_setup.view_general_configuration" />
+		<field name="arch" type="xml">
+			<xpath expr="//group[@name='google_analytics']"
+				position="after">
+				<separator string="Reorder Qty Notification"/>
+				<group name="reorder_qty_mail_to">
+					<label for="id" string="Reorder Qty Send To" />
+					<div>
+						<div>
+							<field name="reorder_qty_mail_to" />
+						</div>
+					</div>
+				</group>
+			</xpath>
+		</field>
+	</record>
+
+</odoo>

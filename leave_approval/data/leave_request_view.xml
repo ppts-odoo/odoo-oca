@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+      <record id="leave_request_mail" model="mail.template">
+            <field name="name">Requesting for Leave</field>
+            <field name="subject">${object.employee_id.name} - ${object.holiday_status_id.name} ${object.number_of_days_temp} - days</field>
+            <field name="email_from">${object.employee_id.work_email}</field>
+            <field name="email_to">${object.employee_id.parent_id.work_email}</field>
+            <field name="lang">${user.lang}</field>
+            <field name="model_id" ref="leave_approval.model_hr_holidays"/>
+            <field name="auto_delete" eval="False"/>
+            <field name="body_html" ><![CDATA[
+            	<p>Dear ${object.employee_id.parent_id.name},</p>
+               <table>
+                   <tr>
+                    <td>Employee Name</td> 
+                    <td>
+                    </td>
+                    <td>
+                    </td>                      
+                    <td>${object.employee_id.name}</td>
+                  </tr>
+                  <tr>
+                    <td>Description</td>
+                   <td>
+                    </td>   
+                     <td>
+                    </td>
+                    <td>${object.name}</td>
+                  </tr>
+                  <tr>
+                  <td>Leave Type</td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>   
+                    <td> ${object.holiday_status_id.name}</td>
+                  </tr>
+                  <tr>
+                    <td>No Of Days</td>
+                   <td>
+                    </td>
+                     <td>
+                    </td>   
+                    <td> ${object.number_of_days_temp}</td>
+                  </tr>
+                  <tr>
+                    <td>Start Date</td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>   
+                   <td>${format_tz(object.date_from, tz='UTC', format='%d-%m-%Y')}</td> 
+                 </tr>
+                 <tr>
+                  <td>End Date</td>
+                  <td>
+                    </td>
+                    <td>
+                    </td>   
+                   <td>${format_tz(object.date_to, tz='UTC', format='%d-%m-%Y')}</td>
+                  
+                </tr>
+                <!-- <tr>
+                  <td>Return Date</td>
+                  <td>
+                    </td>
+                    <td>
+                    </td>   
+                  <td>
+                    ${object.return_date}
+                       </td>
+                    </tr> -->
+                </table>
+              <p>${object.employee_id.name} has applied for ${object.number_of_days_temp} days of ${object.leave_type} and Please click on view details</p>
+                <br>
+                <br>
+                               
+              <div style="text-align: left; margin-top: 16px;">
+                <a href="/leaveapproval/${object.employee_id.id}/${object.id}" style="padding: 5px 10px; font-size: 12px; line-height: 18px; color: #FFFFFF; border-color:#875A7B; text-decoration: none; display: inline-block; margin-bottom: 0px; font-weight: 400; text-align: center; vertical-align: middle; cursor: pointer; white-space: nowrap; background-image: none; background-color: 
+                #875A7B; border: 1px solid #875A7B; border-radius:3px">View Details</a>
+              </div>
+                  <br>
+                  <br>
+                  <p>Regards,</p>
+                  <p>${object.employee_id.name}</p>
+            	
+                  ]]>
+                  
+            </field>
+      </record>
+
+      <record id="leave_validation_mail" model="mail.template">
+            <field name="name">Leave Validation Approval</field>
+            <field name="subject">Mail for Leave Approval</field>
+            <field name="email_from">${object.employee_id.parent_id.work_email}</field>
+            <field name="email_to">${object.employee_id.parent_id.parent_id.work_email}</field>
+            <field name="lang">${user.lang}</field>
+            <field name="model_id" ref="leave_approval.model_hr_holidays"/>
+            <field name="auto_delete" eval="False"/>
+            <field name="body_html" ><![CDATA[
+                  <p>Dear ${object.employee_id.parent_id.parent_id.name},</p>
+                  <table>
+                   <tr>
+                    <td>Employee Name</td>
+                    <td>
+                    </td> 
+                    <td>
+                    </td>                      
+                    <td>${object.employee_id.name}</td>
+                  </tr>
+                  <tr>
+                    <td>Description</td>
+                   <td>
+                    </td>   
+                     <td>
+                    </td>
+                    <td>${object.name}</td>
+                  </tr>
+                  <tr>
+                  <td>Leave Type</td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>   
+                    <td> ${object.holiday_status_id.name}</td>
+                  </tr>
+                  <tr>
+                    <td>No Of Days</td>
+                   <td>
+                    </td>
+                     <td>
+                    </td>   
+                    <td> ${object.number_of_days_temp}</td>
+                  </tr>
+                  <tr>
+                    <td>Start Date</td>
+                    <td>
+                    </td>   
+                    <td>
+                    </td>
+                    <td>${format_tz(object.date_from, tz='UTC', format='%d-%m-%Y')}</td> 
+                 </tr>
+                 <tr>
+                  <td>End Date</td>
+                  <td>
+                    </td>
+                   <td>
+                    </td>   
+                 <td>${format_tz(object.date_to, tz='UTC', format='%d-%m-%Y')}</td>
+                </tr>
+                <!-- <tr>
+                  <td>Return Date</td>
+                  <td>
+                    </td>
+                  <td>
+                    <td>
+                    </td>   
+                    ${object.return_date}
+                       </td>
+                    </tr> -->
+                </table>
+                  <br><p>Requested Leave of ${object.employee_id.name} leave from ${format_tz(object.date_from, tz='UTC', format='%d-%m-%Y')} to ${format_tz(object.date_to, tz='UTC', format='%d-%m-%Y')} was waiting for your approval.</p>
+                  <br>
+                    <div style="text-align: left; margin-top: 16px;">
+        <a href="/approvalvalidationmail/${object.employee_id.id}/${object.id}" style="padding: 5px 10px; font-size: 12px; line-height: 18px; color: #FFFFFF; border-color:#875A7B; text-decoration: none; display: inline-block; margin-bottom: 0px; font-weight: 400; text-align: center; vertical-align: middle; cursor: pointer; white-space: nowrap; background-image: none; background-color: 
+        #875A7B; border: 1px solid #875A7B; border-radius:3px">View Details</a>
+      </div>
+                  <br>
+                  <p>Regards,</p>
+                  <p>${object.employee_id.parent_id.name}</p>
+                  <p>${object.employee_id.parent_id.department_id.name}</p>
+
+                   ]]>
+                  
+            </field>
+        </record>
+
+      <record id="leave_approval_mail" model="mail.template">
+            <field name="name">Leave Approval</field>
+            <field name="subject">Mail for Leave Approved</field>
+            <field name="email_from">${object.employee_id.parent_id.parent_id.work_email}</field>
+            <field name="email_to">${object.employee_id.work_email}</field>
+            <field name="lang">${user.lang}</field>
+            <field name="model_id" ref="leave_approval.model_hr_holidays"/>
+            <field name="auto_delete" eval="False"/>
+            <field name="body_html" ><![CDATA[
+                  <p>Dear ${object.employee_id.name},</p>
+                  <table>
+                   <tr>
+                    <td>Employee Name</td> 
+                    <td>
+                    </td>
+                    <td>
+                    </td>                      
+                    <td>${object.employee_id.name}</td>
+                  </tr>
+                  <tr>
+                    <td>Description</td>
+                   <td>
+                    </td>
+                     <td>
+                    </td>   
+                    <td>${object.name}</td>
+                  </tr>
+                  <tr>
+                  <td>Leave Type</td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>                       
+                    <td> ${object.holiday_status_id.name}</td>
+                  </tr>
+                  <tr>
+                    <td>No Of Days</td>
+                   <td>
+                    </td>
+                     <td>
+                    </td>   
+                    <td> ${object.number_of_days_temp}</td>
+                  </tr>
+                  <tr>
+                    <td>Start Date</td>
+                    <td>
+                    </td>   
+                    <td>
+                    </td>
+                    <td>${format_tz(object.date_from, tz='UTC', format='%d-%m-%Y')}</td> 
+                 </tr>
+                 <tr>
+                  <td>End Date</td>
+                  <td>
+                    </td>
+                   <td>
+                    </td>   
+                 <td>${format_tz(object.date_to, tz='UTC', format='%d-%m-%Y')}</td>
+                </tr>
+               <!--  <tr>
+                  <td>Return Date</td>
+                  <td>
+                    </td>
+                    <td>
+                    </td>   
+                  <td>
+                    
+                    ${object.return_date}
+                       </td>
+                    </tr> -->
+                </table>
+                  <br><p>Requested Leave for ${format_tz(object.date_from, tz='UTC', format='%d-%m-%Y')} to ${format_tz(object.date_to, tz='UTC', format='%d-%m-%Y')} days has been approved.</p>
+                  <br>
+                  <br>
+                  <p>Regards,</p>
+	                %if object.double_validation == True:
+	                	${object.employee_id.parent_id.parent_id.name}
+	                %else:
+	                  	${object.employee_id.parent_id.name}
+	                %endif
+                
+                  <p>${object.employee_id.parent_id.department_id.name}</p>
+
+                   ]]>
+                  
+            </field>
+        </record>
+
+        <record id="leave_rejection_mail" model="mail.template">
+            <field name="name">Leave Rejection</field>
+            <field name="subject">Mail for Leave Rejection</field>
+            <field name="email_from">${object.employee_id.parent_id.work_email}</field>
+            <field name="email_to">${object.employee_id.work_email}</field>
+            <field name="lang">${user.lang}</field>
+            <field name="model_id" ref="leave_approval.model_hr_holidays"/>
+            <field name="auto_delete" eval="False"/>
+            <field name="body_html" ><![CDATA[
+                  <p>Dear ${object.employee_id.name},</p>
+                  <table>
+                   <tr>
+                    <td>Employee Name</td>  
+                    <td>
+                    </td>
+                    <td>
+                    </td>                     
+                    <td>${object.employee_id.name}</td>
+                  </tr>
+                  <tr>
+                    <td>Description</td>
+                   <td>
+                    </td>
+                     <td>
+                    </td>   
+                    <td>${object.name}</td>
+                  </tr>
+                  <tr>
+                  <td>Leave Type</td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>   
+                    <td> ${object.holiday_status_id.name}</td>
+                  </tr>
+                  <tr>
+                    <td>No Of Days</td>
+                     <td>
+                    </td>
+                    <td>
+                    </td>   
+                    <td> ${object.number_of_days_temp}</td>
+                  </tr>
+                  <tr>
+                    <td>Start Date</td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>   
+                   <td>${format_tz(object.date_from, tz='UTC', format='%d-%m-%Y')}</td> 
+                 </tr>
+                 <tr>
+                  <td>End Date</td>
+                  <td>
+                    </td>   
+                   <td>
+                    </td>
+                  <td>${format_tz(object.date_to, tz='UTC', format='%d-%m-%Y')}</td>
+                </tr>
+<!--                 <tr>
+                  <td>Return Date</td>
+                  <td>
+                    </td>
+                    <td>
+                    </td>   
+                  <td>
+                    
+                    ${object.return_date}
+                       </td>
+                    </tr> -->
+                </table>
+                  <br><p>Requested Leave for ${format_tz(object.date_from, tz='UTC', format='%d-%m-%Y')} to ${format_tz(object.date_to, tz='UTC', format='%d-%m-%Y')} days has rejected.</p>
+                  
+                  <br>
+                  <br>
+                  <p>Regards,</p>
+                   %if object.double_validation == True:
+	                	${object.employee_id.parent_id.parent_id.name}
+	                %else:
+	                  	${object.employee_id.parent_id.name}
+	                %endif
+                
+                  <p>${object.employee_id.parent_id.department_id.name}</p>
+
+                   ]]>
+                  
+            </field>
+        </record>
+
+</odoo>

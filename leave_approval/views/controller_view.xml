@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+    
+    <template id="example_page" name="Example page" page="True">
+      <t t-call="website.layout">
+        <div class="oe_structure">
+          <div class="container">
+            <table class="col-md-8">             
+            <center><h3>Leave Details</h3></center>
+            <style>
+                table, td, th {    
+                    border: 1px solid #ddd;
+                    text-align: left;
+                }
+
+                table {
+                    border-collapse: collapse;
+                    width: 55%;
+                }
+
+                th, td {
+                    padding: 10px;
+                }
+              </style>
+              <form action="/approvalmail" method="post"
+                        class="form-horizontal col-md-10 col-md-offset-1">
+            <t t-foreach="values" t-as="o">
+               <table align="center">
+                    <tr>
+                    <td>Employee Name</td>
+                    
+                     
+                    <td><span t-esc="o.employee_id.name"/></td>
+                  </tr>
+                  <tr>
+                    <td>Description</td>
+                   
+                     
+                    <td><span t-esc="o.name"/></td>
+                  </tr>
+                  <tr>
+                  <td>Leave Type</td>
+                    
+                    
+                    <td> <span t-esc="o.holiday_status_id.name"/></td>
+                  </tr>
+                  <tr>
+                    <td>Number Of Days</td>
+                   
+                     
+                    <td> <span t-esc="o.number_of_days_temp"/></td>
+                  </tr>
+                  <tr>
+                    <td>Start Date</td>
+                    
+                    
+                   <td> <span t-esc="o.date_from" t-options='{"widget": "date"}'/></td> 
+                 </tr>
+                 <tr>
+                  <td>End Date</td>
+                  
+                   
+                  <td><span t-esc="o.date_to" t-options='{"widget": "date"}'/> </td>
+                </tr>
+               
+                    <tr>
+                        <td style="display: none;">
+                        Holiday
+                        </td>
+                        <td style="display: none;">:</td>
+                        <td style="display: none;">
+                          <input type="integer" class="form-control" id="hr_holidays"
+                                  name="hr_holidays" t-att-value="o.id"/>
+                             </td>                         
+                            </tr>
+                          </table>
+                          <br></br>
+                         <br></br>
+                          <div class='col-xs-6'>
+                               
+                                  <div class="clearfix">
+                                        <button type="submit" id="button_enroll_update"
+                                            class="btn btn-default btn-primary pull-right mb32 ">
+                                           Approve
+                                        </button>
+                                    </div>
+                                
+                              </div>
+                        </t>
+                      </form>
+                                         <div class='col-xs-1'>
+                                            <form action="/refusemail" method="post"
+                                                  class="form-horizontal col-md-10 col-md-offset-1">
+                                                  <div style="display: none;">
+                                                  <span t-esc="values.id"/>
+                                                  <input type="integer" class="form-control" id="hr_holiday"
+                                                                  name="hr_holiday" t-att-value="values.id"/>
+                                                  </div>
+                                                  <div class="clearfix">
+                                             
+                                                    <button type="submit" id="button_enroll_update1"
+                                                        class="btn btn-default btn-primary pull-right mb32 ">
+                                                       Reject
+                                                    </button>
+                                                  </div>         
+                                               </form>
+                                             </div>
+
+              </table>
+              </div>
+            </div>
+          </t>
+        </template> 
+
+        <template id="validation_page" name="Example page" page="True">
+      <t t-call="website.layout">
+        <div class="oe_structure">
+          <div class="container">
+            <table class="col-md-8">             
+            <center><h3>Leave Details</h3></center>
+            <style>
+                table, td, th {    
+                    border: 1px solid #ddd;
+                    text-align: left;
+                }
+
+                table {
+                    border-collapse: collapse;
+                    width: 55%;
+                }
+
+                th, td {
+                    padding: 10px;
+                }
+              </style>
+              <form action="/approvalvalidationmail" method="post"
+                        class="form-horizontal col-md-10 col-md-offset-1">
+            <t t-foreach="values" t-as="o">
+               <table align="center">
+                    <tr>
+                    <td>Employee Name</td>
+                    
+                     
+                    <td><span t-esc="o.employee_id.name"/></td>
+                  </tr>
+                  <tr>
+                    <td>Description</td>
+                   
+                     
+                    <td><span t-esc="o.name"/></td>
+                  </tr>
+                  <tr>
+                  <td>Leave Type</td>
+                    
+                    
+                    <td> <span t-esc="o.holiday_status_id.name"/></td>
+                  </tr>
+                  <tr>
+                    <td>Number Of Days</td>
+                   
+                     
+                    <td> <span t-esc="o.number_of_days_temp"/></td>
+                  </tr>
+                  <tr>
+                    <td>Start Date</td>
+                   
+                   <td> <span t-esc="o.date_from" t-options='{"widget": "date"}'/>
+                 </td> 
+                 </tr>
+                 <tr>
+                  <td>End Date</td>
+                  
+                   
+                  <td><span t-esc="o.date_to" t-options='{"widget": "date"}'/> </td>
+                </tr>
+               
+                    <tr>
+                        <td style="display: none;">
+                        Holiday
+                        </td>
+                        <td style="display: none;">:</td>
+                        <td style="display: none;">
+                          <input type="integer" class="form-control" id="hr_holidays"
+                                  name="hr_holidays" t-att-value="o.id"/>
+                             </td>
+                        
+                         
+                         
+                            </tr>
+                          </table>
+                          <br></br>
+                         <br></br>
+                          <div class='col-xs-6'>
+                               
+                                  <div class="clearfix">
+                                        <button type="submit" id="button_enroll_update"
+                                            class="btn btn-default btn-primary pull-right mb32 ">
+                                           Approve
+                                        </button>
+                                    </div>
+                                
+                              </div>
+                        </t>
+                      </form>
+                                <div class='col-xs-1'>
+                                            <form action="/refusemail" method="post"
+                                                  class="form-horizontal col-md-10 col-md-offset-1">
+                                                  <div style="display: none;">
+                                                  <span t-esc="values.id"/>
+                                                  <input type="integer" class="form-control" id="hr_holiday"
+                                                                  name="hr_holiday" t-att-value="values.id"/>
+                                                  </div>
+                                                  <div class="clearfix">
+                                             
+                                                    <button type="submit" id="button_enroll_update1"
+                                                        class="btn btn-default btn-primary pull-right mb32 ">
+                                                       Reject
+                                                    </button>
+                                                  </div>         
+                                               </form>
+                                             </div>
+
+              </table>
+              </div>
+            </div>
+          </t>
+        </template> 
+
+     
+
+
+
+        <template id="submit" name="Example page" page="True">
+          <t t-call="website.layout">
+        <div class="oe_structure">
+          <div class="container">
+
+    
+            <center><h3>Your Process Has been Completed Successfully!!!</h3></center>
+
+
+          </div>
+        </div>
+      </t>
+
+        </template>
+  </data>
+</odoo>
