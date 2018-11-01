@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- inherited RFQ purchase order menu action-->
+    <record id="purchase.purchase_rfq" model="ir.actions.act_window"> 
+		<field name="name">Requests for Quotation</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">purchase.order</field> 
+		<field name="view_mode">tree,kanban,form,pivot,graph,calendar</field>
+		<field name="domain">[('state','in',('draft','sent','bid','cancel', 'confirmed'))]</field>
+ 		<field name="search_view_id" ref="purchase.view_purchase_order_filter"/>
+		<field name="context">{'search_default_todo':1,'default_po_type':'manual', 'show_purchase': False}</field>
+	</record>
+<!-- inherited purchase order menu action-->
+	<record id="purchase.purchase_form_action" model="ir.actions.act_window"> 
+		<field name="name">Purchase Orders</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">purchase.order</field> 
+		<field name="view_mode">tree,kanban,form,pivot,graph,calendar</field>
+		<field name="domain">[('state','not in',('draft','sent','bid', 'confirmed'))]</field>
+ 		<field name="search_view_id" ref="purchase.view_purchase_order_filter"/>
+		<field name="context">{'search_default_todo':1, 'default_po_type':'manual', 'show_purchase': True'}</field>
+	</record>
+
+</odoo>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record model="mail.template"
+			id="reorder_qty_notification_inherit">
+			<field name="name">Reorder Qty Mail Notification</field>
+			<!-- <field name="email_from">${object.user_id.email}</field> -->
+			<field name="email_from">thilagarajan.sundarrajan@pptservices.com</field>
+			<field name="subject">Reorder Qty Notification </field>
+			<field name="model_id"
+				ref="reorder_qty_notification.model_purchase_order" />
+			<field name="auto_delete" eval="False" />
+			<field name="email_to">${ctx.get('email_to')}</field>
+			<field name="body_html">
+		<![CDATA[ 
+<p>Hi,</p>The following purchse order are created<br><br>
+<p>Please take the necessary action.</p>
+<table width="771" cellspacing="1" cellpadding="4" border="1" height="73">
+    <tbody>
+        <tr style="font-weight:bold;background-color: #00CED1">
+            <th>S.No</th>
+            <th>PO No</th>
+            <th>PO Date</th>
+            <th>Customer</th>
+            <th>Product Details</th>
+            <th>Qty</th>
+            <th>Price</th>
+        </tr>
+        % if ctx.get('purchase_order_list'):
+        	% for values in ctx['purchase_order_list']
+		        <tr style="background-color: #E0FFFF">
+		            <td valign="middle" align="center">${values['serial']}</td>
+		            <td valign="middle" align="center">${values['name']}</td>
+		            <td valign="middle" align="center">${values['date_order']}<br></td>
+		            <td valign="middle" align="center">${values['partner_id']}<br></td>
+		            <td valign="middle" align="center">${values['product_name']}<br></td>
+		            <td valign="middle" align="center">${values['product_qty']}<br></td>
+		            <td valign="middle" align="center">${format_amount(values['product_subtotal'],object.currency_id)}<br></td>
+		        </tr>
+       	 	% endfor
+       	 % endif
+    </tbody>
+</table><br>
+<p>Thank you</p>
+		
+]]></field>
+</record>
+</data>
+</odoo>
