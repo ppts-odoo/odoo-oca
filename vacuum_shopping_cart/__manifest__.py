@@ -5,6 +5,8 @@
     'version' : '1.1',
     'summary': 'Clear Shopping Carts',
     'sequence': 30,
+    'website': 'http://www.pptssolutions.com',
+    'author':'PPTS India Pvt Ltd',
     'description': """
 Clear your shopping cart with a single click in Website Shop.
     """,
