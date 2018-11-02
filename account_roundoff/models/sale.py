@@ -26,11 +26,13 @@ class sale_order(models.Model):
                 'amount_total': amount_untaxed + amount_tax,
             })
             if self:
-                amount_total = round(math.ceil(self.amount_total))
+#                 amount_total = round(math.ceil(self.amount_total))
+                amount_total = round((self.amount_total))
                 amount_round_off = amount_total - self.amount_total
-                order.update({
-                    'amount_total': amount_total,
-                    'amount_round_off': amount_round_off})
+                if amount_round_off:
+                    order.update({
+                        'amount_total': amount_total,
+                        'amount_round_off': amount_round_off})
             else:
                 amount_total = order.amount_total
                 order.update({

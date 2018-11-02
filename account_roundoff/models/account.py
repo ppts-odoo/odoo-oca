@@ -133,10 +133,16 @@ class AccountRoundOff(models.Model):
                     if i + 1 == len(totlines):
                         amount_currency += res_amount_currency
                     if self.round_active is True:
+                        if self.round_off_value > 0:
+                            amount = t[1] - (inv.type in ('in_invoice', 'out_refund') and abs(self.round_off_value) or self.round_off_value)
+                            if inv.type in ('out_invoice', 'in_refund'):
+                                amount = t[1] - (inv.type in ('in_invoice', 'out_refund') and abs(self.round_off_value) or -self.round_off_value)
+                        else:
+                            amount = t[1] + (inv.type in ('in_invoice', 'out_refund') and abs(self.round_off_value) or self.round_off_value)
                         iml.append({
                             'type': 'dest',
                             'name': name,
-                            'price': t[1] + (inv.type in ('in_invoice', 'out_refund') and abs(self.round_off_value) or self.round_off_value),
+                            'price': amount,
                             'account_id': inv.account_id.id,
                             'date_maturity': t[0],
                             'amount_currency': diff_currency and amount_currency,
@@ -151,13 +157,13 @@ class AccountRoundOff(models.Model):
                                 'name': "Round off",
                                 'price': (inv.type in ('in_invoice', 'out_refund') and self.round_off_value or -self.round_off_value),
                                 'account_id': acc_id,
-                                'date_maturity': t[0],
-                                'amount_currency': diff_currency and amount_currency,
+                                'date_maturity': inv.date_due,
+                                'amount_currency': diff_currency and total_currency,
                                 'currency_id': diff_currency and inv.currency_id.id,
                                 'invoice_id': inv.id
                             })
+                            
                     else:
-
                         iml.append({
                             'type': 'dest',
                             'name': name,
@@ -171,10 +177,16 @@ class AccountRoundOff(models.Model):
 
             else:
                 if self.round_active is True:
+                    if self.round_off_value > 0:
+                        amount = -(inv.type in ('in_invoice', 'out_refund') and abs(self.round_off_value) or self.round_off_value)
+                        if inv.type in ('out_invoice', 'in_refund'):
+                            amount = -(inv.type in ('in_invoice', 'out_refund') and abs(self.round_off_value) or -self.round_off_value)
+                    else:
+                        amount = (inv.type in ('in_invoice', 'out_refund') and abs(self.round_off_value) or self.round_off_value)
                     iml.append({
                         'type': 'dest',
                         'name': name,
-                        'price': total + (inv.type in ('in_invoice', 'out_refund') and abs(self.round_off_value) or self.round_off_value),
+                        'price': total + amount,
                         'account_id': inv.account_id.id,
                         'date_maturity': inv.date_due,
                         'amount_currency': diff_currency and total_currency,
@@ -208,7 +220,6 @@ class AccountRoundOff(models.Model):
             part = self.env['res.partner']._find_accounting_partner(inv.partner_id)
             line = [(0, 0, self.line_get_convert(l, part.id)) for l in iml]
             line = inv.group_lines(iml, line)
-
             journal = inv.journal_id.with_context(ctx)
             line = inv.finalize_invoice_move_lines(line)
 
