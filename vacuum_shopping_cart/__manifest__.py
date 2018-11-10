@@ -20,6 +20,7 @@ Clear your shopping cart with a single click in Website Shop.
     ],
     'qweb': [
     ],
+    'images': ['static/description/banner.png'],
     'installable': True,
     'application': True,
     'auto_install': False,
