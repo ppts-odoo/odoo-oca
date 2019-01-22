@@ -11,10 +11,10 @@
             	</xpath>
             	
             	<xpath expr="//group[@col='3']" position="after">
-            	<group col="3">
+            	<group col="3"> 
 					  <group>
-	                       <label colspan="2" string="Prefix %%(prefix)s"/>
-	                       <label colspan="2" string="Suffix %%(suffix)s"/>
+	                       <span colspan="2" string="">Prefix %%(prefix)s</span>
+	                       <span colspan="2" string="">Suffix %%(suffix)s</span>
 	                   </group>
 	            	</group>
             	</xpath>

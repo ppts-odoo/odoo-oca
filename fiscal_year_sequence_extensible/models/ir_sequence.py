@@ -4,7 +4,7 @@ from odoo import models, fields, api, _
 from datetime import datetime, timedelta
 import pytz
 from odoo.exceptions import UserError
-from odoo.addons.base.ir import ir_sequence
+from odoo.addons.base.models import ir_sequence
 
 class IrSequence(models.Model):
     _inherit = 'ir.sequence'
@@ -17,9 +17,9 @@ class IrSequence(models.Model):
         def _interpolation_dict():
             now = range_date = effective_date = datetime.now(pytz.timezone(self._context.get('tz') or 'UTC'))
             if self._context.get('ir_sequence_date'):
-                effective_date = datetime.strptime(self._context.get('ir_sequence_date'), '%Y-%m-%d')
+                effective_date = datetime.strptime(str(self._context.get('ir_sequence_date')), '%Y-%m-%d')
             if self._context.get('ir_sequence_date_range'):
-                range_date = datetime.strptime(self._context.get('ir_sequence_date_range'), '%Y-%m-%d')
+                range_date = datetime.strptime(str(self._context.get('ir_sequence_date_range')), '%Y-%m-%d')
 
             sequences = {
                 'year': '%Y', 'month': '%m', 'day': '%d', 'y': '%y', 'doy': '%j', 'woy': '%W',
