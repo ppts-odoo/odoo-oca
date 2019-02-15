@@ -11,4 +11,12 @@
 			action = record.view_wizard()
 		</field>
 	</record>
+	
+	<record id="ir_sale_bulk_mail" model="ir.values">
+		<field eval="'client_action_multi'" name="key2"/>
+		<field eval="'sale.order'" name="model"/>
+		<field name="name">Send SO/Quote by Mail</field>
+		<field eval="'ir.actions.server,%d'%sale_order_action_menu_1" name="value"/>
+	</record>
+	
 </odoo>
