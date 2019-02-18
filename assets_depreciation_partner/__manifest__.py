@@ -38,6 +38,7 @@
         'views/account_asset_view.xml',
     ],
     'demo': [],
+    'images': ['static/description/banner.png'],
     'application': True,
     'installable': True,
     'active': False,
