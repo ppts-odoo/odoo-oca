@@ -232,7 +232,7 @@ class MrpProductProduce(models.TransientModel):
             lsts.pop(0)
             for vals in lsts:
                 if vals:
-                    data = self.env['stock.production.lot'].search([('product_id','=',self.product_id.id),('name','=',str(vals))])
+                    data = self.env['stock.production.lot'].search([('product_id','=',self.product_id.id),('name','ilike',vals.replace('\r',''))])
                     data_list.append((0,0,{'lot_id':data.id,
                                            'qty_done': 1
                                      }))

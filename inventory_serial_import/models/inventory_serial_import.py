@@ -32,7 +32,7 @@ class stock(models.Model):
             lsts.pop(0)
             for rec in lsts:
                 if rec:
-                    data = self.env['stock.production.lot'].search([('product_id','=',self.product_id.id),('name','=',str(rec))])
+                    data = self.env['stock.production.lot'].search([('product_id','=',self.product_id.id),('name','ilike',rec.replace('\r',''))])
 #                     list values for move_line_ids 
                     data_list.append((0,0,{'lot_id':data.id,
                                             'qty_done': 1,
@@ -40,6 +40,9 @@ class stock(models.Model):
                                             'product_uom_id' : self.product_uom.id,
                                             'location_id' : self.location_id.id,
                                             'location_dest_id': self.location_dest_id.id,
+                                            'move_id': self.id,
+                                            'product_id': self.product_id.id,
+                                            'picking_id': self.picking_id.id
                                      }))
 #                 conditions based on unique serial number 
                 if self.product_id != data.product_id :
@@ -51,7 +54,7 @@ class stock(models.Model):
             if self.move_line_ids:
                 self.move_line_ids.unlink()
                
-            self.move_line_nosuggest_ids = data_list
+            self.move_line_ids = data_list
                      
         else :
             raise UserError("Invalid File! Please import the 'csv' file")  
