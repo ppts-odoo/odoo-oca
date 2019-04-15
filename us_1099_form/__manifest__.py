@@ -2,7 +2,7 @@
 {
     'name': "Send 1099 form via mail",
     'summary': """Send 1099 form via mail""",
-    'author': "PPTS Pvt. Ltd",
+    'author': "PPTS [India] Pvt. Ltd.",
     'website': "http://www.pptssolutions.com",
     'category': 'Purchase,Account',
     'license': 'LGPL-3',
