@@ -4,9 +4,9 @@
 
     'summary': """Pipeline Report""",
 
-    'author': "PPTS India Pvt. Ltd",
+    'author': "PPTS India Pvt. Ltd.",
     'website': "http://www.pptssolutions.com",
-    'category': '',
+    'category': 'sale',
     'version': '0.1',
     'depends': ['base', 'crm','sales_team','website'],
     'data': [

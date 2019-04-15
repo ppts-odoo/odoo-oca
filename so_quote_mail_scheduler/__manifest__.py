@@ -7,7 +7,7 @@
     'description': """Sale Quotation Mail Scheduler""",
     'category': 'sale',
     'website': 'http://www.pptssolutions.com',
-    'author':'PPTS',
+    'author':'PPTS [India] Pvt. Ltd.',
     'depends' : ['sale','sales_team','mail'],
     'data': [ 
         'data/mail_schedule_cron.xml',

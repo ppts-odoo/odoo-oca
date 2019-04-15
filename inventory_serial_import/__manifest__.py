@@ -5,6 +5,7 @@
     'name' : 'Import Serial Numbers on Delivery Orders',
     'version': '1.1',
     'website' : 'http://www.pptssolutions.com',
+    'author' : 'PPTS [India] Pvt. Ltd.',
     'category': 'inventory',
     'depends' : ['base','stock'],
     'license': 'LGPL-3',
