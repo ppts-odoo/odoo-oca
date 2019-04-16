@@ -45,6 +45,8 @@ class SaleOrder(models.Model):
     def copy(self, defaults=None):
         if not defaults:
             defaults = {}
+        if not self.unrevisioned_name:
+            self.unrevisioned_name = self.name
         if self.env.context.get('sale_revision_history'):
             prev_name = self.name
             revno = self.revision_number
