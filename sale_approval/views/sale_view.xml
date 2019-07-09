@@ -33,6 +33,7 @@
 					<field name="name" />
 					<field name="product_uom_qty" string="Ordered Qty"
 						context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}" />
+					<field name="qty_delivered_updateable" invisible="1" />
 					<field name="qty_delivered" invisible="context.get('hide_sale')"
 						attrs="{'readonly': [('qty_delivered_updateable', '=', False)]}" />
 					<field name="qty_invoiced" invisible="context.get('hide_sale')" />
@@ -51,7 +52,7 @@
 					<field name="price_subtotal" widget="monetary"
 						groups="sale.group_show_price_subtotal" />
 					<field name="price_total" widget="monetary" groups="sale.group_show_price_total" />
-					<field name="qty_delivered_updateable" invisible="1" />
+					
 					<!--<field name="procurement_ids" invisible="1" />-->
 					<field name="state" invisible="1" />
 					<field name="invoice_status" invisible="1" />
