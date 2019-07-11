@@ -14,7 +14,7 @@ When user need to print the excel report in purchase order select the purchase o
 user need to click the "Purchase order Excel Report" button and message will appear.select the "Print Excel report"button
 for generating the purchase order excel file""",
     'depends': [
-        'purchase','base',
+        'purchase','base','sales_team'
     ],
     'data': [
         'security/ir.model.access.csv',
