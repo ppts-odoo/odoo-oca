@@ -8,7 +8,7 @@
     'category': 'Manufacturing',
     'website':  'https://www.pptssolutions.com',
     'summary': 'More users in work order',
-    'license': 'LGPL-3',
+    'license': 'OEEL-1',
     'support': 'business@pptservices.com',
     'depends': [
         'mrp_workorder',
