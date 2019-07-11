@@ -9,6 +9,7 @@ import StringIO
 import csv, cStringIO
 from datetime import datetime
 from odoo import api, fields, models, _
+import platform
 
 
 class PurchaseReportOut(models.Model):        
@@ -138,9 +139,16 @@ class WizardWizards(models.Model):
             output.write(record)
             output.write("\n")
         data = base64.encodestring(output.getvalue())
-        
-                                
-        filename = ('Purchase Report'+ '.xls')
+
+        if platform.system() == 'Linux':
+            filename = ('/tmp/Purchase Report-' + str(datetime.today().date()) + '.xls')
+            filename2 = ('/tmp/Purchase Report-' + str(datetime.today().date()) + '.csv')
+        else:
+            filename = ('Purchase Report-' + str(datetime.today().date()) + '.xls')
+            filename2 = ('Purchase Report-' + str(datetime.today().date()) + '.csv')
+
+        filename = filename.split('/')[2]
+        filename2 = filename2.split('/')[2]
         workbook.save(filename)
         fp = open(filename, "rb")
         file_data = fp.read()
@@ -148,9 +156,9 @@ class WizardWizards(models.Model):
                        
 # Files actions         
         attach_vals = {
-                'purchase_data': 'Purchase Report'+ '.xls',
+                'purchase_data': filename,
                 'file_name': out,
-                'purchase_work':'Purchase'+ '.csv',
+                'purchase_work':filename2,
                 'file_names':data,
             } 
             
