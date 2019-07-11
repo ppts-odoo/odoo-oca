@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record model="mail.template"
+			id="product_expiration_mail_inherit">
+			<field name="name">Sale Expiration</field>
+			<field name="email_from">${object.user_id.email}</field>
+			<field name="subject">Quotation Expiry Reminder </field>
+			<field name="model_id"
+				ref="quotation_expiry_reminder.model_sale_order" />
+			<field name="auto_delete" eval="False" />
+			<field name="email_to">${ctx.get('email_to')}</field>
+			<field name="body_html">
+		<![CDATA[ 
+<p>Hi,</p>The following orders are going to expire in ${ctx.get('frequency')}.<br><br>
+<p>Please take the necessary action.</p>
+<table width="771" cellspacing="1" cellpadding="4" border="1" height="73">
+    <tbody>
+        <tr style="font-weight:bold;">
+            <th>S.No</th>
+            <th>SO Id</th>
+            <th>Customer</th>
+            <th>Order Price</th>
+            <th>Expiry Date</th>
+        </tr>
+        % if ctx.get('sale_order_list'):
+        	% for values in ctx['sale_order_list']
+		        <tr>
+		            <td valign="middle" align="center">${values['serial']}</td>
+		            <td valign="middle" align="center">${values['name']}</td>
+		            <td valign="middle" align="center">${values['partner_id']}<br></td>
+		            <td valign="middle" align="center">${format_amount(values['amount_total'], object.currency_id)}<br></td>
+		            <td valign="middle" align="center">${values['validity_date']}<br></td>
+		        </tr>
+       	 	% endfor
+       	 % endif
+    </tbody>
+</table><br>
+<p>Thank you</p>
+		
+]]></field>
+</record>
+</data>
+</odoo>

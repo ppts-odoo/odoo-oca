@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_order_form_extends" model="ir.ui.view">
+		<field name="name">sale.order.form</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_order_form"/>
+		<field name="arch" type="xml">
+		
+			<xpath expr="//button[@name='action_confirm']"  position="replace">
+				<button name="action_confirm" states="sent,waiting_for_approval" string="Confirm Sale" class="btn-primary o_sale_confirm" type="object" />
+			</xpath>
+			<xpath expr="//button[@name='action_cancel']"  position="replace">
+				<button name="action_cancel" states="draft,sent,sale,waiting_for_approval" type="object" string="Cancel"/>
+			</xpath>
+			
+			<xpath expr="//button[@name='action_confirm'][2]"  position="after">
+				<button name="%(action_sales_approvals)d" states="draft" type="action" class="oe_highlight" string="Ask for approval"/>
+			</xpath>
+			
+			<xpath expr="//field[@name='payment_term_id']" position="after">
+				<field name="approver_id"/>
+			</xpath>
+		
+			<xpath expr="//form/sheet/notebook/page/field[@name='order_line']/tree" position="replace">
+				<tree string="Sales Order Lines" decoration-info="invoice_status=='to invoice'">
+					<field name="sequence" widget="handle" />
+					<field name="product_id"
+						attrs="{'readonly': ['|', ('qty_invoiced', '&gt;', 0)]}"
+						context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}" 
+						/>
+										
+					<field name="name" />
+					<field name="product_uom_qty" string="Ordered Qty"
+						context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}" />
+					<field name="qty_delivered" invisible="context.get('hide_sale')"/>
+					<field name="qty_invoiced" invisible="context.get('hide_sale')" />
+					<field name="qty_to_invoice" invisible="1" />
+					<field name="product_uom"
+						attrs="{'readonly': [('state', 'in', ('sale','done', 'cancel'))]}"
+						context="{'company_id': parent.company_id}" groups="product.group_uom"
+						options='{"no_open": True}' />
+					<field name="analytic_tag_ids" groups="analytic.group_analytic_accounting"
+						widget="many2many_tags" />
+					<field name="price_unit" attrs="{'readonly': [('qty_invoiced', '&gt;', 0)]}" />
+					<field name="tax_id" widget="many2many_tags"
+						domain="[('type_tax_use','=','sale'),('company_id','=',parent.company_id)]"
+						attrs="{'readonly': [('qty_invoiced', '&gt;', 0)]}" />
+					<field name="discount" groups="sale.group_discount_per_so_line" />
+					<field name="price_subtotal" widget="monetary"
+						groups="sale.group_show_price_subtotal" />
+					<field name="price_total" widget="monetary" groups="sale.group_show_price_total" />
+					
+					<field name="state" invisible="1" />
+					<field name="invoice_status" invisible="1" />
+					<field name="customer_lead" invisible="1" />
+				</tree>
+			</xpath> 
+			
+		</field>
+	</record>
+	
+	<record id="view_order_tree_extend" model="ir.ui.view">
+		<field name="name">sale.order.tree</field>
+		<field name="model">sale.order</field>
+		<field name="inherit_id" ref="sale.view_order_tree" />
+		<field name="arch" type="xml">
+		<xpath expr="//field[@name='invoice_status']" position="replace">
+			<field name="state" />
+		</xpath>
+		</field>
+	</record>
+	
+	<record id="action_quotations_extends" model="ir.actions.act_window">
+            <field name="name">Quotations</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="sale.view_quotation_tree"/>
+            <field name="view_mode">tree,kanban,form,calendar,pivot,graph</field>
+            <field name="search_view_id" ref="sale.sale_order_view_search_inherit_quotation"/>
+            <field name="context">{'hide_sale': True}</field>
+            <field name="domain">[('state', 'in', ('draft', 'sent'))]</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Create a Quotation, the first step of a new sale.
+              </p><p>
+                Your next actions should flow efficiently: confirm the Quotation
+                to a Sale Order, then create the Invoice and collect the Payment.
+              </p><p>
+                Note that once a Quotation becomes a Sale Order, it will be moved
+                from the Quotations list to the Sales Order list.
+              </p>
+            </field>
+        </record>
+        <menuitem id="sale.menu_sale_quotations"
+                action="action_quotations_extends" parent="sale.sale_order_menu"
+                sequence="10"/>
+	
+	<record id="action_sale_approval" model="ir.actions.act_window">
+            <field name="name">Sales Approval</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form,calendar,pivot,graph</field>
+            <field name="search_view_id" ref="sale.sale_order_view_search_inherit_sale"/>
+            <field name="context">{}</field>
+            <field name="domain">[('state', 'not in', ('draft', 'sent', 'sale', 'cancel'))]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create a Quotation, the first step of a new sale.
+                </p><p>
+                    Once the quotation is confirmed, it becomes a sales order.
+                    You'll be able to invoice it and collect payments.
+                    From the <i>Sales Orders</i> menu, you can track delivery
+                    orders or services.
+                </p>
+            </field>
+        </record>
+        <menuitem action="action_sale_approval"
+            id="menu_sale_approval" parent="sale.sale_order_menu"
+            sequence="11" groups="sales_team.group_sale_salesman,sales_team.group_sale_manager"/>
+            
+        <record id="action_orders_extends" model="ir.actions.act_window">
+            <field name="name">Sales Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form,calendar,pivot,graph</field>
+            <field name="search_view_id" ref="sale.sale_order_view_search_inherit_sale"/>
+            <field name="context">{}</field>
+            <field name="domain">[('state', 'not in', ('draft', 'sent', 'waiting_for_approval', 'cancel'))]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create a Quotation, the first step of a new sale.
+                </p><p>
+                    Once the quotation is confirmed, it becomes a sales order.
+                    You'll be able to invoice it and collect payments.
+                    From the <i>Sales Orders</i> menu, you can track delivery
+                    orders or services.
+                </p>
+            </field>
+        </record>
+        <menuitem action="action_orders_extends"
+            id="sale.menu_sale_order" parent="sale.sale_order_menu"
+            sequence="12" groups="sales_team.group_sale_salesman,sales_team.group_sale_manager"/> 
+</odoo>
