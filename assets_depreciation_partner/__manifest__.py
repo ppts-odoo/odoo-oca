@@ -31,7 +31,6 @@
     """,
     "author": "PPTS [India] Pvt.Ltd.",
     "website": "http://www.pptssolutions.com",
-    'license': 'LGPL-3',
     'support': 'business@pptservices.com',
     'depends': ['base', 'account', 'account_asset'],
     'data': [

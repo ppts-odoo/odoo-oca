@@ -7,6 +7,7 @@
     'author': 'PPTS [India] Pvt.Ltd.',
     'category': 'Purchase',
     'website': 'https://www.pptssolutions.com',
+    'license': 'LGPL-3',
     'summary': 'Excel sheet for Purchase Order',
     'description': """ Purchase order excel report
 When user need to print the excel report in purchase order select the purchase order list and
