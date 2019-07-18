@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_order_tax_user,sale.order.tax.user,model_sale_order_tax,group_user,1,0,0,0
+access_sale_order_tax_manager,sale.order.tax.manager,model_sale_order_tax,group_erp_manager,1,1,1,1
+access_purchase_order_tax_user,purchase.order.tax.user,model_purchase_order_tax,group_user,1,0,0,0
+access_purchase_order_tax_manager,purchase.order.tax.manager,model_purchase_order_tax,group_erp_manager,1,1,1,1
+access_sale_order_user,sale.order,model_sale_order,group_user,1,0,0,0
+access_sale_order_manager,sale.order,model_sale_order,group_erp_manager,1,1,1,1

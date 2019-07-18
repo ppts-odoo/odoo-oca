@@ -1,0 +1,130 @@
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 30%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+.btn_st{
+    margin: 3px;
+    box-shadow: 1px 1px 1px 1px #ffc179;
+}
+.total_row{
+    border: solid #d1cfcf 1px;
+    padding: 5px;
+    text-align: center;
+    font-size: 21px;
+    line-height: 30px;
+    background: #fff1e1;
+}
+.last_row{
+    line-height: 75%;
+    border: solid #d1cfcf 1px;
+     background: #fff1e1;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+.table_td{
+	border-bottom: solid black 1px;
+	padding:5px;
+	border:solid #d1cfcf 1px;
+}
+.table_tr{
+	border:solid black 1px;
+	line-height: 200%;
+	padding:5px;
+}
+.table_th{
+	border:solid #d1cfcf 1px;
+	text-align:center;
+	font-weight: 100;
+	 line-height: 35px;
+	 background: #eaf35433;
+}
+.new_row{
+    border: solid black 1px;
+    background: #daf4f9;
+}
+.row2{
+    border: solid black 1px;
+background: #f2f2f2;
+}
+.pdiv2{
+	float:left;
+	width:790px;
+	overflow: auto;
+	line-height: 28px;
+}
+.pdiv1{
+	float:left;
+	width:350px;
+	line-height: 28px;
+}
+.table_tr1{
+	border:solid black 1px;
+    line-height: 25px;
+    background: #eaf35433;
+}
+
+.bk_butn{
+    box-shadow: 3px 3px 2px 0px #a59fa899;
+}

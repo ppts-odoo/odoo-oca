@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record model="mail.template" id="example_email_template">
+			<field name="name">Monthly report</field>
+			<field name="email_from">${user.company_id.email}</field>
+			<field name="subject">Monthly Report for ${ctx.get('sale_team_name')}</field>
+			<field name="email_to">${ctx.get('mail_ids')}</field>
+			<field name="lang">${object.lang}</field>
+			<field name="model_id" ref="sale_tracker.model_crm_team" />
+			<field name="auto_delete" eval="False" />
+			<field name="body_html">
+	  	  	 <![CDATA[
+                <p>Hi,</p>These are the sale orders. <br><br>
+                <table width="771" frame="border" rules="all" height="73">
+                <tbody>
+                    <tr>
+                        <th>Saleperson</th>
+                        <th>Sale Team</th>
+                        <th>SO Count</th>
+                        <th>Sale Amount</th>
+                    </tr>
+    % if ctx.get('sale_order_list'):
+		% for values in ctx['sale_order_list']
+		<tr>
+			<td>${values['saleperson']}</td>
+			<td>${values['sale_team']}</td>
+			<td>${values['count']}</td>
+			<td>${values['total']}</td>	
+		</tr>
+		% endfor
+	% endif
+            </tbody>
+                </table><br>
+              <p>Thank you</p>
+            ]]>
+			</field>
+		</record>
+	</data>
+</odoo>
+
+

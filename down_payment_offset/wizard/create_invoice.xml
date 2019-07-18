@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="form_sale_adjust_payment_inherit" model="ir.ui.view">
+        <field name="name">Invoice Orders</field>
+        <field name="model">sale.advance.payment.inv</field>
+        <field name="inherit_id" ref="sale.view_sale_advance_payment_inv" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='advance_payment_method']" position="after">
+                <field name="adjustable_amount" attrs="{'invisible': [('advance_payment_method', '!=', 'adjust_down_payment')]}"/>
+                <field name="adjustable_down_payment_ids" attrs="{'invisible': [('advance_payment_method', '!=', 'adjust_down_payment')]}">
+                    <tree string="Down Payment to be adjusted" editable="bottom" create="false">
+                         <field name="partner_id" />
+                         <field name="down_payment_reference" />
+                         <field name="full_adjustment" />
+                         <field name="advance_amount" />
+                         <field name="advance_amount_new" invisible="1"/>
+                         <field name="adjust_amount" attrs="{'readonly': [('full_adjustment', '=', True)]}"/>
+                         <field name="adjust_amount_new" invisible="1"/>
+                         <field name="line_id" />
+                         <field name="balance" />
+                     </tree>
+                </field>
+            </xpath>
+           
+        </field>
+    </record>
+</odoo>

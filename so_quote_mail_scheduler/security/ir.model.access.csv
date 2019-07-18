@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+assign_sale_mail_schedule,sale_mail_schedule,model_sale_mail_schedule,group_user,1,0,0,0
+assign_sale_mail_schedule1,sale_mail_schedule,model_sale_mail_schedule,group_erp_manager,1,1,1,1
+assign_sale_order,sale_order,model_sale_order,group_user,1,0,0,0
+assign_sale_order1,sale_order,model_sale_order,group_erp_manager,1,1,1,1
+assign_sale_mail_schedule_wizard,sale_mail_schedule_wizard,model_sale_mail_schedule_wizard,group_user,1,0,0,0
+assign_sale_mail_schedule_wizard1,sale_mail_schedule_wizard,model_sale_mail_schedule_wizard,group_erp_manager,1,1,1,1
