@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
    <data>
-      <record id="leave_request_mail" model="mail.template">
+       <record id="leave_request_mail" model="mail.template">
             <field name="name">Requesting for Leave</field>
             <field name="subject">${object.employee_id.name} - ${object.holiday_status_id.name} ${object.number_of_days_temp} - days</field>
             <field name="email_from">${object.employee_id.work_email}</field>
@@ -44,7 +44,7 @@
                     </td>   
                     <td> ${object.number_of_days_temp}</td>
                   </tr>
-                  <tr>
+             <!--      <tr>
                     <td>Start Date</td>
                     <td>
                     </td>
@@ -60,7 +60,7 @@
                     </td>   
                    <td>${format_tz(object.date_to, tz='UTC', format='%d-%m-%Y')}</td>
                   
-                </tr>
+                </tr> -->
                 <!-- <tr>
                   <td>Return Date</td>
                   <td>

@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 {
 	"name": "Leave Mail Approval",
-	"version": "10.0",
+	"version": "11.0",
 	"author": "PPTS [India] Pvt.Ltd.",
 	"website": "http://www.pptssolutions.com",
 	"sequence": 100,

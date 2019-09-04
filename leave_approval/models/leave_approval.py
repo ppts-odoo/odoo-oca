@@ -38,6 +38,7 @@ class res_partner(models.Model):
 	def action_confirm(self):
 		print('oooooooooooo')
 		if self.filtered(lambda holiday: holiday.state != 'draft'):
+			print("done")
 			raise UserError(_('Leave request must be in Draft state ("To Submit") in order to confirm it.'))
 		template_id = self.env.ref('leave_approval.leave_request_mail')
 		print(template_id, '==============================================')
