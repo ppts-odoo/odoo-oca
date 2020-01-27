@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!-- sale order country fields -->
+		<record id="product_pricelist_import" model="ir.ui.view">
+			<field name="name">Product_Pricelist</field>
+			<field name="model">product.pricelist</field>
+			<field name="inherit_id" ref="product.product_pricelist_view" />
+			<field name="arch" type="xml">
+				<xpath expr="//form/sheet/group" position="after">
+						<group>
+							<field name="product_category" widget='many2many_tags'/>
+							<field name="applied_on" widget="radio" />
+						</group>
+						<group col="2">
+						<field name="min_quantity" />
+						<field name="date_start" />
+						<field name="date_end" />
+					</group>
+					<separator string="Compute Price" />
+					<group>
+						<label for="compute_price" string="Compute Price" />
+						<div>
+							<field name="compute_price" widget="radio" />
+							<field name="currency_id" invisible="1" />
+							<div attrs="{'invisible':[('compute_price', '!=', 'fixed')]}">
+								<field name="fixed_price" nolabel="1" class="oe_inline"
+									widget='monetary' options="{'currency_field': 'currency_id'}" />
+							</div>
+							<div
+								attrs="{'invisible':[('compute_price', '!=', 'percentage')]}">
+								<field name="percent_price" nolabel="1" class="oe_inline" />
+								%%
+							</div>
+						</div>
+					</group>
+					<group col="6"
+						attrs="{'invisible':[('compute_price', '!=', 'formula')]}">
+						<field name="base" colspan="6" />
+
+						<label string="New Price =" for="base" />
+						<div>
+							<span attrs="{'invisible':[('base', '!=', 'list_price')]}">Public Price -  </span>
+							<span
+								attrs="{'invisible':[('base', '!=', 'standard_price')]}">Cost -  </span>
+							<span attrs="{'invisible':[('base', '!=', 'pricelist')]}">Other Pricelist -  </span>
+						</div>
+						<label for="price_discount" />
+						
+						
+						
+						<div class="o_row">
+							<field name="price_discount" />
+							<span>%%</span>
+						</div>
+						<label string=" + " for="price_surcharge" />
+						<field name="price_surcharge" nolabel="1" />
+
+						<field name="price_round" string="Rounding Method" />
+						<field name="price_min_margin" string="Min. Margin" />
+						<field name="price_max_margin" string="Max. Margin" />
+
+						<field name="base_pricelist_id"
+							attrs="{'invisible':[('base', '!=', 'pricelist')],'required': [('base','=', 'pricelist')], 'readonly': [('base','!=', 'pricelist')]}" />
+					</group>
+					
+						<group>
+							<button name="import_products" string="Import" type="object"/>	
+							<button name="refresh_pricelists" string="Refresh Pricing" type="object"/>		
+						</group>
+				</xpath>
+			</field>
+		</record>
+		
+		<!-- product template include exclude pricelist -->
+		
+		<record id="product_product_template_pricelist" model="ir.ui.view">
+		<field name="name">product.product_template_only_form_view</field>
+		<field name="model">product.template</field>
+		<field name="inherit_id" ref="product.product_template_only_form_view" />
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='sale_ok']" position="before">
+			<group><field name="pricelist_active"/></group>
+			</xpath>
+		</field>
+	</record>
+	
+	
+		<!-- product product include exclude pricelist -->
+			
+			<record id="product_product_pricelist" model="ir.ui.view">
+			<field name="name">product.product_template_only_form_view</field>
+			<field name="model">product.product</field>
+			<field name="inherit_id" ref="product.product_normal_form_view" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='sale_ok']" position="before">
+				<group><field name="pricelist_active"/></group>
+				</xpath>
+			</field>
+		</record>
+	
+		<!-- product sequence arrange-->
+		
+		<record id="product_pricelist_item_seq" model="ir.ui.view">
+		<field name="name">product.pricelist.item</field>
+		<field name="model">product.pricelist</field>
+		<field name="inherit_id" ref="product.product_pricelist_view" />
+		<field name="arch" type="xml">
+		<xpath expr="//field[@name='item_ids']/tree//field[@name='name']" position="before">
+			<field name="sequence" widget="handle"/>
+		</xpath>
+		</field>
+	</record>
+	</data>
+</odoo>
