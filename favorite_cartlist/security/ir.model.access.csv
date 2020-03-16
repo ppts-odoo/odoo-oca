@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_favorite_users,website.favoirtes,model_website_favorites,base.group_public,1,1,1,1
+access_favorite_users_group,website.favoirtes,model_website_favorites,base.group_user,1,1,1,1
+access_favorite_users_portal,website.favoirtes,model_website_favorites,base.group_portal,1,1,1,1
+,,,,,,,
+access_favorite_list_users,favorites.list_website,model_favorites_list,base.group_public,1,1,1,1
+access_favorite_list_users_group,favorites.list_websites,model_favorites_list,base.group_user,1,1,1,1
+access_favorite_list_users_portal,favorites.list_web,model_favorites_list,base.group_portal,1,1,1,1
