@@ -23,6 +23,13 @@
 		
 			<xpath expr="//form/sheet/notebook/page/field[@name='order_line']/tree" position="replace">
 				<tree string="Sales Order Lines" decoration-info="invoice_status=='to invoice'">
+					<control>
+						<create string="Add a product"/>
+						<create string="Configure a product" context="{'open_product_configurator': True}"
+							groups="product.group_product_variant"/>
+						<create string="Add a section" context="{'default_display_type': 'line_section'}"/>
+						<create string="Add a note" context="{'default_display_type': 'line_note'}"/>
+					    </control>
 					<field name="sequence" widget="handle" />
 					<field name="product_id"
 						attrs="{'readonly': ['|', ('qty_invoiced', '&gt;', 0)]}"
