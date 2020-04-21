@@ -14,7 +14,7 @@ class AccountInvoice(models.Model):
         active_ids = self.env.context.get('active_ids',[])
         inv_id = self.env['account.invoice'].search([('id','in',active_ids)])
         for rec in inv_id:
-            if rec.state == 'open':
+            if rec.state != 'cancel':
                 invoice_ids.append(rec.id)   
         vals = ({'default_inv_ids':invoice_ids})
         return {
