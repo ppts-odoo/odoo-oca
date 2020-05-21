@@ -17,6 +17,7 @@ class PurchaseOrder(models.Model):
             template_id = self.env.ref('reorder_qty_notification.reorder_qty_notification_inherit')
             purchase_order_detail_list = []
             count = 1
+            order = False
             for order_id in order_ids:
                 dt = datetime.strptime(str(order_id.date_order),'%Y-%m-%d %H:%M:%S')
                 dt = datetime.strftime(dt,'%d-%m-%Y')
@@ -32,6 +33,7 @@ class PurchaseOrder(models.Model):
                     purchase_order_details['product_subtotal'] = line_order.price_subtotal
                     count += 1
                     purchase_order_detail_list.append(purchase_order_details)
-            if template_id:
-                template_id.with_context({'purchase_order_list': purchase_order_detail_list,'email_to': reorder_qty_mail_to}).send_mail(order_id.id,force_send=True)
+                    order = order_id
+            if template_id and order:
+                template_id.with_context({'purchase_order_list': purchase_order_detail_list,'email_to': reorder_qty_mail_to}).send_mail(order.id,force_send=True)
     
