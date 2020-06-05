@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem
+            id="crm_pipeline_report_menu"
+            action="action_pipeline_report"  name="Pipeline Report"
+            parent="sales_team.menu_base_partner"
+            sequence="5"
+            />
+    </data>
+</odoo>
