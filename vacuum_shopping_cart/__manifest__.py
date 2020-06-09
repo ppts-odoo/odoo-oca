@@ -8,7 +8,7 @@
     'website': 'http://www.pptssolutions.com',
     'author':'PPTS [India] Pvt. Ltd.',
     'description': """
-Clear your shopping cart with a single click in Website Shop.
+        Clear your shopping cart with a single click in Website Shop.
     """,
     'category': 'Website',
     'depends' : ['web','base_setup', 'sale', 'website_sale','website'],
@@ -24,4 +24,5 @@ Clear your shopping cart with a single click in Website Shop.
     'installable': True,
     'application': True,
     'auto_install': False,
+    'license': 'LGPL-3',
 }
