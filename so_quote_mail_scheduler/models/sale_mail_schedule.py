@@ -11,7 +11,7 @@ class SaleMailSchedule(models.Model):
     
     schedule_date = fields.Date('Scheduled Date', track_visibility='always')
     sale_order_id = fields.Many2one('sale.order', 'Sale Order', track_visibility='always')
-    state = fields.Selection([('draft', 'Draft'), ('send', 'Send')], default='draft', track_visibility='always')
+    state = fields.Selection([('draft', 'Draft'), ('send', 'Mail sent')], default='draft', track_visibility='always')
     send_date = fields.Datetime('Sent Date', track_visibility='always')
     sale_order_state = fields.Char('Sale Order State', compute='_sale_order_state', track_visibility='always')
     order_state = fields.Char('Sale Order State')
