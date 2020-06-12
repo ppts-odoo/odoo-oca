@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale_mail_schedule_wizard_form" model="ir.ui.view">
+        <field name="name">sale.mail.schedule.wizard.form</field>
+        <field name="model">sale.mail.schedule.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Mail Scheduler">
+                <group colspan="2">
+                    <field name="schedule_date" />
+                </group>
+                <footer>
+                    <button string='Done' name="done" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+           </form>
+        </field>
+    </record>
+
+    <record id="sale_mail_schedule_wizard_action" model="ir.actions.act_window">
+        <field name="name">Mail Scheduler Wizard</field>
+        <field name="res_model">sale.mail.schedule.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="sale_mail_schedule_wizard_form"/>
+    </record>
+</odoo>
