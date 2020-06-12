@@ -19,7 +19,6 @@ class SaleMailScheduler(models.TransientModel):
             self.env['sale.mail.schedule'].create({
                 'schedule_date':self.schedule_date,
                 'sale_order_state':order_id.state,
-                'order_state':order_id.state,
                 'sale_order_id':act
             })
         return {'type': 'ir.actions.act_window_close'}
