@@ -43,7 +43,7 @@
 		<record id="sale_mail_schedule_action"
 			model="ir.actions.act_window">
 			<field name="name">Mail Scheduler</field>
-			<field name="cvv">ir.actions.act_window</field>
+			<field name="type">ir.actions.act_window</field>
 			<field name="res_model">sale.mail.schedule</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
