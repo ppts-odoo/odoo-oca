@@ -8,6 +8,7 @@
     'author': 'PPTS India Pvt Ltd',
     'summary': 'Website Product Name',
     'version': '1.1',
+    'license': 'LGPL-3',
     'description': """
     Website Product Name
         """,
@@ -16,6 +17,7 @@
         'views/website_template.xml',
         'views/product_views.xml',
     ],
+    'images': ['static/description/banner.png'],
     'installable': True,
     'application': True,
 }
