@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Shop page -->
+    <template id="website_product_name" inherit_id="website_sale.product" name="Product">
+         <xpath expr="//div[@id='product_details']/h1" position="replace">
+            <t t-if="product.web_pro_name">
+                <h1 itemprop="name" t-field="product.web_pro_name">Product Name</h1>
+            </t>
+            <t t-else=" ">
+                <h1 itemprop="name" t-field="product.name">Product Name</h1>
+            </t>
+        </xpath>
+         <xpath expr="//li[@class='active']" position="replace">
+             <li class="active">
+                <t t-if="product.web_pro_name">
+                    <span t-field="product.web_pro_name"/>
+                </t>
+                <t t-else=" ">
+                   <span t-field="product.name" />
+                </t>               
+            </li>
+        </xpath>
+    </template>
+    <!-- Product details page -->
+    <template id="adding_review_stars" inherit_id="website_sale.products_item" customize_show="True"
+              name="Product Reviews">
+         <xpath expr="//section/h5/strong/a" position="replace">
+             <t t-if="product.web_pro_name">
+              <a itemprop="name" t-att-href="keep('/shop/product/%s' % slug(product), page=(pager['page']['num'] if pager['page']['num']&gt;1 else None))" t-att-content="product.web_pro_name" t-field="product.web_pro_name" />
+            </t>
+            <t t-else=" ">
+                <a itemprop="name" t-att-href="keep('/shop/product/%s' % slug(product), page=(pager['page']['num'] if pager['page']['num']&gt;1 else None))" t-att-content="product.name" t-field="product.name" />
+            </t>
+        </xpath>
+    </template>
+    <!-- Cart page -->
+    <template id="cart_lines_inherit" inherit_id="website_sale.cart_lines" customize_show="True" name="Product Cart">
+      <xpath expr="//td[@class='td-product_name']/div" position="replace">
+        <a t-attf-href="/shop/product/#{ slug(line.product_id.product_tmpl_id) }">
+          <t t-if="line.product_id.product_tmpl_id.web_pro_name">
+            <strong t-esc="line.product_id.product_tmpl_id.web_pro_name" />
+          </t>
+          <t t-else=" ">
+            <strong t-esc="line.product_id.with_context(display_default_code=False).display_name" />
+          </t>
+        </a>
+      </xpath>
+    </template>
+    <!-- Payment page -->
+    <template id="cart_lines_summary_inherit" inherit_id="website_sale.payment" customize_show="True"
+              name="Product Cart Summary">
+         <xpath expr="//td[@class='td-product_name']/div" position="replace">
+            <div>
+              <t t-if="line.product_id.product_tmpl_id.web_pro_name">
+                <strong t-field="line.product_id.product_tmpl_id.web_pro_name" />  
+              </t>
+              <t t-else=" ">
+                <strong t-field="line.product_id.with_context(display_default_code=False).display_name" />
+              </t>
+            </div>
+        </xpath>
+    </template>
+    <!-- My Cart pop-up page -->
+     <template id="cart_popover_inherit" inherit_id="website_sale.cart_popover" customize_show="True"
+              name="Product Cart Popover">
+         <xpath expr="//div[@class='col-xs-9']/a/span" position="replace">
+              <t t-if="line.product_id.product_tmpl_id.web_pro_name">
+                <span t-esc="line.product_id.product_tmpl_id.web_pro_name" class="h6"/>  
+              </t>
+              <t t-else=" ">
+                <span t-esc="line.product_id.with_context(display_default_code=False).display_name" class="h6" />
+              </t>
+        </xpath>
+    </template>
+    <!-- Shop confirmation page -->
+    <template id="confirmation_inherit" inherit_id="website_sale.confirmation" customize_show="True"
+              name="Product Cart Confirm">
+         <xpath expr="//td[@class='td-product_name']/div/a/strong" position="replace">
+            <div>
+              <t t-if="line.product_id.product_tmpl_id.web_pro_name">
+                <strong t-field="line.product_id.product_tmpl_id.web_pro_name" />  
+              </t>
+              <t t-else=" ">
+                <strong t-esc="line.product_id.with_context(display_default_code=False).display_name"/>
+              </t>
+            </div>
+        </xpath>
+    </template>
+</odoo>
