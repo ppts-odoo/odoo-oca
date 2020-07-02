@@ -2,15 +2,10 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 import xlwt
-import datetime
-import unicodedata
 import base64
-import io
 from io import StringIO
-import csv
-from datetime import datetime
 from odoo import api, fields, models, _
-
+import platform
 
 class PurchaseReportOut(models.Model):        
     _name = 'purchase.report.out'
@@ -139,13 +134,17 @@ class WizardWizards(models.Model):
             output.write(record)
             output.write("\n")
         data = base64.b64encode(bytes(output.getvalue(),"utf-8"))
-        
-                                
-        filename = ('Purchase Report'+ '.xls')
+
+
+        if platform.system() == 'Linux':
+            filename = ('/tmp/Purchase Report' + '.xls')
+        else:
+            filename = ('Purchase Report' + '.xls')
+
         workbook.save(filename)
         fp = open(filename, "rb")
         file_data = fp.read()
-        out = base64.encodestring(file_data)                                                 
+        out = base64.encodestring(file_data)
                        
 # Files actions         
         attach_vals = {
