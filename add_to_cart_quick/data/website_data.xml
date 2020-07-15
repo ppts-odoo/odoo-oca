@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="0">
+
+		<record id="menu_add_bulk_product" model="website.menu">
+			<field name="name">Order Import</field>
+			<field name="url">/bulk_products</field>
+			<field name="parent_id" ref="website.main_menu" />
+			<field name="sequence" type="int">100</field>
+		</record>
+	</data>
+</odoo>
