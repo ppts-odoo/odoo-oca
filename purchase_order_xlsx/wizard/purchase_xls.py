@@ -3,12 +3,8 @@
 
 import xlwt
 import datetime
-import unicodedata
 import base64
-import io
 from io import StringIO
-import csv
-# import cStringIO
 from datetime import datetime
 from odoo import api, fields, models, _
 import platform
