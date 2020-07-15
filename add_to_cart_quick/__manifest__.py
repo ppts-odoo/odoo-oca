@@ -5,14 +5,14 @@
     'author'  : 'PPTS [India] Pvt.Ltd.',
     'website' : 'https://www.pptssolutions.com',
     'summary' : 'Add bulk products to website cart quickly',
-    'author'  : 'PPTS [India] Pvt.Ltd.',
-    'website' : 'http://www.pptssolutions.com',
+    'license': 'LGPL-3',
+    'support': 'business@pptservices.com',
     'description': """
     Odoo E-Commerce
         Copy-Paste the product's name from shop page or reference number
         Which you would like to purchase the products
     """,
-    'depends' : ['base', 'web', 'website','product', 'website_sale'],
+    'depends' : ['base', 'web', 'website','product', 'website_sale', 'stock'],
     'data': [
         'data/website_data.xml',
         'views/webiste_templates.xml',
@@ -20,5 +20,5 @@
     'installable': True,
     'application': True,
     'auto_install': False,
-    'license': 'LGPL-3',	
+    'images': ['static/description/banner.png'],
 }
