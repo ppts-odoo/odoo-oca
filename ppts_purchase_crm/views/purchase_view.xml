@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="purchase_form_view_lead_inherit" model="ir.ui.view">
+		<field name="name">purchase.order.inherited</field>
+		<field name="model">purchase.order</field>
+		<field name="inherit_id" ref="purchase.purchase_order_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//group[@name='technical']" position="inside">
+				<field name="opportunity_id" help="Log in the chatter from which opportunity the order originates" groups="base.group_no_one" />
+			</xpath>
+		</field>
+	</record>
+</odoo>
