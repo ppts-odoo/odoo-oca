@@ -6,7 +6,7 @@ class SaleOrder(models.Model):
     current_revision_id = fields.Many2one('sale.order','Current revision',readonly=True,copy=True)
     old_revision_ids = fields.One2many('sale.order','current_revision_id','Old revisions',readonly=True,context={'active_test': False})
     revision_number = fields.Integer('Revision',copy=False)
-    unrevisioned_name = fields.Char('Order Reference',copy=True,readonly=True)
+    unrevisioned_name = fields.Char('Order Reference',copy=False,readonly=True)
     active = fields.Boolean('Active',default=True,copy=True)    
     
     @api.model
