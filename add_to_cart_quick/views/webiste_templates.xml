@@ -182,7 +182,7 @@
                                             <button type="submit" name="search" value="Update the order"
                                                     class="btn btn-info btn-lg"
                                                     style="position: relative;left: 42.5%;height: 35px;color: white;font-size: 15px;border-radius: 13px;font-weight: bold;">
-                                                Referesh
+                                                Refresh
                                             </button>
                                             <button type="submit" name="create_order"
                                                     style="position: relative;left: 42.5%;height: 35px;color: white;font-size: 15px;border-radius: 13px;font-weight: bold;"
