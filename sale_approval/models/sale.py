@@ -1,7 +1,29 @@
 # -*- coding: utf-8 -*-
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError
-from odoo.tools import float_is_zero, float_compare, DEFAULT_SERVER_DATETIME_FORMAT
+
+class ResConfigSettings(models.TransientModel):
+    _inherit = 'res.config.settings'
+
+    minimum_amount = fields.Float('Minimum Amount')
+    maximum_amount = fields.Float('Maximum Amount')
+
+    @api.model
+    def get_values(self):
+        res = super(ResConfigSettings, self).get_values()
+        config_parameter = self.env['ir.config_parameter'].sudo()
+        minimum_amount = (config_parameter.get_param('sale_approval.minimum_amount'))
+        maximum_amount = (config_parameter.get_param('sale_approval.maximum_amount'))
+        res.update(minimum_amount=float(minimum_amount))
+        res.update(maximum_amount=float(maximum_amount))
+        return res
+
+    @api.multi
+    def set_values(self):
+        super(ResConfigSettings, self).set_values()
+        config_parameter = self.env['ir.config_parameter'].sudo()
+        config_parameter.set_param("sale_approval.minimum_amount", self.minimum_amount)
+        config_parameter.set_param("sale_approval.maximum_amount", self.maximum_amount)
 
 class SaleOrder(models.Model):
     _inherit = "sale.order"
@@ -21,10 +43,15 @@ class SaleOrder(models.Model):
     @api.multi
     def action_confirm(self):
         for sale_order in self:
-            if not sale_order.amount_total <= sale_order.approver_id.sale_order_amount_limit:
-                raise UserError(_('Your approval limit is lesser then sale order total amount.Click on "Ask for Approval" for Higher value.'))
-            if not sale_order.approver_id == self.env.user: 
-                raise UserError(_('You can not confirm this sale order. You have asked for Higher value.'))
+            if self.env['ir.config_parameter'].sudo().get_param('sale_approval.minimum_amount'):
+                minimum_amount = float(self.env['ir.config_parameter'].sudo().get_param('sale_approval.minimum_amount'))
+            if self.env['ir.config_parameter'].sudo().get_param('sale_approval.maximum_amount'):
+                maximum_amount = float(self.env['ir.config_parameter'].sudo().get_param('sale_approval.maximum_amount'))
+            if sale_order.amount_total >= minimum_amount and sale_order.amount_total <= maximum_amount:
+                if not sale_order.amount_total <= sale_order.approver_id.sale_order_amount_limit:
+                    raise UserError(_('Your approval limit is lesser then sale order total amount.Click on "Ask for Approval" for Higher value.'))
+                if not sale_order.approver_id == self.env.user:
+                    raise UserError(_('You can not confirm this sale order. You have asked for Higher value.'))
         return super(SaleOrder, self).action_confirm()
     
     @api.multi
