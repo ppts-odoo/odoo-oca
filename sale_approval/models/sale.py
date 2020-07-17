@@ -36,6 +36,7 @@ class SaleOrder(models.Model):
     @api.multi
     def action_confirm(self):
         for sale_order in self:
+            maximum_amount=0.00; minimum_amount =0.00
             if self.env['ir.values'].get_default('sale.config.settings', 'minimum_amount'):
                 minimum_amount = float(self.env['ir.values'].get_default('sale.config.settings', 'minimum_amount'))
             if self.env['ir.values'].get_default('sale.config.settings', 'maximum_amount'):
