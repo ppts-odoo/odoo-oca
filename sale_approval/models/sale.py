@@ -41,6 +41,7 @@ class SaleOrder(models.Model):
     
     def action_confirm(self):
         for sale_order in self:
+            minimum_amount =0.00; maximum_amount =0.00
             if self.env['ir.config_parameter'].sudo().get_param('sale_approval.minimum_amount'):
                 minimum_amount = float(self.env['ir.config_parameter'].sudo().get_param('sale_approval.minimum_amount'))
             if self.env['ir.config_parameter'].sudo().get_param('sale_approval.maximum_amount'):
