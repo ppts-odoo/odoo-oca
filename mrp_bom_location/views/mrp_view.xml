@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2017 Eficent Business and IT Consulting Services S.L.
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+
+    <record id="mrp_bom_form_view" model="ir.ui.view">
+        <field name="name">mrp.bom.form - mrp_bom_location</field>
+        <field name="model">mrp.bom</field>
+        <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+        <field name="arch" type="xml">
+            <field name="routing_id" position="before">
+                <field name="location_id"/>
+            </field>
+            <xpath expr="//field[@name='bom_line_ids']/tree/field[@name='product_qty']" position="after">
+                <field name="location_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="mrp_bom_tree_view" model="ir.ui.view">
+        <field name="name">mrp.bom.tree - mrp_bom_location</field>
+        <field name="model">mrp.bom</field>
+        <field name="inherit_id" ref="mrp.mrp_bom_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <field name="location_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_mrp_bom_filter" model="ir.ui.view">
+        <field name="name">mrp.bom.select - mrp_bom_location</field>
+        <field name="model">mrp.bom</field>
+        <field name="inherit_id" ref="mrp.view_mrp_bom_filter"/>
+        <field name="arch" type="xml">
+            <field name="product_tmpl_id" position="after">
+                <field name="location_id" string="Location"/>
+            </field>
+            <group expand="0" position="inside">
+                <filter name="location_id" string="Location" context="{'group_by':'location_id'}"/>
+            </group>
+        </field>
+    </record>
+
+    <record id="mrp_bom_line_view_form" model="ir.ui.view">
+        <field name="name">mrp.bom.line.view.form - mrp_bom_location</field>
+        <field name="model">mrp.bom.line</field>
+        <field name="inherit_id" ref="mrp.mrp_bom_line_view_form"/>
+        <field name="arch" type="xml">
+            <field name="product_id" position="before">
+                <field name="location_id"/>
+            </field>
+        </field>
+    </record>
+    
+    
+    <record id="res_config_settings_view_form_inherit_inventory_location" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.location</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="35"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form" />
+            <field name="arch" type="xml">
+             <xpath expr="//div[hasclass('app_settings_block')]/div/div[@id='mrp_mps']" position="inside">
+                 <!-- <div class="o_setting_left_pane">
+                     <field name="stock_location_ids"/>
+                 </div>
+                 <div class="o_setting_right_pane">
+                     <label for="stock_location_ids"/>
+                     <div class="text-muted">
+                         Select Locations.
+                     </div>
+                     <div class="content-group" id="content_mrp_mps"/>
+                 </div> -->
+                 <div class="o_setting_left_pane">
+                 </div>
+                 <div class="o_setting_right_pane">
+                      <div class="content-group">
+                          <div class="row mt16">
+                              <label string="Locations" for="stock_location_ids" class="col-lg-3"/>
+                              <field name="stock_location_ids" widget="many2many_tags"/>
+                          </div>
+                      </div>
+                 </div>
+            </xpath>
+          </field>
+    </record>
+</odoo>
