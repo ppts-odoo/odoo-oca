@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_drop_ship_wizard_line,drop_ship_wizard_line,model_drop_ship_wizard_line,stock.group_stock_user,1,1,1,1
+access_drop_ship_wizard,drop_ship_wizard,model_drop_ship_wizard,stock.group_stock_user,1,1,1,1

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<odoo>
+	<record model="ir.ui.view"
+		id="purchase_order_form_custom_inherit">
+		<field name="name">purchase.order.form.inherit</field>
+		<field name="model">purchase.order</field>
+		<field name="inherit_id" ref="purchase.purchase_order_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='partner_id']" position="after">
+				<field name="so_id" invisible="1" />
+				<field name="do_id" invisible="1" />
+				<field name="pro_id" invisible="1" />
+			</xpath>
+		</field>
+	</record>
+</odoo>
+                       
