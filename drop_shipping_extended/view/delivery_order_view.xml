@@ -1,0 +1,68 @@
+<odoo>
+	<act_window name="Create Delivery Order"
+		id="act_create_delivery_order_view" res_model="delivery.order.wizard"
+		view_mode="form" target="new" />
+
+	<record id="view_delivery_order_form_inher" model="ir.ui.view">
+		<field name="name">Delivery Order</field>
+		<field name="model">delivery.order.wizard</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<group>
+						<notebook>
+							<page string="Choose Delivery Order">
+								<field name="line_ids" nolabel="1">
+									<form>
+										<group>
+											<field name="product_id" />
+											<field name="product_uom" />
+											<field name="product_qty" />
+											<field name="ref_id" invisible="1" />
+											<field name="procurement_id" invisible="1" />
+											<field name="reff_line_id" invisible="1" />
+											<field name="drop_boolean" widget="checkbox" />
+										</group>
+									</form>
+									<tree editable="bottom" create="false">
+										<field name="product_id" />
+										<field name="product_uom" />
+										<field name="ref_id" invisible="1" />
+										<field name="product_qty" />
+										<field name="procurement_id" invisible="1" />
+										<field name="reff_line_id" invisible="1" />
+										<field name="drop_boolean" widget="checkbox" />
+									</tree>
+								</field>
+							</page>
+						</notebook>
+					</group>
+					<footer>
+						<button name="action_create_delivery_order"
+							string="Create Delivery Order" type="object" class="btn-primary" />
+						<button string="Cancel" class="btn-default"
+							special="cancel" />
+					</footer>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+
+	<record id="id_delivery_order" model="ir.actions.server">
+		<field name="model_id" ref="stock.model_stock_picking" />
+		<field name="name">Create Delivery Order</field>
+		<field name="binding_model_id" ref="stock.model_stock_picking" />
+		<field name="state">code</field>
+		<field name="code">
+			for rec in records:
+				action = rec.action_create_delivery_order()
+		</field>
+	</record>
+
+
+
+
+
+
+</odoo>
