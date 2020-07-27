@@ -58,8 +58,8 @@ class WizardWizards(models.Model):
             custom_value ['amount_tax'] = str(rec.amount_tax)+' '+rec.currency_id.symbol
                                                   
             style0 = xlwt.easyxf('font: name Times New Roman bold on;align: horiz right;', num_format_str='#,##0.00')
-            style1 = xlwt.easyxf('font: name Times New Roman bold on; pattern: pattern solid, fore_colour black;align: horiz center;', num_format_str='#,##0.00')
-            style2 = xlwt.easyxf('font:height 400,bold True; pattern: pattern solid, fore_colour black;', num_format_str='#,##0.00')         
+            style1 = xlwt.easyxf('font: name Times New Roman bold on; pattern: pattern solid, fore_colour gray25;align: horiz center;', num_format_str='#,##0.00')
+            style2 = xlwt.easyxf('font:height 400,bold True; pattern: pattern solid, fore_colour gray25;', num_format_str='#,##0.00')
             style3 = xlwt.easyxf('font:bold True;', num_format_str='#,##0.00')
             style4 = xlwt.easyxf('font:bold True;  borders:top double;align: horiz right;', num_format_str='#,##0.00')
             style5 = xlwt.easyxf('font: name Times New Roman bold on;align: horiz center;', num_format_str='#,##0')
