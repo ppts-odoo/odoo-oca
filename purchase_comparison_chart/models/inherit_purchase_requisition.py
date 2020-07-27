@@ -71,7 +71,7 @@ class PurchaseRequisition(models.Model):
                      
             style2 = xlwt.easyxf('font: name Times New Roman bold on;align: horiz center;', num_format_str='#,##0')
             style0 = xlwt.easyxf('font: name Times New Roman bold on;align: horiz right;', num_format_str='#,##0.00')
-            style1 = xlwt.easyxf('font: name Times New Roman, bold on,height 250; pattern: pattern solid, fore_colour black;', num_format_str='#,##0.00')
+            style1 = xlwt.easyxf('font: name Times New Roman, bold on,height 250; pattern: pattern solid, fore_colour gray25;', num_format_str='#,##0.00')
         
             workbook = xlwt.Workbook()
 
