@@ -52,51 +52,73 @@ class WizardWizards(models.Model):
             custom_value ['amount_untaxed'] = str(rec.amount_untaxed)+' '+rec.currency_id.symbol
             custom_value ['amount_tax'] = str(rec.amount_tax)+' '+rec.currency_id.symbol
 
-            style0 = xlwt.easyxf('font: name Times New Roman bold on;align: horiz right;', num_format_str='#,##0.00')
-            style1 = xlwt.easyxf('font: name Times New Roman bold on; pattern: pattern solid, fore_colour gray25;align: horiz center;', num_format_str='#,##0.00')
-            style2 = xlwt.easyxf('font:height 400,bold True; pattern: pattern solid, fore_colour gray25;', num_format_str='#,##0.00')
-            style3 = xlwt.easyxf('font:bold True;', num_format_str='#,##0.00')
-            style4 = xlwt.easyxf('font:bold True;  borders:top double;align: horiz right;', num_format_str='#,##0.00')
-            style5 = xlwt.easyxf('font: name Times New Roman bold on;align: horiz center;', num_format_str='#,##0')
-            style6 = xlwt.easyxf('font: name Times New Roman bold on;', num_format_str='#,##0.00')
+            style0 = xlwt.easyxf('font: name Times New Roman bold on;borders:left thin, right thin, top thin, bottom thin;align: horiz right;', num_format_str='#,##0.00')
+            style1 = xlwt.easyxf('font: name Times New Roman bold on;borders:left thin, right thin, top thin, bottom thin;align: horiz center;', num_format_str='#,##0.00')
+            style2 = xlwt.easyxf('font:height 400,bold True;borders:left thin, right thin, top thin, bottom thin;', num_format_str='#,##0.00')
+            style3 = xlwt.easyxf('font:bold True;borders:left thin, right thin, top thin, bottom thin;', num_format_str='#,##0.00')
+            style4 = xlwt.easyxf('font:bold True;  borders:top double,right thin;align: horiz right;', num_format_str='#,##0.00')
+            style5 = xlwt.easyxf('font: name Times New Roman bold on;borders:left thin, right thin, top thin, bottom thin;align: horiz center;', num_format_str='#,##0')
+            style6 = xlwt.easyxf('font: name Times New Roman bold on;borders:left thin, right thin, top thin, bottom thin;', num_format_str='#,##0.00')
             style7 = xlwt.easyxf('font:bold True;  borders:top double;', num_format_str='#,##0.00')
-
-
+            style8 = xlwt.easyxf('font: name Times New Roman bold on;borders:left thin, right thin, top thin, bottom thin;align: horiz right;', num_format_str='DD-MM-YYYY')
+            style3_1 = xlwt.easyxf('font: name Times New Roman bold on;borders:left thin;align: horiz right;', num_format_str='#,##0.00')
+            style4_1 = xlwt.easyxf('borders:top thin;', num_format_str='#,##0.00')
+            style5_1 = xlwt.easyxf('borders:left thin;', num_format_str='#,##0.00')
+            style6_1 = xlwt.easyxf('font:bold True;  borders:top double;', num_format_str='#,##0.00')
+            style7_1 = xlwt.easyxf('borders:left thin,bottom thin,right thin;', num_format_str='#,##0.00')
+            style8_1 = xlwt.easyxf('borders:right thin;', num_format_str='#,##0.00')
             sheet = workbook.add_sheet(rec.name)
-
-            sheet.write_merge(2, 3, 4, 6, 'Purchase   Order :', style2)
-            sheet.write_merge(2, 3, 7, 8, custom_value['partner_no'], style2)
+            
+            sheet.write_merge(2, 3, 3, 6, 'Purchase   Order :', style2)
+            sheet.write_merge(2, 3, 7, 8, custom_value['partner_no'], style2)     
             sheet.write(5, 1, 'Vendor', style3)
-            sheet.write(5, 2, custom_value['partner_id'], style0)
+            sheet.write(6, 1, '',style3_1)
+            sheet.write(7, 1, '',style3_1)
+            sheet.write(8, 1, '',style3_1)
+            sheet.write(9, 1, '',style3_1)
+            sheet.write(5, 3, '',style4_1)
+            sheet.write(5, 4, '',style4_1)
+            sheet.write(5, 5, '',style4_1)
+            sheet.write(5, 6, '',style4_1)
+            sheet.write(5, 7, '',style4_1)
+            sheet.write(8, 12,'', style5_1)
+            sheet.write(9, 12,'', style5_1)
+            sheet.write(5, 2, custom_value['partner_id'], style0)     
             sheet.write_merge(5, 5, 8, 9, 'Order  Date', style3)
-            sheet.write_merge(5, 5, 10, 11, custom_value['date_order'], style0)
+            sheet.write_merge(5, 5, 10, 11, custom_value['date_order'], style8)     
             sheet.write_merge(6, 6, 8, 9, 'Vendor Reference', style3)
             sheet.write_merge(6, 6, 10, 11, custom_value['partner_ref'], style0)
             sheet.write_merge(7, 7, 8, 9, 'Payment Terms', style3)
             sheet.write_merge(7, 7, 10, 11, custom_value['payment_term_id'], style0)
 
-            sheet.write(10, 1, 'S NO', style1)
+            sheet.write(10, 1, 'S NO', style1)                           
             sheet.write_merge(10, 10, 2, 3, 'PRODUCT', style1)
-            sheet.write_merge(10, 10, 4, 5, 'QUANTITY', style1)
+            sheet.write_merge(10, 10, 4, 5, 'QUANTITY', style1)        
             sheet.write_merge(10, 10, 6, 7, 'UNIT PRICE', style1)
-            sheet.write_merge(10, 10, 8, 10, 'TAXES', style1)
+            sheet.write_merge(10, 10, 8, 10, 'TAXES', style1) 
             sheet.write(10, 11, 'SUBTOTAL', style1)
-
-            n = 11; i = 1
+            
+            n = 11; m=10; i = 1
             for product in custom_value['products']:
-                sheet.write(n, 1, i, style5)
-                sheet.write_merge(n, n, 2, 3, product['product_id'], style6)
+                sheet.write(n, 1, i, style5)  
+                sheet.write_merge(n, n, 2, 3, product['product_id'], style6)      
                 sheet.write_merge(n, n, 4, 5, product['product_qty'], style0)
                 sheet.write_merge(n, n, 6, 7, product['price_unit'], style0)
                 sheet.write_merge(n, n, 8, 10, product['taxes_id'], style0)
-                sheet.write(n, 11, product['price_subtotal'], style0)
-                n += 1; i += 1
+                sheet.write(n, 11, product['price_subtotal'], style0)                          
+                n += 1; m +=1; i += 1
             sheet.write_merge(n+1, n+1, 9, 10, 'Untaxed Amount', style7)
             sheet.write(n+1, 11, custom_value['amount_untaxed'], style4)
             sheet.write_merge(n+2, n+2, 9, 10, 'Taxes', style7)
             sheet.write(n+2, 11, custom_value['amount_tax'], style4)
-            sheet.write_merge(n+3, n+3, 9, 10, 'Total', style7)
+            sheet.write_merge(n+3, n+3, 9, 10, 'Total', style6_1)
             sheet.write(n+3, 11, custom_value['amount_total'], style4)
+            sheet.write(m+1, 1, '', style3_1)
+            sheet.write(m+1, 11, '', style8_1)
+            sheet.write(n+1, 1, '', style3_1)
+            sheet.write(n+2, 1, '', style3_1)
+            sheet.write(n+3, 1, '', style3_1)
+            sheet.write_merge(n+4,n+4,1, 11, '', style7_1)
 #CSV report
         datas = []
         for values in order:
