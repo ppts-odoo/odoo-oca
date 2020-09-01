@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="purchase_order_round_off" model="ir.ui.view">
+            <field name="name">purchase.order.round.off</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <field name="origin" position="after">
+                    <field name="is_enabled_roundoff"/>
+                </field>
+                <xpath expr="//field[@name='amount_tax']" position="after">
+
+                    <field name='amount_round_off' widget="monetary" options="{'currency_field': 'currency_id'}"
+                           attrs="{'invisible':[('is_enabled_roundoff', '!=',True)]}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
