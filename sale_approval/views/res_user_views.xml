@@ -11,8 +11,8 @@
 						<group>
 							<group>
 								<field name="sale_order_can_approve" widget="radio"/>
-								<field name="sale_order_amount_limit" attrs="{'invisible': [('sale_order_can_approve', '!=', 'yes')]}"/>
-								<field name="sale_order_discount_limit" attrs="{'invisible': [('sale_order_can_approve', '!=', 'yes')]}"/>
+								<field name="sale_order_amount_limit" attrs="{'invisible': [('sale_order_can_approve', '=', 'no')],'required': [('sale_order_can_approve', '=', 'yes')]}"/>
+								<field name="sale_order_discount_limit" attrs="{'invisible': [('sale_order_can_approve', '=', 'no')],'required': [('sale_order_can_approve', '=', 'yes')]}"/>
 							</group>
 						</group>
 					</page>
