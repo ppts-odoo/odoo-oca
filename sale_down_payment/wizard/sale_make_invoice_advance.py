@@ -23,7 +23,6 @@ class SaleAdvancePaymentInv(models.TransientModel):
         ('all', 'Invoiceable lines (deduct down payments)'),
         ('percentage', 'Down payment (percentage)'),
         ('fixed', 'Down payment (fixed amount)'),
-        ('moredownpay', 'Down Payment (greater than Untaxed Amount)'),
     ], string='What do you want to invoice?', default=_get_advance_payment_method, required=True)
 
 
@@ -64,13 +63,13 @@ class SaleAdvancePaymentInv(models.TransientModel):
 #                 'account_analytic_id': order.project_id.id or False,
         }
 # Check for down payment type and based on that inculde tax with invoice line
-        if self.advance_payment_method != 'moredownpay':
-            taxes = self.product_id.taxes_id.filtered(lambda r: not order.company_id or r.company_id == order.company_id)
-            if order.fiscal_position_id and taxes:
-                tax_ids = order.fiscal_position_id.map_tax(taxes).ids
-            else:
-                tax_ids = taxes.ids
-            inv_line.update({'tax_ids': [(6, 0, tax_ids)]})
+#         if self.advance_payment_method != 'moredownpay':
+#             taxes = self.product_id.taxes_id.filtered(lambda r: not order.company_id or r.company_id == order.company_id)
+#             if order.fiscal_position_id and taxes:
+#                 tax_ids = order.fiscal_position_id.map_tax(taxes).ids
+#             else:
+#                 tax_ids = taxes.ids
+#             inv_line.update({'tax_ids': [(6, 0, tax_ids)]})
 
         inv_values.update({
             'name': order.client_order_ref or order.name,
@@ -116,15 +115,15 @@ class SaleAdvancePaymentInv(models.TransientModel):
             if down_pay_amount > sale_orders.amount_untaxed:
                 raise UserError(_("Advance amount received already please use the remaining sale untaxed amount."))
 
-        if self.advance_payment_method == 'moredownpay':
-            if self.amount <= 0:
-                raise UserError(_("Down payment amount should be greater than 0."))
-            if remain_sale_amount == 0:
-                raise UserError(_("No more down payment applicable.  Already full value of Sales Order been received as down payment"))
-            if self.amount > remain_sale_amount and remain_sale_amount != sale_orders.amount_total:
-                raise UserError(_("Already partial down payment received. Value entered exceed the difference of already received down payment and the sales order."))
-            if self.amount > sale_orders.amount_total:
-                raise UserError(_("The value (down payment) entered is greater than the total value of Sales Order."))
+        # if self.advance_payment_method == 'moredownpay':
+        #     if self.amount <= 0:
+        #         raise UserError(_("Down payment amount should be greater than 0."))
+        #     if remain_sale_amount == 0:
+        #         raise UserError(_("No more down payment applicable.  Already full value of Sales Order been received as down payment"))
+        #     if self.amount > remain_sale_amount and remain_sale_amount != sale_orders.amount_total:
+        #         raise UserError(_("Already partial down payment received. Value entered exceed the difference of already received down payment and the sales order."))
+        #     if self.amount > sale_orders.amount_total:
+        #         raise UserError(_("The value (down payment) entered is greater than the total value of Sales Order."))
 
         if self.advance_payment_method == 'delivered':
             sale_orders.action_invoice_create()
@@ -149,12 +148,12 @@ class SaleAdvancePaymentInv(models.TransientModel):
                     raise UserError(_("The product used to invoice a down payment should be of type 'Service'. Please use another product or update this product."))
 # If down pay done morethan untaxed amount do not use tax for down pay
                 tax_ids=[]
-                if self.advance_payment_method != 'moredownpay':
-                    taxes = self.product_id.taxes_id.filtered(lambda r: not order.company_id or r.company_id == order.company_id)
-                    if order.fiscal_position_id and taxes:
-                        tax_ids = order.fiscal_position_id.map_tax(taxes).ids
-                    else:
-                        tax_ids = taxes.ids
+                # if self.advance_payment_method != 'moredownpay':
+                #     taxes = self.product_id.taxes_id.filtered(lambda r: not order.company_id or r.company_id == order.company_id)
+                #     if order.fiscal_position_id and taxes:
+                #         tax_ids = order.fiscal_position_id.map_tax(taxes).ids
+                #     else:
+                #         tax_ids = taxes.ids
                 values={
                     'name': _('Advance: %s') % (time.strftime('%m %Y'),),
                     'price_unit': amount,

@@ -16,11 +16,11 @@ class SaleOrder(models.Model):
         """
         self.ensure_one()
         comments=''
-        journal_id = self.env['account.invoice'].default_get(['journal_id'])['journal_id']
+        journal_id = self.env['account.move'].default_get(['journal_id'])['journal_id']
         if not journal_id:
             raise UserError(_('Please define an accounting sale journal for this company.'))
         invoice_vals = {
-            'name': self.client_order_ref or '',
+            # 'name': self.client_order_ref or '',
             'origin': self.name,
             'type': 'out_invoice',
             'account_id': self.partner_invoice_id.property_account_receivable_id.id,
@@ -46,7 +46,7 @@ class SaleOrder(models.Model):
         :param final: if True, refunds will be generated if necessary
         :returns: list of created invoices
         """
-        inv_obj = self.env['account.invoice']
+        inv_obj = self.env['account.move']
         precision = self.env['decimal.precision'].precision_get('Product Unit of Measure')
         invoices = {}
         references = {}
@@ -84,11 +84,11 @@ class SaleOrder(models.Model):
                     references[invoice] = references[invoice] | order
 
         if not invoices:
-            raise UserError(_('There is no invoicable line.'))
+            raise UserError(_('There is no invoiceable line.'))
 
         for invoice in invoices.values():
             if not invoice.invoice_line_ids:
-                raise UserError(_('There is no invoicable line.'))
+                raise UserError(_('There is no invoiceable line.'))
             # If invoice is negative, do a refund invoice instead
             # Downpayment done morethan sale untaxed amount so do not inculd tax and do not make refund
             if self.amount_untaxed > downpay_total:

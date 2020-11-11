@@ -48,7 +48,7 @@ class SaleAdvancePaymentInv(models.TransientModel):
                 full_invoice = False
                 for line in order.order_line:
                     if line.product_id.id != downpay_product_id and line.product_id.type == 'product' and line.product_id.invoice_policy != 'delivery':
-                        raise UserError(_('please change product invoixczxcce policy as Delivered Quantity for "%s".') %
+                        raise UserError(_('please change product invoice policy as Delivered Quantity for "%s".') %
                                 (line.product_id.name))
                     if line.qty_to_invoice > 0:
                         invoiceable = True
@@ -62,7 +62,7 @@ class SaleAdvancePaymentInv(models.TransientModel):
                         val['line_id'] = line.id
                         val['advance_amount'] = line.price_unit
                         val['advance_amount_new'] = line.price_unit
-                        vals.append(val)
+                    vals.append(val)
                 if not full_invoice:
                     raise UserError(_('All products delivered. Please use deduct down payment option.'))
 
