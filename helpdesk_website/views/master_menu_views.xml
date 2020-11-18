@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   
+   <menuitem id="helpdesk_website_menu_root"
+            name="Helpdesk Website"
+            web_icon="helpdesk_website,static/description/icon.png"
+            sequence="10"/>
+   
+   
+	<record id="view_helpdesk_website_tree" model="ir.ui.view">
+		<field name="name">helpdesk.website.tree</field>
+		<field name="model">master.menu</field>
+		<field name="priority">2</field>
+		<field name="arch" type="xml">
+			<tree string="Master">
+				<field name="name" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="view_helpdesk_website_form" model="ir.ui.view">
+		<field name="name">helpdesk.website.form</field>
+		<field name="model">master.menu</field>
+		<field name="arch" type="xml">
+			<form string="Master">
+				<sheet>
+					<group>
+						<group>
+							<field name="name" />
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="action_master_menu"
+		model="ir.actions.act_window">
+		<field name="name">Master</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">master.menu</field>
+		<field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Click here to create a record            
+			</p>
+		</field>
+	</record>
+	
+	<menuitem id="action_master_menu_id" name="Master"
+		action="action_master_menu" parent="helpdesk_website.helpdesk_website_menu_root"
+		 sequence="1"/>
+</odoo>

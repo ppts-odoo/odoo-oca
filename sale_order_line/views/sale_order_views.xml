@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="view_sale_order_line_tree" model="ir.ui.view">
+		<field name="name">sale.order.line</field>
+		<field name="model">sale.order.line</field>
+		<field name="priority">2</field>
+		<field name="arch" type="xml">
+			<tree string="Sale Order Lines" create="false">
+				<field name="order_ref" string="Order Reference"/>
+				<field name="customer_id" string="Customer"/>
+				<field name="product_id" string="Product"></field>
+				<field name="name" string="Description"/>
+				<field name="price_unit" string="Unit Price"/>
+				<field name="product_uom_qty" string="Qty"/>
+				<field name="qty_delivered" string="Delivered"/>
+				<field name="qty_invoiced" string="Invoiced"/>
+				<field name="tax_id" string="Taxes"/>
+				<field name="price_subtotal" string="Subtotal"/>
+			</tree>
+		</field>
+	</record>
+	
+	<record id="action_sale_lines_menu"
+		model="ir.actions.act_window">
+		<field name="name">Sale Order Lines</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">sale.order.line</field>
+		<field name="view_id" ref="sale_order_line.view_sale_order_line_tree"/>
+		<field name="view_mode">tree</field>
+	</record>
+	
+	<menuitem id="action_sale_lines_menu_id" name="Sale Lines"
+		action="sale_order_line.action_sale_lines_menu" parent="sale.sale_order_menu"
+		 sequence="7"/>
+</odoo>
