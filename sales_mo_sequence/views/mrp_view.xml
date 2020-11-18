@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="mrp_production_form_view_inherit_mrp_sale_mo_sequence" model="ir.ui.view">
+		<field name="name">mrp.production.form</field>
+		<field name="model">mrp.production</field>
+		<field name="inherit_id" ref="mrp.mrp_production_form_view" />
+		<field name="arch" type="xml">
+		<xpath expr="//field[@name='bom_id']" position="after">
+				<field name="sale_reference"/>
+				<field name="mrp_reference"/>				
+		</xpath>
+		</field>
+	</record>
+	
+	 <record id="view_mrp_production_filter_extend_so_mo_customs" model="ir.ui.view">
+            <field name="name">mrp.production.select</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.view_mrp_production_filter"/>
+            <field name="arch" type="xml">               
+                <xpath expr="//search/field[@name='name']" position="after">
+				<field name='sale_reference' string="SO Reference" filter_domain="[('sale_reference','ilike',self)]"/>
+			    <field name='mrp_reference' string="MO Reference" filter_domain="[('mrp_reference','ilike',self)]"/>			    
+			</xpath>							                
+            </field>
+        </record>
+	
+	
+	`<record id="mrp_production_workorder_form_view_inherit_mrp_sale_mo_sequence" model="ir.ui.view">
+		<field name="name">mrp.production.work.order.form</field>
+		<field name="model">mrp.workorder</field>
+		<field name="inherit_id" ref="mrp.mrp_production_workorder_form_view_inherit" />
+		<field name="arch" type="xml">
+		<xpath expr="//field[@name='product_tracking']" position="after">
+				<field name="sale_reference"/>
+				<field name="mrp_reference"/>				
+		</xpath>
+		</field>
+	</record>
+	
+	
+	
+	<record id="view_mrp_production_work_order_search_so_mo_custom" model="ir.ui.view">
+            <field name="name">mrp.production.work.order.search</field>
+            <field name="model">mrp.workorder</field>
+            <field name="inherit_id" ref="mrp.view_mrp_production_work_order_search"/>
+            <field name="arch" type="xml">               
+                <xpath expr="//search/field[@name='workcenter_id']" position="after">
+				<field name='sale_reference' string="SO Reference" filter_domain="[('sale_reference','ilike',self)]" />
+			</xpath>			
+			<xpath expr="//search/field[@name='sale_reference']" position="after">
+				<field name='mrp_reference' string="MO Reference" filter_domain="[('mrp_reference','ilike',self)]"/>
+			</xpath>
+				                
+            </field>
+        </record>
+	
+	
+	<record id="view_mrp_production_workorder_form_view_filter_so_mo_custom" model="ir.ui.view">
+            <field name="name">mrp.production.work.order.select</field>
+            <field name="model">mrp.workorder</field>
+            <field name="inherit_id" ref="mrp.view_mrp_production_workorder_form_view_filter"/>
+            <field name="arch" type="xml">               
+                <xpath expr="//search/field[@name='workcenter_id']" position="after">
+				<field name='sale_reference' string="SO Reference" filter_domain="[('sale_reference','ilike',self)]" />
+			</xpath>			
+			<xpath expr="//search/field[@name='sale_reference']" position="after">
+				<field name='mrp_reference' string="MO Reference" filter_domain="[('mrp_reference','ilike',self)]"/>
+			</xpath>
+				                
+            </field>
+        </record>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</odoo>

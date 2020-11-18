@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="view_purchase_order_line_tree" model="ir.ui.view">
+		<field name="name">purchase.order.line</field>
+		<field name="model">purchase.order.line</field>
+		<field name="priority">2</field>
+		<field name="arch" type="xml">
+			<tree string="Purchase Order Lines" create="false">
+				<field name="order_ref" string="Order Reference"/>
+				<field name="vendor_id" string="Vendor"/>
+				<field name="product_id" string="Product"/>
+				<field name="price_unit" string="Unit Price"/>
+				<field name="product_qty" string="Quantity"/>
+				<field name="qty_received" string="Received Qty"/>
+				<field name="product_uom" string="Unit of Measure"/>
+				<field name="price_subtotal" string="Subtotal"/> 
+			</tree>
+		</field>
+	</record>
+	
+	<record id="action_purchase_lines_menu"
+		model="ir.actions.act_window">
+		<field name="name">Purchase Order Lines</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">purchase.order.line</field>
+		<field name="view_id" ref="purchase_order_line.view_purchase_order_line_tree"/>
+		<field name="view_mode">tree</field>
+	</record>
+	
+	<menuitem id="action_purchase_lines_menu_id" name="Purchase Lines"
+		action="purchase_order_line.action_purchase_lines_menu" parent="purchase.menu_procurement_management"
+		 sequence="10"/>
+</odoo>
