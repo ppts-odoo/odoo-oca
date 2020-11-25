@@ -14,7 +14,8 @@
                          <field name="full_adjustment" />
                          <field name="advance_amount" />
                          <field name="advance_amount_new" invisible="1"/>
-                         <field name="adjust_amount" attrs="{'readonly': [('full_adjustment', '=', True)]}"/>
+                         <field name="adjust_amount" />
+                         <!-- <field name="adjust_amount" attrs="{'readonly': [('full_adjustment', '=', True)]}"/> -->
                          <field name="adjust_amount_new" invisible="1"/>
                          <field name="line_id" />
                          <field name="balance" />

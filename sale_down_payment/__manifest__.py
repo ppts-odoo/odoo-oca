@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 {
     'name': 'Sales Advanced Downpay',
-    'version': '12.0',
+    'version': '13.0',
     'license': 'LGPL-3',
     'category': 'sale',
     'description': """

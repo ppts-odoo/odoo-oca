@@ -62,6 +62,7 @@ class SaleAdvancePaymentInv(models.TransientModel):
                 'sale_line_ids': [(6, 0, [so_line.id])],
 #                 'account_analytic_id': order.project_id.id or False,
         }
+        print('inv_line222222222222',inv_line)
 # Check for down payment type and based on that inculde tax with invoice line
 #         if self.advance_payment_method != 'moredownpay':
 #             taxes = self.product_id.taxes_id.filtered(lambda r: not order.company_id or r.company_id == order.company_id)
@@ -72,7 +73,8 @@ class SaleAdvancePaymentInv(models.TransientModel):
 #             inv_line.update({'tax_ids': [(6, 0, tax_ids)]})
 
         inv_values.update({
-            'name': order.client_order_ref or order.name,
+            # 'name': order.client_order_ref or order.name,
+            'name': '/',
             'invoice_origin': order.name,
             'type': 'out_invoice',
 #             'reference': False,
@@ -87,6 +89,8 @@ class SaleAdvancePaymentInv(models.TransientModel):
             'user_id': order.user_id.id,
             # Do not copy terms and condition to invoice
         })
+        print('inv_values33333333333333333',inv_values)
+        # stop
         invoice = inv_obj.create(inv_values)
 #         invoice.compute_taxes()
         invoice.message_post_with_view('mail.message_origin_link',

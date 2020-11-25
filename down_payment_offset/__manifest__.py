@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 {
     'name': 'Down Payment Offset',
-    'version': '12.0',
+    'version': '13.0',
     'category': 'sale',
     'license': 'LGPL-3',
     'support': 'business@pptservices.com',
