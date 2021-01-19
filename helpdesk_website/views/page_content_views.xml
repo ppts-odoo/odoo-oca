@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   
+	<record id="view_helpdesk_website_page_content_tree" model="ir.ui.view">
+		<field name="name">helpdesk.website.page.content.tree</field>
+		<field name="model">page.content</field>
+		<field name="priority">2</field>
+		<field name="arch" type="xml">
+			<tree string="Pages">
+				<field name="name" />
+				<field name="sub_menu_id" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="view_helpdesk_website_page_content_form" model="ir.ui.view">
+		<field name="name">helpdesk.website.page.content.form</field>
+		<field name="model">page.content</field>
+		<field name="arch" type="xml">
+			<form string="Pages">
+				<sheet>
+					<group>
+						<group>
+								<field name="name" />
+								<field name="body_content" />
+								<field name="sub_menu_id" />
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="action_page_content"
+		model="ir.actions.act_window">
+		<field name="name">Pages</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">page.content</field>
+		<field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Click here to create a record            
+			</p>
+		</field>
+	</record>
+	
+	<menuitem id="action_page_content_id" name="Pages"
+		action="action_page_content" parent="helpdesk_website.helpdesk_website_menu_root"
+		 sequence="3"/>
+</odoo>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   
+	<record id="view_helpdesk_website_sub_menu_tree" model="ir.ui.view">
+		<field name="name">helpdesk.website.submenu.tree</field>
+		<field name="model">sub.menu</field>
+		<field name="priority">2</field>
+		<field name="arch" type="xml">
+			<tree string="Submenu">
+				<field name="name" />
+				<field name="master_id" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="view_helpdesk_website_sub_menu_form" model="ir.ui.view">
+		<field name="name">helpdesk.website.sunmenu.form</field>
+		<field name="model">sub.menu</field>
+		<field name="arch" type="xml">
+			<form string="Submenu">
+				<sheet>
+					<group>
+						<group>
+								<field name="name" />
+								<field name="icon" />
+								<field name="master_id" />
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="action_sub_menu"
+		model="ir.actions.act_window">
+		<field name="name">Submenu</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">sub.menu</field>
+		<field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Click here to create a record            
+			</p>
+		</field>
+	</record>
+	
+	<menuitem id="action_sub_menu_id" name="Submenu"
+		action="action_sub_menu" parent="helpdesk_website.helpdesk_website_menu_root"
+		 sequence="2"/>
+</odoo>

@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 {
 	"name": "Sale Revision History",
-	"version": "14.0",
+	"version": "12.0",
 	"author": "PPTS [India] Pvt.Ltd.",
 	"website": "http://www.pptssolutions.com",
 	"sequence": 0,
