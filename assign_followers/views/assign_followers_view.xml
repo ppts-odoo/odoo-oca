@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+       <record model='ir.ui.view' id='assign_followers_settings_form'>
+            <field name="name">assign.followers.settings.form</field>
+            <field name="model">assign.followers.settings</field>
+            <field name="arch" type="xml">
+                <form string="Assign Followers Settings">
+                    <header>
+                        <button name="create_action" string="Add Action" type="object" attrs="{'invisible':[('ref_ir_act_window','!=',False)]}"/>
+                    </header>
+                    <sheet> 
+                        <group>
+                            <group>
+                                <field name="name" required="1"/>
+                                <field name="ref_ir_act_window" invisible="1"/>
+                            </group>
+                            <group>
+                                <field name="model_id" required="1"/>
+                                <field name="ref_ir_value" invisible="1"/>
+                            </group>
+                        </group>   
+                    </sheet>                    
+                </form>
+            </field>
+        </record>
+	
+        <record model='ir.ui.view' id='assign_followers_settings_tree'>
+            <field name="name">assign.followers.settings.tree</field>
+            <field name="model">assign.followers.settings</field>
+            <field name="arch" type="xml">
+                <tree string="Assign/Unassign Followers Settings">
+                    <field name="name"/>
+                    <field name="model_id"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model='ir.actions.act_window' id='assign_followers_settings_actions'>
+            <field name="name">Assign Followers Settings</field>
+			<field name="type">ir.actions.act_window</field>
+            <field name="res_model">assign.followers.settings</field>
+         	<field name="view_mode">form</field>
+			<field name="view_id" ref="assign_followers_settings_tree"/>
+        </record>
+        
+        <menuitem action="assign_followers_settings_actions" id="menu_assign_followers_settings_actions" parent="base.next_id_6"/>
+
+        <record id="view_assign_followers" model="ir.ui.view">
+            <field name="name">assign.followers.form</field>
+            <field name="model">assign.followers</field>
+            <field name="arch" type="xml">
+                <form string="Assign/Unassign Followers" >
+                    <group>
+                        <field name="record_followers_ids" nolabel="1" required="1" />
+                    </group>
+                    <footer>
+                        <button name="assign_followers" string="Assign" type="object" class="oe_highlight"/>
+                        or
+                        <button name="update_followers" string="Remove" type="object" class="oe_highlight"/>
+						or
+						<button string="Cancel" class="oe_link" special="cancel"/>
+
+                    </footer>
+                </form>
+            </field>
+        </record>     
+        
+    </data>
+</odoo>

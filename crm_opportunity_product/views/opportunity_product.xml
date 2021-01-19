@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="crm_case_form_view_oppor_inherit_product" model="ir.ui.view">
+		<field name="name">crm.lead.oppor.inherited</field>
+		<field name="model">crm.lead</field>
+		<field name="inherit_id" ref="crm.crm_lead_view_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//page[@name='lead']" position="after">
+				<page string="Products For Quotation">
+					<field name="lead_product_ids">
+						<tree editable="bottom">
+							<field name="product_id" />
+							<field name="description" />
+							<field name="qty" />
+							<field name="product_uom" />
+							<field name="price_unit"/>
+							<field name="tax_id" widget="many2many_tags"/>
+						</tree>
+					</field>
+				</page>
+			</xpath>
+		</field>
+	</record>
+	<record id="inherit_crm_case_form_view_oppor_crm_opportunity_product" model="ir.ui.view">
+		<field name="name">crm.lead.oppor.inherited</field>
+		<field name="model">crm.lead</field>
+		<field name="inherit_id" ref="sale_crm.crm_case_form_view_oppor" />
+		<field name="arch" type="xml">
+			<xpath expr="//button[@name='action_sale_quotations_new']" position="replace">
+				<button string="New Quotation" name="action_create_quotation" type="object" class="oe_highlight"/>
+			</xpath>
+
+		</field>
+	</record>
+</odoo>

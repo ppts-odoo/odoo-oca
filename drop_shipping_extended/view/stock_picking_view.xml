@@ -1,0 +1,68 @@
+<odoo>
+	<act_window name="Create Drop Shipping"
+		id="act_create_drop_shipping" res_model="drop.ship.wizard"
+		view_mode="form" target="new" />
+
+	<record id="view_drop_shippng_form" model="ir.ui.view">
+		<field name="name">Create Drop Shipping</field>
+		<field name="model">drop.ship.wizard</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<group>
+						<notebook>
+							<page string="Choose Product Shipping Method">
+								<field name="line_ids" nolabel="1">
+									<form>
+										<group>
+											<field name="product_id" />
+											<field name="product_uom" />
+											<field name="product_qty" />
+											<field name="unit_price" invisible="1" />
+											<field name="vendor_id" invisible="1" />
+											<field name="ref_id" invisible="1" />
+											<field name="procurement_id" invisible="1" />
+											<field name="drop_boolean" widget="checkbox" />
+										</group>
+									</form>
+									<tree editable="bottom" create="false">
+										<field name="product_id" />
+										<field name="product_uom" />
+										<field name="product_qty" />
+										<field name="unit_price" />
+										<field name="vendor_id" invisible="1" />
+										<field name="ref_id" invisible="1" />
+										<field name="procurement_id" invisible="1" />
+										<field name="drop_boolean" widget="checkbox" />
+									</tree>
+								</field>
+							</page>
+						</notebook>
+					</group>
+					<footer>
+						<button name="action_create_drop_ship"
+							string="Create Drop Shipping" type="object" class="btn-primary" />
+						<button string="Cancel" class="btn-default"
+							special="cancel" />
+					</footer>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+
+	<record id="drop_shipping" model="ir.actions.server">
+		<field name="model_id" ref="stock.model_stock_picking" />
+		<field name="name">Create Drop Shipping</field>
+		<field name="binding_model_id" ref="stock.model_stock_picking" />
+		<field name="state">code</field>
+		<field name="code">
+			for rec in records:
+				action = rec.action_create_drop_shipping()
+		</field>
+	</record>
+
+
+
+
+</odoo>

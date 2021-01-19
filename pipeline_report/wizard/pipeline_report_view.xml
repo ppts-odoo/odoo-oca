@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="pipeline_wizard_form" model="ir.ui.view">
+		<field name="name">Pipeline Report Form</field>
+		<field name="model">pipeline.report.wizard</field>
+		<field name="arch" type="xml">
+			<form string="Generate Pipeline Report">
+				<sheet>
+					<group>
+						<field name="user_ids" widget="many2many_tags" options="{'no_create_edit':True}"
+							domain="[('is_salesperson', '=', True)]"
+							attrs="{'required': [('select_all', '!=', True)],'invisible': [('select_all', '=', True)]}" />
+						<field name="select_all" />
+					</group>
+					<group>
+						<field name="crm_stage_ids" widget="many2many_tags" required='True'/>
+					</group>
+				</sheet>
+				<footer>
+					<div>
+						<label for='xl_file' attrs="{'invisible': [('xl_file', '=', False)]}" />
+						<field name="xl_file" readonly="1" filename="xl_name" style="margin-left:15px"/>
+						<field name="xl_name" invisible="1" />
+						<button name="cancel" string="Cancel" special="cancel"
+							class="oe_link" style="float:right" />
+						<button name="generate_xl_report" class="oe_highlight"
+							type="object" string="Generate Report" style="float:right;margin-right:5px" />
+						<button name="preview_report" class="oe_highlight"
+							type="object" string="Preview" style="float:right;margin-right:5px" />
+					</div>
+				</footer>
+			</form>
+		</field>
+	</record>
+
+	<record id="action_pipeline_report" model="ir.actions.act_window">
+		<field name="name">Pipeline Report</field>
+		<field name="res_model">pipeline.report.wizard</field>
+		<field name="view_mode">form</field>
+		<field name="target">new</field>
+		<field name="view_id" ref="pipeline_wizard_form" />
+	</record>
+
+</odoo>

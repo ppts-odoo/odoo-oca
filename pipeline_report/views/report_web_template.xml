@@ -1,0 +1,182 @@
+<odoo>
+	<data>
+		<template id="assets_frontend_result1" inherit_id="website.assets_frontend" name="Purchase Terms and Condition">
+			<xpath expr="." position="inside">
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+				<link href="/pipeline_report/static/src/css/report_style.css" rel="stylesheet" type="text/css"></link>
+				<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
+				<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+				<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+			</xpath>
+		</template>
+
+		<template id="pipeline_report_web_view" name="Pipeline Report">
+			<t t-call="website.layout">
+				<style>
+					footer{display:none !important;}
+				</style>
+				<div id="wrap" class="oe_structure oe_empty">
+					<section class="mt16 mb128">
+						<div class="container" style="font-family:Century Gothic;">
+							<div class="row">
+								<div class="col-md-12 text-center mt16 mb32">
+									<h2>
+										<span style="color:#008000;">
+											<strong>PROJECT REPORT
+												<span>(</span>
+												<span t-esc="date"/>
+												<span>)</span>
+											</strong>
+										</span>
+									</h2>
+									<br/>
+									<div class="container" style="background: #f9f9f9;font-size: 12px;">
+										<div id="menu">
+											<ul style="display: inline;float: left;padding: 10px;color: #145427;font-weight: bold;background: #eaeaea;">Sales Person<i class="fa fa-arrow-right" style="padding-left:5px;"/></ul>
+											<ul class="nav nav-tabs">
+												<t t-foreach="users" t-as="user">
+													<li>
+														<a data-toggle="tab" style="background:#193f34;color:#fff;" t-attf-href="#home{{user.id}}">
+															<span t-esc="user.name"/>
+														</a>
+													</li>
+												</t>
+											</ul>
+										</div>
+										<div class="tab-content" id="menu_1">
+											<t t-foreach="users" t-as="user">
+												<div t-attf-id="home{{user.id}}" class="tab-pane fade in">
+													<ul style="display: inline;float: left;padding: 10px;color: #145427;font-weight: bold;background: #eaeaea;">Stages<i class="fa fa-arrow-right" style="padding-left:5px;"/></ul>
+													<div id="stage_tab">
+														<ul class="nav nav-tabs tabs-left" role="tablist">
+															<t t-foreach="stages" t-as="stage">
+																<li role="presentation">
+																	<a data-toggle="tab" style="background:#116a65;color:#fff;" t-attf-href="#home{{user.id}}{{stage.id}}">
+																		<span t-esc="stage.name"/>
+																	</a>
+																</li>
+															</t>
+														</ul>
+													</div>
+												</div>
+											</t>
+										</div>
+										<div class="tab-content" id="menu2">
+											<t t-foreach="results" t-as="result">
+												<t t-foreach="result['stage_values']" t-as="stage">
+													<div t-attf-id="home{{result['user'].id}}{{stage['stage'].id}}" role="tabpanel" style="overflow-x: scroll;" class="tab-pane fade in">
+														<br/>
+														<table class="table table-striped table-hover table-bordered" style="table-layout: auto;background: beige;">
+															<tr style="background:#efc07a;font-weight: bold;">
+																<td style="text-align:left">
+																	<span>SALES REP</span>
+																</td>
+																<td colspan="5" style="text-align:left;text-transform: uppercase;">
+																	<span t-esc="result['user'].name"/>
+																</td>
+															</tr>
+															<tr style="background: #fff5e1;">
+																<th class="table_td">Project Name</th>
+																<th class="table_td">Value</th>
+																<!--<th class="table_td">Revenue</th>-->
+																<th class="table_td" style="white-space: nowrap;">Closing Date</th>
+																<th class="table_td">Notes</th>
+															</tr>
+															<tbody class="sale_tbody">
+																<t t-set="i" t-value="0.0"/>
+																<!--<t t-set="j" t-value="0.0"/>-->
+																<t t-foreach="stage['leads']" t-as="lead">
+																	<tr class="row2">
+																		<td style="text-align:left;white-space: nowrap;">
+																			<span t-esc="lead.name"/>
+																		</td>
+																		<td style="text-align:right">
+																			<span t-esc="result['user'].company_id.currency_id.symbol"/>
+																			<span t-esc="'{0:,.2f}'.format(lead.expected_revenue)"/>
+																		</td>
+																		<!--<td style="text-align:right">
+																			<span t-esc="result['user'].currency_id.symbol"/>
+																			<span t-esc="'{0:,.2f}'.format(lead.sale_amount_total)"/>
+																		</td>-->
+																		<td style="text-align:left;">
+																			<span t-esc="lead.date_deadline"/>
+																		</td>
+																		<td style="text-align:left;white-space:nowrap;" class="content_details" help="Click open the Notes">
+																			<t t-if="lead.message_ids[0].message_type == 'comment'">
+																				<span class="txt-flow txt-flow1" t-raw="lead.message_ids[0].body or ''" t-attf-title="Click to view the full notes"/>
+																			</t>
+																		</td>
+																		<t t-set="i" t-value="i+lead.expected_revenue"/>
+																		<!--<t t-set="j" t-value="j+lead.sale_amount_total"/>-->
+																	</tr>
+																</t>
+																<tr style="background:#efc07a;font-weight: bold;white-space: nowrap;">
+																	<td style="text-align:left">
+																		<span>TOTAL</span>
+																	</td>
+																	<td style="text-align:right">
+																		<span t-esc="result['user'].company_id.currency_id.symbol"/>
+																		<span t-esc="'{0:,.2f}'.format(i)"/>
+																	</td>
+																	<!--<td style="text-align:right">
+																		<span t-esc="result['user'].currency_id.symbol"/>
+																		<span t-esc="'{0:,.2f}'.format(j)"/>
+																	</td>-->
+																	<td colspan="5">
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+												</t>
+											</t>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<button type="button" class="btn btn-info btn-lg myModalhover" data-toggle="modal" data-target="#myModalhover" style="display:none;">Open Modal</button>
+					<!-- Modal -->
+					<div id="myModalhover" class="modal" role="dialog">
+						<div class="modal-dialog">
+
+							<!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">x</button>
+									<h4 class="modal-title">Notes</h4>
+								</div>
+								<div class="modal-body">
+									<p>Some text in the modal.</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<script>
+						$(document).ready(function(){
+							$(".content_details").click(function(){
+								$(".myModalhover").click();
+								$(".modal-body p").html($(this).html().replace("txt-flow txt-flow1",""));
+							});
+							$('#menu li a').eq(0).click();
+							$('#menu_1 li a').eq(0).click();
+							$('#menu li a').click(function(){
+								id=$(this).attr("href");
+								$("#menu_1 "+id).find(".nav-tabs  li").eq(0).removeClass("active");
+								$("#menu_1 "+id).find(".nav-tabs  li").eq(0).find("a").click();
+							});
+						});
+					</script>
+				</div>
+			</t>
+		</template>
+	</data>
+</odoo>

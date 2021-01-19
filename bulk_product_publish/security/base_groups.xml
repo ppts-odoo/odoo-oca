@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+    	<record model="res.groups" id="group_erp_manager">
+            <field name="name">Manager Access</field>
+	    </record>
+        <record model="res.groups" id="group_user">
+            <field name="name">Internal User Access</field>
+        </record>
+     </data>
+</odoo>

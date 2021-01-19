@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<odoo>
+	<record id="view_invoice_mass_mail" model="ir.ui.view">
+		<field name="name">Invoice form</field>
+		<field name="model">invoice.quote.mail</field>
+		<field name="arch" type="xml">
+			<form>
+				<group>
+					<field name="inv_ids" widget="many2many_tags" options="{'no_create_edit': True,'no_create': True}"/>
+				</group>
+
+				<footer>
+					<button name="send_mail" type="object" string="Send Mail"
+						class="oe_highlight" />
+					or
+					<button name="cancel" string="Close" special="cancel"
+						class="oe_link" />
+				</footer>
+			</form>
+		</field>
+	</record>
+	<record id="action_invoice_mass_mail" model="ir.actions.act_window">
+		<field name="name">Invoice Bulk Mail</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">invoice.quote.mail</field>
+		<field name="view_mode">form</field>
+		<field name="view_id" ref="view_invoice_mass_mail" />
+		<field name="target">new</field>
+	</record>
+</odoo>
