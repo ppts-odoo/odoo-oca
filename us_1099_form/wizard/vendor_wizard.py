@@ -3,7 +3,7 @@ from odoo.exceptions import UserError
 from datetime import datetime
 from odoo.http import request
 from odoo.sql_db import TestCursor
-from feedparser import base64
+import base64
 
 
 class VendorWizard(models.TransientModel):

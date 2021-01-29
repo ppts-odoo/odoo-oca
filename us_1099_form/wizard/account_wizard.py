@@ -1,7 +1,7 @@
 from odoo import api, fields, models,_
 from odoo.exceptions import UserError
 from datetime import datetime
-from feedparser import base64
+import base64
 
 
 class WizardLine(models.TransientModel):
@@ -47,6 +47,7 @@ class AccountMailWizard(models.TransientModel):
 
         vendor_data = []
         vendors = []
+        list_vendor = []
         if acc_payment_ids:
             for line in acc_payment_ids:
                 if line.partner_id.id:
