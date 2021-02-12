@@ -5,6 +5,7 @@ from odoo.exceptions import UserError
 import xlwt
 import base64
 from datetime import datetime
+import platform
 
 class PurchaseOrder(models.Model):
     _inherit = 'purchase.order'
@@ -98,13 +99,19 @@ class PurchaseRequisition(models.Model):
 
             ams_time = datetime.now()
             date = ams_time.strftime('%m-%d-%Y %H.%M.%S')
-            filename = ('Report' + '-' + date + '.xls')
-            workbook.save(filename)
 
+            if platform.system() == 'Linux':
+                filename = ('/tmp/Purchase Comparison Chart-' + str(datetime.today().date()) + '.xls')
+            else:
+                filename = ('Purchase Comparison Chart-' + str(datetime.today().date()) + '.xls')
+
+            filename = filename.split('/')[2]
+            workbook.save(filename)
             fp = open(filename, "rb")
             file_data = fp.read()
-            attach_id = self.env['report.wizard'].create({'attachment': base64.encodestring(file_data),
-                                                          'attach_name': 'Report.xls'})
+            out = base64.encodestring(file_data)
+            attach_id = self.env['report.wizard'].create({'attachment': out,
+                                                          'attach_name': 'Purchase Comparison Chart.xls'})
             fp.close()
 
         return {
