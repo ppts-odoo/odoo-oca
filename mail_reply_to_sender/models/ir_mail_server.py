@@ -8,7 +8,7 @@ class MailComposer(models.TransientModel):
     def get_mail_values(self, res_ids):
         res = super(MailComposer, self).get_mail_values(res_ids)
         if self.composition_mode == 'comment':
-            mail_reply_to = getattr(self, 'reply_to', None)
+            mail_reply_to = self.template_id.reply_to
             if mail_reply_to:
                 for f, x in res.items():
                     if 'reply_to' not in x:
