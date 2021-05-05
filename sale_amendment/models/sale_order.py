@@ -68,7 +68,7 @@ class SaleOrder(models.Model):
             revno = self.amendment_no 
             # Assign default values for views
             self.write({'amendment_no': revno + 1,'name': (self.amendment_name) + '-' + '%s-%02d' % ('AMD',revno + 1)})
-            defaults.update({'name': prev_name,'amendment_no': revno,'state': 'cancel','invoice_count': 0,'current_amendment_id': self.id,'amendment_name': self.amendment_name,'active':True,})
+            defaults.update({'name': prev_name,'amendment_no': revno,'state': 'cancel','invoice_count': 0,'current_amendment_id': self.id,'amendment_name': self.amendment_name})
         return super(SaleOrder, self).copy(defaults)
 
     def go_amendment(self):
