@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record model="ir.ui.view" id="mrp_production_workcenter_form_view_inherit12">
+		<field name="name">mrp.workorder.view.form.inherit.workorder</field>
+		<field name="model">mrp.workorder</field>
+		<field name="inherit_id" ref="mrp.mrp_production_workorder_form_view_inherit" />
+		<field name="arch" type="xml">
+
+			<notebook position="inside">
+				<page name='blocked_users' string="Blocked Users">
+					<field name="blocked_users_logs">
+						<tree string="Blocked Users">
+							<field name="user_id" />
+							<field name="block_start_date" />
+							<field name="block_end_date" />
+							<field name="duration" widget='float_time' />
+							<field name="workcenter_id" />
+							<field name="loss_reason_id" />
+							<field name="description" />
+							<field name="loss_type" />
+						</tree>
+					</field>
+				</page>
+			</notebook>
+
+			<field name="product_id" position="after">
+				<field name="is_user_blocked" invisible='1' />
+			</field>
+			<xpath expr="//header" position="inside">
+				<button name="record_production" position="attributes">
+					<attribute name="attrs">{'invisible': ['|', '|', ('is_produced',
+						'=', True), ('state', '!=', 'progress'), ('is_user_working', '=',
+						False)]}</attribute>
+				</button>
+				<button name="button_pending" position="attributes">
+				<attribute name="attrs">{'invisible': ['|', ('state', 'in',
+					('done', 'pending', 'ready', 'cancel')), ('is_user_working', '=',
+					False)]}</attribute>
+			</button>
+			<button name="button_unblock" position="attributes">
+				<attribute name="attrs">{'invisible': [('is_user_blocked', '!=',
+					True)]}</attribute>
+			</button>
+			<xpath expr="//header/button[2]" position="attributes">
+	            	<attribute name="attrs">{'invisible': [('state', '!=', 'pending')]}</attribute>
+	            </xpath>
+	            <xpath expr="//header/button[3]" position="attributes">
+	            	<attribute name="attrs">{'invisible': [('state', '!=', 'ready')]}</attribute>
+	            </xpath>
+			<xpath expr="//header/button[6]" position="attributes">
+				<attribute name="attrs">{'invisible': ['|', ('state', 'in',
+					('done', 'pending', 'ready', 'cancel')), ('is_user_working', '=',
+					False)]}</attribute>
+			</xpath>
+			<xpath expr="//header/button[8]" position="attributes">
+				<attribute name="attrs">{'invisible': ['|', '|',
+					('is_user_blocked', '=', True), ('is_user_working', '=', True),
+					('state', 'in', ('done', 'pending', 'ready', 'cancel'))]}
+				</attribute>
+			</xpath>
+			<xpath expr="//header/button[9]" position="attributes">
+				<attribute name="attrs">{'invisible': ['|', '|',
+					('is_user_blocked', '=', True), ('production_state', '=', 'done'),
+					('state', '!=', 'done')]}</attribute>
+			</xpath>
+			</xpath>
+			
+		</field>
+	</record>
+
+</odoo>

@@ -1,0 +1,61 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* multi_users_work_order
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-03-13 18:29+0000\n"
+"PO-Revision-Date: 2016-03-13 18:29+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: multi_users_work_order
+#: model:ir.ui.view,arch_db:multi_users_work_order.mrp_production_workcenter_form_view_inherit_blocked_users_notebook
+msgid "Blocked Users"
+msgstr "Blockierte Benutzer"
+
+#. module: multi_users_work_order
+#: model:ir.model.fields,field_description:multi_users_work_order.field_mrp_workorder_blocked_users_logs_block_start_date
+msgid "Start Date"
+msgstr "Startdatum"
+
+#. module: multi_users_work_order
+#: model:ir.model.fields,field_description:multi_users_work_order.field_mrp_workorder_blocked_users_logs_block_end_date
+msgid "End Date"
+msgstr "Enddatum"
+
+#. module: multi_users_work_order
+#: model:ir.model.fields,field_description:multi_users_work_order.field_mrp_workorder_blocked_users_logs_duration
+msgid "Duration"
+msgstr "Dauer"
+
+#. module: multi_users_work_order
+#: model:ir.model.fields,field_description:multi_users_work_order.field_mrp_workorder_blocked_users_logs_user_id
+msgid "User"
+msgstr "Benutzer"
+
+#. module: multi_users_work_order
+#: model:ir.model.fields,field_description:multi_users_work_order.field_mrp_workorder_blocked_users_logs_workcenter_id
+msgid "Work Center"
+msgstr "Arbeitsplatz"
+
+#. module: multi_users_work_order
+#: model:ir.model.fields,field_description:multi_users_work_order.field_mrp_workorder_blocked_users_logs_description
+msgid "Description"
+msgstr "Beschreibung"
+
+#. module: multi_users_work_order
+#: model:ir.model.fields,field_description:multi_users_work_order.field_mrp_workorder_blocked_users_logs_loss_reason_id
+msgid "Loss Reason"
+msgstr "Verlustgrund"
+
+#. module: multi_users_work_order
+#: model:ir.model.fields,field_description:multi_users_work_order.field_mrp_workorder_blocked_users_logs_loss_type
+msgid "Effectiveness Category"
+msgstr "Wirksamkeitskategorie"

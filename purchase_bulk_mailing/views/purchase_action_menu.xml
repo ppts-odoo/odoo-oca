@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<odoo>
+
+
+     <record id="purchase_order_action_menu_1" model="ir.actions.server">
+          <field name="model_id" ref="purchase.model_purchase_order" />
+          <field name="name">Send Order/Quote by Mail</field>
+          <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+          <field name="state">code</field>
+          <field name = "code">
+			if records:
+              action = records.view_po_wizard()
+          </field>
+      </record>
+	
+	<!-- <record id="ir_purchase_bulk_mail" model="ir.default">
+		<field eval="'client_action_multi'" name="key2"/>
+		<field eval="'purchase.order'" name="model"/>
+		<field name="name">Send Order/Quote by Mail</field>
+		<field eval="'ir.actions.server,%d'%purchase_order_action_menu_1" name="value"/>
+	</record> -->
+	
+</odoo>

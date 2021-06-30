@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<odoo>
+	
+	<!-- Add Purchase Comparison Button in purchase.requisition form view -->
+	<record model="ir.ui.view" id="inherit_view_purchase_requisition_form">
+		<field name="name">purchase.requisition.inherit.validate</field>
+		<field name="model">purchase.requisition</field>
+		<field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form" />
+		<field name="priority" eval="20" />
+		<field name="arch" type="xml">
+			<xpath expr="//button[@name='action_open']" position="after">
+				<button name="purchase_comparison" string="Purchase Comparison" type="object" class="oe_highlight" attrs="{'invisible': [('state', 'in', ['draft'])]}"/>
+				<button name="print_xl" string="Print XLS" type="object" class="oe_highlight" attrs="{'invisible': [('state', 'in', ['draft'])]}"/>
+			</xpath>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="purchase_compare_form">
+		<field name="name">report Wizard</field>
+		<field name="model">report.wizard</field>
+		<field name="arch" type="xml">
+			<form string="Report">
+				<group>
+					<field name="attachment" filename="attach_name" />
+					<field name="attach_name" invisible="1" />
+				</group>
+				<footer>
+					<button string="Cancel" class="btn-primary" special="cancel"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+
+	<record id="action_wizard_report" model="ir.actions.act_window">
+		<field name="name">Report</field>
+		<field name="res_model">report.wizard</field>
+<!-- 		<field name="binding_model">report.wizard</field>
+ -->		<field name="type">ir.actions.act_window</field>
+		<field name="view_mode">form</field>
+		<field name="target">new</field>
+	</record>
+
+</odoo>

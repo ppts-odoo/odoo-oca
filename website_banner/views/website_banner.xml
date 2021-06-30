@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="form_view_promotion_offer" model="ir.ui.view">
+		<field name="name">promotion.setup</field>
+		<field name="model">promotion.setup</field>
+		<field name="arch" type="xml">
+			<form string="Promotion Offers">
+				<sheet>
+					<group>
+						<group>
+							<field name="name"/>
+							<field name="start_date" required="1"/>
+							<field name="end_date" required="1"/>
+							<field name="text_to_display" required="1" string="Text to display"/>
+							<field name="url"/>
+							<field name="active"/>
+						</group>
+						<group>
+							<field name="bg_color" placeholder="Enter Color Code or Name" required="1"/>
+							<field name="text_color" placeholder="Enter Color Code or Name" required="1"/>
+							<field name="btn_color" placeholder="Enter Color Code or Name" required="1"/>
+							<field name="btn_txt_color" placeholder="Enter Color Code or Name" required="1"/>
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="tree_view_promotion_offer" model="ir.ui.view">
+		<field name="name">promotion.setup</field>
+		<field name="model">promotion.setup</field>
+		<field name="arch" type="xml">
+			<tree string="Promotion Offers">
+				<field name="name"/>
+				<field name="start_date"/>
+				<field name="end_date"/>
+				<field name="text_to_display"/>
+				<field name="bg_color"/>
+				<field name="text_color"/>
+				<field name="btn_color"/>
+				<field name="url"/>
+				<field name="active"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="action_promo_offers" model="ir.actions.act_window">
+		<field name="name">Promotion Setup</field>
+		<field name="res_model">promotion.setup</field>
+		<field name="view_mode">tree,form</field>
+		<field name="view_id" ref="tree_view_promotion_offer"/>
+		<field name="help">You can set promotion offer here.</field>
+	</record>
+
+	<!-- Promotion setup menu -->
+	<menuitem id="menu_promo_offers_settings" parent="website.menu_website_global_configuration" name="Promotion Setup" action="action_promo_offers" sequence="5"/>
+
+
+</odoo>

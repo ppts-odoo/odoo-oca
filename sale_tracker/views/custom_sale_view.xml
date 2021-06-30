@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+	<record id="crm_team_inherited" model="ir.ui.view">
+		<field name="name">crm.team.form</field>
+		<field name="model">crm.team</field>
+		<field name="inherit_id" ref="sales_team.crm_team_view_form" />
+		<field name="arch" type="xml">	
+		 <div class="oe_button_box" name="button_box">
+               <button name='view_sales' icon="fa-bars" type='object' class="oe_stat_button" string='View Sale' />
+           </div> 	
+		</field>
+	</record>
+
+	<record id="view_sales_order_line_filter_inherited" model="ir.ui.view">
+		<field name="name">sale order line select inherited</field>
+		<field name="model">sale.order</field>
+		<field name="arch" type="xml">
+			<search string="Search Sales Order">
+					<filter string="Salesperson" domain="[]" context="{'group_by':'user_id'}" name="sales_person"/>
+			</search>
+		</field>
+	</record>
+	
+	<record id="sale.action_orders" model="ir.actions.act_window"> 
+		<field name="name">sale order views</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">sale.order</field> 
+		<field name="view_mode">tree,form</field>
+		<field name="view_id" ref="sale.view_order_tree" />
+		<field name="search_view_id" ref="view_sales_order_line_filter_inherited" />
+		<field name="context">{'search_default_sales_person': 1}</field>
+	 </record>
+	 
+</odoo>
+
