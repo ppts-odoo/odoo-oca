@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="assets_frontend_favorites"
+                  inherit_id="website.assets_frontend" name="Favorites Cart">
+            <xpath expr="." position="inside">
+                <script type="text/javascript"
+                        src="/favorite_cartlist/static/src/js/favorites_selection.js"/>
+
+                <link href="/favorite_cartlist/static/src/css/button.css"
+                      rel="stylesheet" type="text/css"/>
+            </xpath>
+        </template>
+
+        <template id="header" inherit_id="website.layout"
+                  name="Header Shop My Favorites Link">
+            <xpath expr="//header//ul[@id='top_menu']/li" position="before">
+                <t t-set="website_sale_order" t-value="website.sale_get_order()"/>
+                <li id="my_cart">
+                    <a href="/favorites" class="nav-link">
+                        <i class="fa fa-heart"></i>
+                        My Favorites
+                        <sup t-attf-class="label label-primary">
+                            <t t-esc="website.count_favorites()"/>
+                        </sup>
+                    </a>
+                </li>
+            </xpath>
+        </template>
+
+        <template id="favorites_cart" name="Favorites Cart">
+            <t t-call="website.layout">
+                <h1 style="margin-left:42%;">Your Favorites</h1>
+                <t t-if="not favorites">
+                    <div class="container"
+                         style=" border: 2px solid #dedede;background-color: #f1f1f1;border-radius: 5px;padding: 10px;margin: 25px 0 1;">
+                        <h4 style="margin-left: 385px;">There are currently no favorites in your account.
+                        </h4>
+                    </div>
+                </t>
+                <form action="/delete_favorites_list" method="post"
+                      id="delete_favorites_list_form">
+                    <t t-if="favorites">
+                        <table class="table table-hover o_my_status_table"
+                               style="width:50%; margin:auto;">
+                            <thead>
+                                <tr class="active">
+                                    <th>
+                                        <input type="checkbox" name="selectall_list"
+                                               id="selectall_list"/>
+                                        Select All
+                                    </th>
+                                    <th>Favorites</th>
+                                </tr>
+                            </thead>
+                            <t t-foreach="favorites" t-as="value">
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="box_list" id="box_list"
+                                               t-attf-class="checkbox_list _{{value.id}}"></input>
+                                    </td>
+
+                                    <td>
+                                        <a t-attf-href="/favorites/#{value.id}">
+                                            <t t-esc="value.name"/>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </t>
+                        </table>
+                        <button
+                                style="margin-left: 25%;background-color: red;height: 45px;width: 175px;font-size: unset;padding: 0px;"
+                                type="button" class="button delete_favorites_list">
+                            Delete
+                            <span class="fa fa-trash"/>
+                        </button>
+                        <div t-if="pager" class="o_portal_pager text-center">
+                            <t t-call="website.pager"/>
+                        </div>
+                    </t>
+                </form>
+                <div class="oe_structure"/>
+            </t>
+        </template>
+
+
+        <template id="favorite_list" name="Favorites List">
+            <t t-call="website.layout">
+                <div style="text-align: center;">
+                    <h2>Favorite Products</h2>
+                </div>
+                <t t-if="not favorites_list">
+                    <div class="container"
+                         style=" border: 2px solid #dedede;background-color: #f1f1f1;border-radius: 5px;padding: 10px;margin: 25px 0 1;">
+                        <h4 style="margin-left: 385px;">There are currently no products in this section.
+                        </h4>
+                    </div>
+                </t>
+                <form action="/delete_favorites" method="post"
+                      id="delete_favorites_form">
+                    <t t-if="favorites_list">
+                        <table class="table table-hover o_my_status_table"
+                               style="width:43%; margin:auto;">
+                            <thead>
+                                <tr class="active">
+                                    <th style="width: fit-content;">
+                                        <input type="checkbox" name="selectall" id="selectall"/>
+                                    </th>
+                                    <th>Products</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="favorites_list" t-as="value">
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" name="box" id="box"
+                                                   t-attf-class="checkbox _{{value['product_id'].id}}_{{value['favorite_id'].id}}"></input>
+                                            <input type="hidden" t-att-value="value.favorite_id.id"
+                                                   name="favorite_id" id="favorite_id"/>
+                                            <input type="hidden" name="product" id="product"
+                                                   t-att-value="value.product_id.name"></input>
+                                        </td>
+                                        <td>
+                                            <a
+                                                    t-attf-href="/shop/product/#{ slug(value.product_id.product_tmpl_id) }">
+                                                <strong
+                                                        t-esc="value.product_id.with_context(display_default_code=False).display_name"/>
+                                                <input type="hidden" name="product" id="product"
+                                                       t-att-value="value.product_id.name"/>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a>
+                                                <t t-esc="value.product_id.lst_price"/>
+                                                <input type="hidden" name="lst_price" id="lst_price"
+                                                       t-att-value="value.product_id.lst_price"/>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <button
+                                style="margin-left: 29%;background-color: red;height: 45px;width: 175px;font-size: unset;padding: 0px;"
+                                type="button" class="button delete_favorites">
+                            Delete
+                            <span class="fa fa-trash"/>
+                        </button>
+                        <form action="/add_to_cart_favorites" method="post"
+                              id="add_to_cart_favorites_form">
+                            <div class="form-group" id="favorites_formcart">
+                                <t t-foreach="favorites_list" t-as="value">
+                                    <t t-foreach="favorites_list" t-as="value">
+                                        <input type="hidden" name="sale_order" id="sale_order"
+                                               class="sale_order_favorites"
+                                               t-att-value="website.sudo().sale_get_order().id"/>
+                                        <input type="hidden" name="favorite_products"
+                                               id="favorite_products" class="favorite_products"
+                                               t-att-value="value['favorite_id'].id"/>
+                                    </t>
+                                </t>
+                                <button
+                                        style="margin-left: 59%;background-color: red;height: 45px;width: 175px;font-size: unset;padding: 0px;"
+                                        type="button" id="add_to_cart" name="add_to_cart"
+                                        class="button add_to_cart">
+                                    Add to cart
+                                    <span class="fa fa-shopping-cart"/>
+                                </button>
+                            </div>
+                        </form>
+                        <div t-if="pager" class="o_portal_pager text-center">
+                            <t t-call="website.pager"/>
+                        </div>
+                    </t>
+                </form>
+                <div class="oe_structure"/>
+            </t>
+        </template>
+
+
+        <template id="add_to_favorites"
+                  inherit_id="website_sale.cart" name="Add
+			favorites">
+            <xpath
+                    expr="//div[@id='wrap']//a[@class='btn btn-primary float-right d-none d-xl-inline-block']"
+                    position="after">
+                <div>
+                    <t t-set="fav_list"
+                       t-value="request.env['website.favorites'].search([('user_id','=',user_id.id)])"/>
+                    <t t-set="website_sale.website_sale_order"
+                       t-value="website.sale_get_order()"/>
+                    <t t-if="website.sudo().sale_get_order().order_line">
+                        <button
+                                style="margin-left: 77%;background-color:
+			red;height: 45px;width: 175px;font-size: unset;padding: 0px;"
+                                type="button" class="button" data-toggle="modal"
+                                data-target="#myModal">
+                            Add to Favorites
+                            <span class="fa fa-heart"/>
+                        </button>
+                    </t>
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+                            Modal content
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Add or Create the Favorites</h4>
+                                </div>
+                                <form action="/create_favorites" method="post"
+                                      id="fav_create_from">
+                                    <div class="modal-body">
+                                        <select id="favorites" name="favorites"
+                                                class="form-control product_2" required="required">
+                                            <t>
+                                                <option value="create_new_fav">Create
+                                                    a new favorite
+                                                </option>
+                                            </t>
+                                            <t t-foreach="fav_list or []" t-as="line">
+                                                <option t-att-value="line.id">
+                                                    <t t-esc="line.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                        <br/>
+                                        <div class="form-group" id="favorites_name">
+                                            <label for="favorite_name">Favorite's
+                                                Name:
+                                            </label>
+                                            <input type="text" class="form-control"
+                                                   name="favorite_name" id="favorite_name"
+                                                   required="This field is required"/>
+                                        </div>
+                                        <div name="alert_me" id="alert_me" role="alert">
+                                            <strong style="color: red;">Favorite's name already
+                                                exists. Please
+                                                enter a new name.
+                                            </strong>
+                                        </div>
+                                        <div name="null_me" id="null_me" role="alert">
+                                            <strong style="color: red;">Please add items to the cart before
+                                                adding as favorites.
+                                            </strong>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <t t-if="website.sudo().sale_get_order()">
+                                            <input type="hidden" name="sale_order" id="sale_order"
+                                                   t-att-value="website.sale_get_order().id"/>
+                                        </t>
+                                        <button id="submit" name="submit"
+                                                class="btn btn-success">Submit
+                                        </button>
+                                        <button type="button" class="btn btn-danger"
+                                                data-dismiss="modal">Close
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+
+        <template id="deleted_form"
+                  name="Favorite deleted sucessfully">
+            <t t-call="website.layout">
+                <p class="oe_structure"></p>
+                <div class="row bg">
+                    <div class="col-md-2 col-sm-2 col-xs-2"></div>
+                    <div class="col-md-8 col-sm-8 col-xs-8 bg1">
+                        <center>
+                            <span t-raw="msg"/>
+                        </center>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+    </data>
+</odoo>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="customer_invoice_stock_move_view" model="ir.ui.view">
+        <field name="name">Move Name</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_stock_transfer" string="Deliver" type="object"  class="oe_highlight" attrs="{'invisible':['|','|',('state', '=', 'draft'),('type','=','in_invoice'),('picking_count','>','0')]}"
+                    />
+            </xpath>
+            <xpath expr="//field[@name='company_id']" position="after">
+                <field name="picking_transfer_id" attrs="{'invisible':[('type', '=', 'in_invoice')]}"/>
+                <field name="invoice_picking_id" invisible="1"/>
+                <field name="picking_deliver" invisible="1"/>
+                <field name="deliver_no" invisible="1"/>
+                <field name="deliver_status" attrs="{'invisible':[('type', '=', 'in_invoice')]}"/>
+            </xpath>
+            <xpath expr="//div[@class='oe_button_box']" position="inside">
+                    <button type="object"
+                        name="action_view_picking_delivery" states="posted"
+                        attrs="{'invisible':['|',('type', '=', 'in_invoice')]}"
+                        class="oe_stat_button"
+                        icon="fa-truck">
+                        <field name="picking_count"  string="Delivery" widget="statinfo"                         attrs="{'invisible':['|',('type', '=', 'in_invoice')]}"
+/>
+                    </button>
+            </xpath>
+        </field>
+        </record>
+
+        <record id="supplier_invoice_stock_move_view" model="ir.ui.view">
+            <field name="name">Move Name</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <button name="action_stock_receive" string="Receive"  class="oe_highlight"
+                            type="object"  attrs="{'invisible':['|','|',('state', '=', 'draft'),('type','=','out_invoice'),('picking_count','>','0')]}"/>
+                </xpath>
+                <xpath expr="//field[@name='company_id']" position="after">
+                    <field name="picking_type_id" attrs="{'invisible':[('type', '=', 'out_invoice')]}"/>
+                    <field name="invoice_picking_id" invisible="1"/>
+                    <field name="picking_deliver_bill" invisible="1"/>
+                    <field name="deliver_no" invisible="1"/>
+                    <field name="shipment_status" attrs="{'invisible':[('type', '=', 'out_invoice')]}"/>
+                </xpath>
+                <xpath expr="//sheet/div" position="before">
+                    <div class="oe_button_box" name="button_box">
+                        <button type="object"
+                            name="action_view_picking_shipment"
+                            attrs="{'invisible':['|',('type', '=', 'out_invoice'),('state', '=', 'draft')]}"
+                            class="oe_stat_button"
+                            icon="fa-truck">
+                            <field name="picking_shipment_count"  string="Shipment" widget="statinfo" attrs="{'invisible':['|',('type', '=', 'out_invoice')]}"/>
+                        </button>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+        
+         <record id="res_config_settings_view_form_inherit_stock" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.picking.stock</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="30"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form" />
+            <field name="arch" type="xml">
+             <xpath expr="//div[@id='warning_info']" position="after">
+                   	<div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="stock_picking"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="stock_picking"/>
+                                <div class="text-muted">
+                                    Enable Stock Pickings Feature From Customer Invoice.
+                                </div>
+                            </div>
+                       </div>
+                       <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="stock_picking_bill"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="stock_picking_bill"/>
+                                <div class="text-muted">
+                                    Enable Stock Pickings Feature From Supplier Bills.
+                                </div>
+                            </div>
+                       </div>
+                </xpath>
+             </field>
+            </record>
+  </data>
+</odoo>
