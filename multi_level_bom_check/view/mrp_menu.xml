@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+ <menuitem id="mrp_bom_current_stock_menu"
+              action="mrp_bom_current_stock_action"
+              parent="mrp.menu_mrp_reporting"
+              sequence="50"/>
+
+</odoo>

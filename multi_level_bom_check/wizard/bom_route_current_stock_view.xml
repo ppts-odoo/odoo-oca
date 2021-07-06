@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2017 Eficent Business and IT Consulting Services S.L.
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+
+    <record id="mrp_bom_current_stock_view_form" model="ir.ui.view">
+        <field name="name">mrp.bom.current.stock.form</field>
+        <field name="model">mrp.bom.current.stock</field>
+        <field name="arch" type="xml">
+            <form>
+                <group name="step_1"
+                       string="Select product and location to explode">
+                    <field name="product_id"
+                           domain="[('bom_ids','!=',False),('bom_ids.type','!=','phantom')]" widget="many2many_tags"/>
+                    <field name="product_tmpl_id" invisible="1"/>
+                    <field name="bom_id"
+                           domain="['&amp;', '|', ('product_id','=',product_id),
+                           '&amp;', ('product_tmpl_id.product_variant_ids','=',product_id),
+                           ('product_id','=',False), ('type', '=', 'normal')]" widget="many2many_tags"/>
+                    <field name="location_id" widget="many2many_tags"/>
+                    <field name="qty_produce"/>
+                    <field name="company_id" invisible="1"/>
+                    <field name="allow_multi_level"/>
+                </group>
+                <footer>
+                    <button name="do_explode"
+                            type="object"
+                            string="Generate"
+                            class="oe_highlight"/>
+                    <button special="cancel"
+                            string="Cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="mrp_bom_current_stock_view_form2" model="ir.ui.view">
+        <field name="name">mrp.bom.current.stock.form2</field>
+        <field name="model">mrp.bom.current.stock</field>
+        <field name="arch" type="xml">
+            <form>
+                <group name="step_2" string="Explosion result">
+                    <p>Set the source location for every component.</p><br></br>
+                    <group>
+	                    <field name="product_id" readonly="1" widget="many2many_tags"/>
+	                    <field name="bom_id" readonly="1" widget="many2many_tags"/>
+	                    <field name="report_type" invisible="1"/>
+	                     <field name="user_id" invisible="1"/>
+                    </group>
+                    <field name="line_ids" nolabel="1" colspan="2">
+                        <tree create="0" delete="0" editable="1">
+                            <field name="bom_level" readonly="1"/>
+                            <field name="product_id" readonly="1"/>
+                            <field name="product_name" readonly="1"/>
+                            <field name="product_qty" readonly="1"/>
+                            <field name="reserved_qty" readonly="1"/>
+                            <field name="qty_available_in_source_loc" readonly="1"/>
+                            <field name="forecasted_qty" />
+                            <field name="shortage_qty" readonly="1"/>
+                            <field name="product_uom_id"
+                                   groups="uom.group_uom" readonly="1"/>
+                            <field name="location_id"/>
+                            <field name="bom_id" readonly="1"/>
+                            <field name="parent_id" invisible="1"/> 
+                            <field name="loc_list" invisible="1"/>
+                            <field name="tot_qty_avail" invisible="1"/>
+                            <field name="tot_qty_avail_shortage" invisible="1"/>
+                           <!--  <field name="forecasted_qty_total" invisible="0"/> -->
+                        </tree>
+                    </field>
+                </group>
+                <footer>
+                    <button name="%(multi_level_bom_check.action_report_bom_current_stock_pdf)d"
+                            type="action" string="Print PDF"
+                            class="oe_highlight"/>
+                    or
+                    <button special="cancel"
+                            string="Close"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="mrp_bom_current_stock_action" model="ir.actions.act_window">
+        <field name="name">BoM Stock Availability</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mrp.bom.current.stock</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="mrp_bom_current_stock_view_form" />
+        <field name="target">new</field>
+    </record>
+<!--    <menuitem id="mrp_bom_current_stock_menu"-->
+<!--              action="mrp_bom_current_stock_action"-->
+<!--              parent="mrp.menu_mrp_reporting"-->
+<!--              sequence="50"/>-->
+</odoo>
