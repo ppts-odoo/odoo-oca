@@ -19,7 +19,6 @@ class PurchaseOrder(models.Model):
         return rslt
              
 
-
     @api.onchange('is_enabled_roundoff')
     def onchange_is_enabled_roundoff(self):
         self._amount_all()

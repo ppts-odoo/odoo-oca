@@ -10,6 +10,11 @@ class SaleOrder(models.Model):
                                              "account.invoice_roundoff"))
     amount_round_off = fields.Monetary(string='Roundoff Amount', store=True, readonly=True, compute='_amount_all')
 
+
+    @api.onchange('is_enabled_roundoff')
+    def onchange_is_enabled_roundoff(self):
+        self._amount_all()
+        
     @api.depends('order_line.price_total')
     def _amount_all(self):
         """
