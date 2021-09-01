@@ -42,10 +42,10 @@
 			<field name="type">ir.actions.act_window</field>
             <field name="res_model">assign.followers.settings</field>
          	<field name="view_mode">form</field>
-			<field name="view_id" ref="assign_followers_settings_tree"/>
+<!--			<field name="view_id" ref="assign_followers_settings_tree"/>-->
         </record>
         
-        <menuitem action="assign_followers_settings_actions" id="menu_assign_followers_settings_actions" parent="base.next_id_6"/>
+        <menuitem name="Assign Followers Settings" action="assign_followers_settings_actions" groups="group_erp_manager" id="menu_assign_followers_settings_actions" parent="base.next_id_6"/>
 
         <record id="view_assign_followers" model="ir.ui.view">
             <field name="name">assign.followers.form</field>

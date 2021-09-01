@@ -2,10 +2,10 @@
 <odoo>
     <data>
     	<record model="res.groups" id="group_erp_manager">
-            <field name="name">Manager Access</field>
+            <field name="name">Assign Followers Admin</field>
 	    </record>
         <record model="res.groups" id="group_user">
-            <field name="name">Internal User Access</field>
+            <field name="name">Assign Followers User</field>
         </record>
      </data>
 </odoo>
