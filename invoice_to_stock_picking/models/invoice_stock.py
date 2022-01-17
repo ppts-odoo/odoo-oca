@@ -15,7 +15,7 @@ class InvoiceStockMove(models.Model):
     # @api.model
     def _default_picking_receive(self):
         type_obj = self.env['stock.picking.type']
-        company_id = self.env.context.get('company_id') or self.env.user.company_id.id
+        company_id = self.env.context.get('company_id') or self.env.company.id
         types = type_obj.search([('code', '=', 'incoming'), ('warehouse_id.company_id', '=', company_id)], limit=1)
         if not types:
             types = type_obj.search([('code', '=', 'incoming'), ('warehouse_id', '=', False)])
@@ -24,7 +24,7 @@ class InvoiceStockMove(models.Model):
     # @api.model
     def _default_picking_transfer(self):
         type_obj = self.env['stock.picking.type']
-        company_id = self.env.context.get('company_id') or self.env.user.company_id.id
+        company_id = self.env.context.get('company_id') or self.env.company.id
         types = type_obj.search([('code', '=', 'outgoing'), ('warehouse_id.company_id', '=', company_id)], limit=1)
         if not types:
             types = type_obj.search([('code', '=', 'outgoing'), ('warehouse_id', '=', False)])
@@ -183,9 +183,7 @@ class InvoiceStockMove(models.Model):
                         'location_dest_id': self.partner_id.property_stock_customer.id,
                         'location_id': self.picking_transfer_id.default_location_src_id.id
                     }
-                    print(pick,'222222222222222222222222222222222222222222')
                     picking = self.env['stock.picking'].create(pick)
-                    print(picking,'1111')
                     self.invoice_picking_id = picking.id
     #                 self.picking_count = len(picking)
                     moves = order.invoice_line_ids.filtered(lambda r: r.product_id.type in ['product', 'consu'])._create_stock_moves_transfer(picking)
