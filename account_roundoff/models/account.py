@@ -188,7 +188,7 @@ class AccountMove(models.Model):
             'exclude_from_invoice_tab': False,
             'is_rounding_line': False,
             #'predict_override_default_account': False,
-            'predict_from_name': False,
+            # 'predict_from_name': False,
         }]
         return values
 
