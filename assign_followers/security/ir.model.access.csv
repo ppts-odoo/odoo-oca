@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_assign_followers_settings,assign_followers_settings,model_assign_followers_settings,group_user,1,0,0,0
+access_assign_followers_settings_1,assign_followers_settings,model_assign_followers_settings,group_erp_manager,1,1,1,1
+assign_followers_user,assign_followers,model_assign_followers,group_user,1,0,0,0
+assign_followers_manager,assign_followers,model_assign_followers,group_erp_manager,1,1,1,1

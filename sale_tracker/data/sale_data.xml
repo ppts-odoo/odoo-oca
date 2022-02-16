@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record model="ir.cron" forcecreate="True" id="ir_cron_crm_team" >
+		<field name="name">Generation of sale orders by each sale person</field>
+		<field eval="True" name="active" />
+		<field name="user_id" ref="base.user_root" />
+		<field name="interval_number">1</field>
+		<field name="interval_type">months</field>
+		<field name="numbercall">-1</field>
+		<field eval="False" name="doall" />
+		<field name="state">code</field>
+		<field name="code">model.run_scheduler()</field>
+		<field name="model_id" ref="model_crm_team"/>
+
+	</record>
+
+</odoo>

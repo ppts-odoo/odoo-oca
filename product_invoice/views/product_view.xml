@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record id="view_product_template_invoiced_form" model="ir.ui.view">
+			<field name="name">product.template.invoicedform</field>
+			<field name="model">product.template</field>
+			<field name="inherit_id" ref="product.product_template_only_form_view" />
+			<field name="arch" type="xml">
+				<div name="button_box" position="inside">
+					
+					<button name="product_cus_invoice_view" attrs="{'invisible': [('sale_ok', '=', False)]}" class="oe_inline oe_stat_button" type="object" icon="fa-pencil-square-o" context="{'search_default_year':1,'search_default_month':1}">
+						<div class="o_form_field o_stat_info mr3">
+							<span class="o_stat_text">Cus.Inv:</span>
+							<span class="o_stat_text">Invoiced:</span>
+						</div>
+						<div class="o_form_field o_stat_info">
+							<span class="o_stat_value">
+								<field name="total_out_amount" />
+							</span>
+							<span class="o_stat_value">
+								<field name="cus_invoice_line_count" />
+							</span>
+						</div>
+					</button>
+
+					<button name="product_sup_invoice_view" attrs="{'invisible': [('purchase_ok', '=', False)]}" context="{'search_default_year':1,'search_default_month':1}" class="oe_inline oe_stat_button" type="object" icon="fa-pencil-square-o">
+						<div class="o_form_field o_stat_info mr3">
+							<span class="o_stat_text">sup.Inv:</span>
+							<span class="o_stat_text">Invoiced:</span>
+						</div>
+						<div class="o_form_field o_stat_info">
+							<span class="o_stat_value">
+								<field name="total_in_amount" />
+							</span>
+							<span class="o_stat_value">
+								<field name="sup_invoice_line_count" />
+							</span>
+						</div>
+					</button>
+				</div>
+			</field>
+		</record>
+
+
+		<record id="search_account_move_line" model="ir.ui.view">
+			<field name="name">account.move.line</field>
+			<field name="model">account.move.line</field>
+			<field name="arch" type="xml">
+				<search string="Invoice line">
+					<field name="date_invoice" />
+					<field name="date_due" />
+					   <group expand="0" string="Group By">
+                        <filter name="date_due" string="Date" context="{'group_by':'date_due'}"/>
+                        <filter name="year" context="{'group_by':'date_invoice:year'}" string="Year" />
+						<filter name="month" context="{'group_by':'date_invoice:month'}" string="Month" />
+                  	</group> 
+				</search>
+			</field>
+		</record>
+
+		<record id="account_move_line_tree" model="ir.ui.view">
+			<field name="name">account.move.line.tree</field>
+			<field name="model">account.move.line</field>
+			<field name="arch" type="xml">
+				<tree string="Invoice line">
+					<field name="name" />
+					<field name="account_id" />
+					<field name="quantity" />
+					<field name="price_unit" />
+					<field name="discount" />
+					<field name="price_subtotal" />
+					<field name="date_invoice" />
+					<field name="date_due" />
+				</tree>
+			</field>
+		</record>
+
+	</data>
+</odoo>

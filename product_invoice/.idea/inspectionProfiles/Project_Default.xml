@@ -1,0 +1,31 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="18">
+            <item index="0" class="java.lang.String" itemvalue="decorator" />
+            <item index="1" class="java.lang.String" itemvalue="Babel" />
+            <item index="2" class="java.lang.String" itemvalue="polib" />
+            <item index="3" class="java.lang.String" itemvalue="mock" />
+            <item index="4" class="java.lang.String" itemvalue="vatnumber" />
+            <item index="5" class="java.lang.String" itemvalue="pyparsing" />
+            <item index="6" class="java.lang.String" itemvalue="passlib" />
+            <item index="7" class="java.lang.String" itemvalue="psutil" />
+            <item index="8" class="java.lang.String" itemvalue="pydot" />
+            <item index="9" class="java.lang.String" itemvalue="num2words" />
+            <item index="10" class="java.lang.String" itemvalue="docutils" />
+            <item index="11" class="java.lang.String" itemvalue="ofxparse" />
+            <item index="12" class="java.lang.String" itemvalue="ebaysdk" />
+            <item index="13" class="java.lang.String" itemvalue="html2text" />
+            <item index="14" class="java.lang.String" itemvalue="pyserial" />
+            <item index="15" class="java.lang.String" itemvalue="libsass" />
+            <item index="16" class="java.lang.String" itemvalue="PyPDF2" />
+            <item index="17" class="java.lang.String" itemvalue="Mako" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
