@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+	<data>
+		<record id="sale_mail_schedule_form" model="ir.ui.view">
+			<field name="name">sale.mail.schedule.form</field>
+			<field name="model">sale.mail.schedule</field>
+			<field name="arch" type="xml">
+				<form string="Mail Scheduler Form" create="false" edit="false">
+					<header>
+						<button string="Send Now" name="send_now" type="object"
+							class="oe_highlight" states="draft" />
+						<field name="state" widget="statusbar"
+							statusbar_visible="draft,send" />
+					</header>
+					<sheet>
+						<group>
+							<group>
+								<field name="schedule_date" />
+								<field name="sale_order_id" />
+								<field name="send_date"
+									attrs="{'invisible': [('send_date', '=', False)]}" />
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="sale_mail_schedule_tree" model="ir.ui.view">
+			<field name="name">sale.mail.schedule.tree</field>
+			<field name="model">sale.mail.schedule</field>
+			<field name="arch" type="xml">
+				<tree string="Mail Scheduler Tree" create="false" edit="false">
+					<field name="sale_order_id" />
+					<field name="schedule_date" />
+					<field name="send_date" />
+					<field name="state" />
+					<field name="sale_order_state" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="sale_mail_schedule_action"
+			model="ir.actions.act_window">
+			<field name="name">Mail Scheduler</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">sale.mail.schedule</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					No records created!
+				</p>
+			</field>
+		</record>
+
+		<menuitem id="menu_schedule_mail" name="Scheduled Mails"
+			parent="sale.sale_menu_root" action="sale_mail_schedule_action"
+			sequence="5" />
+
+
+		<record id="ir_actions_server_sales_mail_scheduler"
+			model="ir.actions.server">
+			<field name="model_id" ref="sale.model_sale_order" />
+			<field name="name">Schedule Mail</field>
+			<field name="binding_model_id" ref="sale.model_sale_order" />
+			<field name="state">code</field>
+			<field name="code">
+				if records:
+				action = record.action_schedule_wizard()
+			</field>
+		</record>
+
+	</data>
+</odoo>

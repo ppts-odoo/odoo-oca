@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+		
+        <record id="sale_approval_reason_views" model="ir.ui.view">
+          <field name="name">sale.approval.reason.form</field>
+          <field name="model">sale.approval.reason</field>
+          <field name="arch" type="xml">
+            <form string="Sale Approval Reason" >
+            	<group>
+            		<field name="approval_for"/>
+            	</group>
+                <group>
+                    <field name="requested_discount" attrs="{'invisible':[('approval_for','!=','for_discount')],'required': [('approval_for','=','for_discount')],}"/>
+                </group>
+                <group>    
+                    <field name="notes" required="1"/>
+                </group>    
+                <footer>
+                    <button name="approve" string="Confirm" type="object" class="oe_highlight"/>
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+          </field>
+       </record>
+
+ 
+       <record id="action_sales_approvals" model="ir.actions.act_window">
+          <field name="name">Sale Approvals</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">sale.approval.reason</field>
+          <field name="view_mode">form</field>
+          <field name="target">new</field>
+       </record>
+ </odoo>

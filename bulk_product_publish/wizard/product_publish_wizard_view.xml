@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="product_publish_wizard_view_form" model="ir.ui.view">
+		<field name="name">Publish/Unpublish Product</field>
+		<field name="model">product.publish.wizard</field>
+		<field name="arch" type="xml">
+			<form string="Publish/Unpublish Product">
+				<group>
+					<group>
+						<field name="state" style="width:150px;" />
+					</group>
+					<footer>
+						<button string='Update' name="publishing_state" type="object" class="oe_highlight" />
+						or
+						<button string="Cancel" class="btn-default" special="cancel" />
+					</footer>
+				</group>
+			</form>
+		</field>
+	</record>
+
+	<act_window
+			id="product_publish_wizard_action"
+			name="Publish/Unpublish Product"
+			binding_model="product.template"
+			res_model="product.publish.wizard"
+			binding_views="list"
+			view_mode="form"
+			view_id="product_publish_wizard_view_form" target="new" />
+
+	<record id="product_publish_wizard_action" model="ir.actions.act_window">
+		<field name="name">Publish/Unpublish Product</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">product.publish.wizard</field>
+		<field name="view_mode">form</field>
+		<field name="view_id" ref="product_publish_wizard_view_form" />
+		<field name="target">new</field>
+		<field name="binding_model_id" ref="model_product_template" />
+		<field name="binding_model_id" ref="bulk_product_publish.model_product_template" />
+		<field name="binding_view_types">list</field>
+	</record>
+
+<!--	<record model="ir.actions.server" id="product_publish_wizard">-->
+<!--		<field name="name">Publish/Unpublish Product</field>-->
+<!--		<field name="type">ir.actions.server</field>-->
+<!--		<field name="model_id" ref="model_product_template" />-->
+<!--		<field name="binding_model_id" ref="model_product_template"/>-->
+<!--		<field name="binding_view_types">list</field>-->
+<!--		<field name="state">code</field>-->
+<!--		<field name="code">-->
+<!--			action = {-->
+<!--				"type": "ir.actions.act_window",-->
+<!--			    "view_mode": "form",-->
+<!--			    "res_model": "product.publish.wizard",-->
+<!--			}-->
+<!--		</field>-->
+<!--	</record>-->
+</odoo>

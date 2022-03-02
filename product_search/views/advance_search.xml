@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="website_search_box_inherited" inherit_id="website.website_search_box">
+			<xpath expr="//input[@name='search']" position="attributes">
+				<attribute name="autocomplete">off</attribute>
+			</xpath>
+			<xpath expr="//button[@type='submit']" position="replace">
+				<button type="button" class="btn btn-default search_new"><i class="fa fa-search"/></button>
+			</xpath>
+			<xpath expr="//input[@name='search']" position="before">
+				<t t-if="all_categories">
+					<select name="website_category" class="form-control website_category">
+						<option value="all">All</option>
+						<t t-foreach="all_categories" t-as="web_category">
+							<t t-if="category">
+								<t t-if="category.id == web_category.id">
+									<option  t-att-value="web_category.id" selected="selected"><t t-esc="web_category.name" /></option>
+								</t>
+								<t t-if="category.id  != web_category.id">
+									<option  t-att-value="web_category.id"><t t-esc="web_category.name" /></option>
+								</t>
+							</t>
+							<t t-if="not category">
+								<option  t-att-value="web_category.id"><t t-esc="web_category.name" /></option>
+							</t>
+						</t>
+					</select>
+				</t>
+			</xpath>
+			<xpath expr="//input[@name='search']" position="after">
+				<div class="search_lists">
+				</div>
+			</xpath>
+		</template>
+	</data>
+</odoo>

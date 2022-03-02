@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record model="mail.template"
+			id="reorder_qty_notification_inherit">
+			<field name="name">Reorder Qty Mail Notification</field>
+			<field name="email_from">{{ (object.user_id.email_formatted or user.email_formatted) }}</field>
+			<field name="subject">Reorder Qty Notification </field>
+			<field name="model_id"
+				ref="reorder_qty_notification.model_purchase_order" />
+			<field name="auto_delete" eval="False" />
+			<field name="email_to">{{ctx.get('email_to')}}</field>
+			<field name="body_html" type="html">
+<!--				<![CDATA[-->
+
+			<p style="font-size:14px"><b>Hi,</b></p><br/>
+			<p style="font-size:13px">The following purchse order are created</p><br/><br/>
+			<p style="font-size:13px">Please take the necessary action.</p><br/>
+			<table class="table table-bordered" width="771" cellspacing="1" cellpadding="4" border="1" height="73">
+				<tbody>
+					<tr style="font-weight:bold;background-color: #00CED1;text-align: center">
+						<th>S.No</th>
+						<th>PO No</th>
+						<th>PO Date</th>
+						<th>Customer</th>
+						<th>Product Details</th>
+						<th>Qty</th>
+						<th>Price</th>
+					</tr>
+						<t t-if="ctx.get('purchase_order_list')">
+						<t t-foreach="ctx['purchase_order_list']" t-as="values">
+
+							<tr style="background-color: #E0FFFF">
+<!--								 <span t-esc="values['name']"/>-->
+								<td valign="middle" align="center"><t t-esc="values['serial']"/></td>
+								<td valign="middle" align="center"><t t-esc="values['name']"/></td>
+								<td valign="middle" align="center"><t t-esc="values['date_order']"/></td>
+								<td valign="middle" align="center"><t t-esc="values['partner_id']"/></td>
+								<td valign="middle" align="center"><t t-esc="values['product_name']"/></td>
+								<td valign="middle" align="center"><t t-esc="values['product_qty']"/></td>
+								<td valign="middle" align="center"><t t-esc="values['product_subtotal']"/></td>
+							</tr>
+							</t>
+							</t>
+				</tbody>
+			</table><br/>
+				<p style="font-size:14px"><b>Thank you</b></p>
+<!--		]]>-->
+			</field>
+		</record>
+    </data>
+</odoo>

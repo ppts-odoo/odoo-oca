@@ -10,7 +10,6 @@ class SaleOrder(models.Model):
     active = fields.Boolean('Active',default=True,copy=True) 
     revised = fields.Boolean('Revised Quotation')   
     
-    
     @api.model
     def create(self, vals):
         if 'unrevisioned_name' not in vals:

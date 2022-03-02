@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="create_help_desk_form" name="Help Desk">
+		 <t t-call="website.layout">
+		  <form action="help_desk_action" method="post" class="form-horizontal col-md-10 col-md-offset-1">
+			<div class="row">
+				<h1 style="text-align: center;padding-bottom:30px;font-size: 29px;">Help Desk</h1>
+			</div>
+			<div>
+			<form action="/body_contents" method="post">
+			<t t-foreach="masters" t-as="master">
+		       <h3 style="margin-top:20px"><span t-esc="master.name"/></h3>
+		          <div class="row">
+				       <t t-foreach="sub_masters" t-as="sub_master">
+				       <t t-if="master.id == sub_master.master_id.id">
+				       <div style="border:1px solid black;width:300px;float:left;height: 60px;margin-left: 67px;
+   							margin-top: 15px;background-color: #bbeffa;padding:15px">
+				          <t t-if="master.id == sub_master.master_id.id">
+			                <img t-if="sub_master.icon"
+								t-att-src="image_data_uri(sub_master.icon)" class="float-left"
+								style="width:50px" />
+								
+								<t t-set="id" t-value="sub_master.id" />
+			          			<a t-att-href="'/body_contents/%s' % (id)" ><span style="color:black" t-esc="sub_master.name"/></a>
+			          			
+			          			<!-- <div class="form-group">
+					                 <select name="company_name" id="company_id"  >
+											<option t-att-value="sub_master.id">
+												<t t-esc="sub_master.id" />
+											</option>
+									</select>
+			          			</div> -->
+				          			
+				          </t>
+				       </div>
+				      </t>
+				     </t>
+			      </div>
+				</t>
+			</form>
+			</div>
+	      </form>
+		 </t>
+	</template>
+	
+	<template id="create_help_desk_form_pages" name="Help Desk Pages">
+		 <t t-call="website.layout">
+			 <form action="help_desk_action" method="post" >
+			 <div class="row">
+					<h1 style="padding-bottom:30px;font-size: 29px;margin-left: 535px;"><span t-esc="page_main.sub_menu_id.name"/></h1>
+			 </div>
+			 <t t-foreach="pages" t-as="page">
+				 <div class="row" style="margin-left: 50px;margin-top:10px">
+				 	<h2><span t-esc="page.name"/></h2>
+				 </div>
+				<div class="row" style="margin-left: 100px;">
+						<span t-raw="page.body_content"/>
+				</div>
+			</t>
+			</form>
+		</t>
+	</template>
+</odoo>

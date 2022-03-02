@@ -1,0 +1,9 @@
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<odoo>-->
+<!--    <template id="assets_frontend" inherit_id="website.assets_frontend" name="Banner Front-end assets">-->
+<!--        <xpath expr="." position="inside">        -->
+<!--            <script type="text/javascript" src="/website_banner/static/src/js/banner.js"></script>-->
+<!--        </xpath>-->
+<!--    </template>-->
+
+<!--</odoo>-->

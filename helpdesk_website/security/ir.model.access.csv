@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_master_menu,master.menu,model_master_menu,base.group_user,1,1,1,1
+access_sub_menu,sub.menu,model_sub_menu,base.group_user,1,1,1,1
+access_page_content,page.content,model_page_content,base.group_user,1,1,1,1

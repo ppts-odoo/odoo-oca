@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_mrpbom_current_stock_pdf">
+        <t t-call="web.html_container">
+            <t t-call="web.internal_layout">
+                <div class="page">
+                    <h2 style="text-align:center">BoM Stock Availability</h2>
+                     <t t-foreach="docs" t-as="o">
+                     
+                        <p style="color:black;font-weight:bold;">
+							Report Type : <span t-field="o.report_type" />
+						</p> 
+						<!-- <p style="color:black;font-weight:bold;">
+							Order Quantity:<span t-field="o.qty_produce" />
+						</p>  -->
+						<p style="color:black;font-weight:bold;float:right">
+							User : <span t-field="o.user_id" />
+						</p>
+						<t t-set="tot_count" t-value="0" />
+						<t t-foreach="o.bom_id" t-as="boms">
+						     
+						    <t t-set="id_loop" t-value="0"/>
+							<p style="color:black;font-weight:bold;">
+								Product : <span t-field="boms.product_tmpl_id.display_name"/>
+							</p>  
+							<p style="color:black;font-weight:bold;">
+								Order Quantity : <span t-field="o.qty_produce" />
+							</p> 
+                         <table class="table table-condensed">
+                            <thead>
+                              <!--   <tr>
+                                    <th>Location:</th>
+                                    <td>
+                                        <span t-field="o.location_id.display_name"/>
+                                    </td>
+                                </tr> -->
+                                <tr>
+                                    <th>Level</th>
+                                    <th>Ref No.</th>
+                                    <th>Product</th>
+                                    <th>Product Quantity</th>
+                                   	<th>Reserved Quantity</th>
+                                    <th>Qty Available</th>
+                                    <th>Forecasted Quantity</th>
+                                    <th>Quantity Shortage</th>
+                                    <th>Location</th>
+                                    <th>Parent BoM</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <t t-set="id_loop" t-value="0" />
+                                <tr t-foreach="o.line_ids" t-as="l">
+                                   <t t-if="boms.id == l.parent_id.id"> 
+                                       
+                                       <t t-if="l.product_id.id != id_loop"> 
+	                                    <td>
+	                                        <span t-field="l.bom_level"/>
+	                                    </td>
+	                                    <td>
+	                                        <span t-field="l.product_id.default_code"/>
+	                                    </td>
+	                                    <td>
+	                                        <span style="color: white;"
+	                                              t-esc="'... '*(l.bom_level)"/>
+	                                        <span t-esc="l.product_id.name"/>
+	                                    </td>
+	                                    <td>
+	                                        <span t-esc="l.product_qty"/>
+	                                        <span t-esc="l.product_uom_id.name"
+	                                              groups="uom.group_uom"/>
+	                                    </td>
+	                                    <td>
+	                                        <span t-field="l.reserved_qty"/>
+	                                    </td>
+	                                    <td>
+	                                        <span t-field="l.tot_qty_avail"/>
+	                                    </td>
+	                                      <td>
+	                                        <span t-field="l.forecasted_qty"/>
+	                                    </td>
+	                                    
+	                                    <td>
+	                                        <span t-field="l.tot_qty_avail_shortage"/>
+	                                    </td>
+	                                    <td>
+	                                        <span t-field="l.loc_list"/>
+	                                    </td>
+	                                    <td>
+	                                        <span t-field="l.bom_id.display_name"/>
+	                                    </td>
+	                                   
+	                                   <!--  <td>
+	                                        <span t-field="l.qty_available_in_source_loc"/>
+	                                        <span t-esc="l.product_uom_id.name"
+	                                              groups="uom.group_uom"/>
+	                                    </td> -->
+                                  	</t> 
+                                  	<t t-set="id_loop" t-value="l.product_id.id"/>
+                                  </t> 
+                             </tr>
+                            </tbody>
+                         </table>
+                          <t t-set="tot_count" t-value="1"/>
+                           <t t-if="tot_count != 0"> 
+                               <t t-set="id_loop" t-value="0"/>
+                          </t> 
+                        </t>
+                     </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <report
+        string="BoM: Current Stock Report PDF"
+        id="action_report_bom_current_stock_pdf"
+        model="mrp.bom.current.stock"
+        name="multi_level_bom_check.report_mrpbom_current_stock_pdf"
+        report_type="qweb-pdf"/>
+
+</odoo>

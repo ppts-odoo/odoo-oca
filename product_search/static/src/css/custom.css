@@ -1,0 +1,21 @@
+/*Styles  for search list*/
+cd-top2{width:150px;height:50px;background:#ea6a4a;color:#fff;float:left;text-align:center;line-height:50px;position:fixed;z-index:9999;bottom:-50px;right:-150px;transition:all .5s ease;-webkit-transition:all .5s ease;-moz-transition:all .5s ease;-o-transition:all .5s ease}.cd-top2:active,.cd-top2:focus,.cd-top2:hover{color:#fff}.cd-top2 .fa{font-size:22px}.cd-top2.cd-is-visible2{bottom:50px;right:150px}@media only screen and (max-width:767px){.cd-top2.cd-is-visible2{bottom:50px;right:5px}}
+
+.search_lists {
+	position: absolute;
+	border: 1px solid #cccccc;
+	width: 100%;
+	float: left;
+	color: #000;
+	max-height:300px;
+	background-color:#fff; 
+	overflow-x: hidden;
+	z-index:9;
+	margin-top: 34px;
+}
+.search_lists div {
+	padding: 7px  11px;
+}
+.search_lists div:hover {
+	background-color:#e1e5ef;
+}

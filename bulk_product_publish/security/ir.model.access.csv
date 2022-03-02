@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_publish_wizard_manager,product_publish_wizard,model_product_publish_wizard,group_erp_manager,1,1,1,1
+access_product_publish_wizard_user,product_publish_wizard,model_product_publish_wizard,group_user,1,0,0,0
+access_product_template_manager,product_template,model_product_template,group_erp_manager,1,1,1,1
+access_product_template_user,product_template,model_product_template,group_user,1,0,0,0

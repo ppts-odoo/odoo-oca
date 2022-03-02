@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="menu_helpdesk_main_menu" model="website.menu" >
+		<field name="name">Need Help!</field>
+		<field name="url">/help_desk/form</field>
+		<field name="parent_id" ref="website.main_menu" />
+		<field name="sequence" type="int">5</field>
+	</record>
+</odoo>

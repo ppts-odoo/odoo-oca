@@ -1,0 +1,10 @@
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<odoo>-->
+
+<!--  <menuitem id="mrp_bom_current_stock_menu"-->
+<!--            name="BOM Stock Availability"-->
+<!--            action="mrp_bom_current_stock_action"-->
+<!--            groups="base.group_user"-->
+<!--            parent="mrp.menu_mrp_reporting" sequence="100"/>-->
+
+<!--</odoo>-->
