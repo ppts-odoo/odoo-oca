@@ -16,7 +16,7 @@ class SaleApprovalReason(models.TransientModel):
         sale_br_obj = self.env['sale.order'].browse(self._context.get('active_ids'))[0]
         user_obj = self.env['res.users']
         if self.approval_for == 'for_amount':
-            user_search = user_obj.search([('sale_order_amount_limit', '>=', sale_br_obj.amount_total), ('sale_order_can_approve', '=', 'yes')], order='sale_order_amount_limit')
+            user_search = user_obj.search([('sale_order_amount_limit', '<=', sale_br_obj.amount_total), ('sale_order_can_approve', '=', 'yes')], order='sale_order_amount_limit')
             if user_search:
                 next_larg_amount_user_id = user_search[0]
             else:
