@@ -25,7 +25,7 @@
             </xpath>
 
             <xpath expr="//form/sheet/notebook/page/field[@name='order_line']/tree" position="replace">
-                <tree string="Sales Order Lines" decoration-info="invoice_status=='to invoice'">
+                <tree string="Sales Order Lines" decoration-info="invoice_status=='to invoice'" editable="bottom">
                     <control>
                         <create string="Add a product"/>
                         <create string="Configure a product" context="{'open_product_configurator': True}"
