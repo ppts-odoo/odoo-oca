@@ -34,7 +34,7 @@
             <field name="model">account.move</field>
             <field name="inherit_id" ref="account.view_move_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='amount_total']" position="before">
+                <xpath expr="//field[@name='tax_totals_json']" position="before">
                     <field name="round_active" invisible="1"/>
                     <field name="rounded_total"/>
                     <field name="round_off_value"/>
