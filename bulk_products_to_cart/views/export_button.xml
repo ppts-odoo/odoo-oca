@@ -1,0 +1,29 @@
+<odoo>
+    <template id="export" inherit_id="website_sale.products" customize_show="True" name="export">
+        <xpath expr="//div[hasclass('products_pager')]" position="inside">
+            <a href="/shop/export" role="button" id="export" name="export">
+                <div class="container">
+                    <p>
+                        <button type="button" id="export" class="btn btn-secondary fa fa-download o_list_export_xlsx"
+                                title="Export" aria-label="Export" style="color:white;border-color: #35979c;background-color: #35979c;margin:-35px;margin-left:140px;margin-top:-15px;">Export</button>
+                    </p>
+                </div>
+                <div>
+                    <form action="/shop/add_to_cart" method="POST" style="text-align:right;margin-top:22px;margin-left:30px;"
+                          enctype="multipart/form-data">
+                        <p>
+                            <button type="submit" role="button" id="import_excel"
+                                    name="import_excel" >
+                                <input type="file" id="myfile" name="myfile"
+                                       required="1"/>
+                                <i style="border-right-style:dotted dashed solid double;margin:10px;"/>
+                                <i class="fa fa-shopping-cart" role="img" title="Add To Cart"/>
+                            </button>
+                        </p>
+                        <br/>
+                    </form>
+                </div>
+            </a>
+        </xpath>
+    </template>
+</odoo>
