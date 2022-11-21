@@ -9,8 +9,8 @@
     'depends': ['base', 'website_sale', 'report_xlsx'],
     'data': ['views/export_button.xml'],
     'demo': [],
-    'images': ['static/description/banner.png'],
-    'license': 'AGPL-3',
+    'images': ['static/description/banner.jpg'],
+    'license': 'LGPL-3',
     'installable': True,
     'auto_install': False,
 }
