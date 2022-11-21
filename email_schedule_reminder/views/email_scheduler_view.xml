@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mail_scheduler_form_view" model="ir.ui.view">
+        <field name="name">mail.scheduler.form</field>
+        <field name="model">mail.scheduler</field>
+        <field name="arch" type="xml">
+            <form string="Email Scheduler">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="template_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="mail_scheduler_tree_view" model="ir.ui.view">
+        <field name="name">mail.scheduler.tree</field>
+        <field name="model">mail.scheduler</field>
+        <field name="arch" type="xml">
+            <tree string="Email Scheduler">
+                <field name="name" />
+                <field name="template_id"/>
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="mail_scheduler_search_view" model="ir.ui.view">
+        <field name="name">mail_scheduler.search.view</field>
+        <field name="model">mail.scheduler</field>
+        <field name="arch" type="xml">
+            <search string="Email Scheduler">
+                <field name="name"/>
+                <filter name="active" string="Active" domain="[('active', '=', True)]" />
+                <filter name="inactive" string="In Active" domain="[('active', '=', False)]" />
+            </search>
+        </field>
+    </record>
+
+    <record id="action_mail_scheduler" model="ir.actions.act_window">
+        <field name="name">Month End E-mail schedule</field>
+        <field name="res_model">mail.scheduler</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="email_schedule_reminder.mail_scheduler_search_view"/>
+    </record>
+</odoo>
