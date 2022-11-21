@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="mailing_root_menu" name="Month End E-mail schedule"
+              web_icon="email_schedule_reminder,static/img/email_sent.png"/>
+    <menuitem id="mail_scheduler_name" action="action_mail_scheduler" parent="mailing_root_menu"/>
+</odoo>
