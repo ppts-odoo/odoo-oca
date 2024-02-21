@@ -14,6 +14,7 @@ class PromotionSetup(models.Model):
     text_color = fields.Char("Banner Text Color")
     btn_color = fields.Char("Button Background Color")
     btn_txt_color = fields.Char("Button Text Color")
+    website_id = fields.Many2one('website',string='Website',help='Use to map the website')
 
 
 

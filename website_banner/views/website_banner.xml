@@ -14,6 +14,7 @@
 							<field name="text_to_display" required="1" string="Text to display"/>
 							<field name="url"/>
 							<field name="active"/>
+							<field name="website_id"/>
 						</group>
 						<group>
 							<field name="bg_color" placeholder="Enter Color Code or Name" required="1"/>

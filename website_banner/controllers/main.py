@@ -5,7 +5,7 @@ from datetime import timedelta, datetime
 class WebsiteBanner(http.Controller):
 	@http.route('/home', type='http', auth="public", website=True)
 	def index(self, **kw):
-		promos=request.env['promotion.setup'].search([])
+		promos=request.env['promotion.setup'].search([('website_id','=',request.website.id)])
 		cont=''
 		# current_date = datetime.today().date()
 
