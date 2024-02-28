@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Bulk Products Publish',
-    'version': '12.00',
+    'version': '14.00',
     'sequence' : 0,
     'category': 'Website',
     "author": "PPTS [India] Pvt.Ltd.",

@@ -1,6 +1,6 @@
 {
     'name'    : 'Add Bulk products to Cart',
-    'version' : '13.0.1.0',
+    'version' : '14.0.1.0',
     'category': 'Website',
     'author'  : 'PPTS [India] Pvt.Ltd.',
     'website' : 'https://www.pptssolutions.com',
