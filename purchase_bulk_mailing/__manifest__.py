@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 {
     'name': 'Purchase/Quotation Mass Mailing',
-    'version': '10.0',
+    'version': '11.0',
     'author': 'PPTS [India] Pvt.Ltd.',
     'category': 'Purchase',
     'website': 'https://www.pptssolutions.com',

@@ -22,7 +22,7 @@
 
 {
     'name': 'Product on Asset Depreciation Expense',
-    'version': '1.1',
+    'version': '11',
     'category': 'Generic Modules/Others',
     'sequence':0,
     'description': """        

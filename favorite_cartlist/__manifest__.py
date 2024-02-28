@@ -2,7 +2,7 @@
 
 {
     'name' : 'Favorite Cart List in E-Commerce',
-    'version' : '1.0',
+    'version' : '11',
     'author' : 'PPTS [India] Pvt.Ltd.',
     'sequence': 1,
     'category': 'e-commerce',

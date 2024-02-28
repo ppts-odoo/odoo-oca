@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Drop Shipping Extended',
-    'version': '1.0',
+    'version': '11',
     'category': 'Sale Management',
     'author': 'PPTS [India] Pvt.Ltd.',
     'website': 'https://www.pptssolutions.com',

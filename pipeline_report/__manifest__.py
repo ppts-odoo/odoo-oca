@@ -7,7 +7,7 @@
     'author': "PPTS [India] Pvt. Ltd.",
     'website': "http://www.pptssolutions.com",
     'category': '',
-    'version': '0.1',
+    'version': '11',
     'depends': ['base', 'crm','sales_team','website'],
     'data': [
         "security/pipeline_report_security.xml",
