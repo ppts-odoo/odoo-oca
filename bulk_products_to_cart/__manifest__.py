@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Bulk Products To Cart on Website',
-    'version': '15.0',
+    'version': '13.0',
     'summary': """ An OCA Module to add bulk products on the shopping cart by exporting and Importing process.""",
     'description': '',
     'category': 'Website',

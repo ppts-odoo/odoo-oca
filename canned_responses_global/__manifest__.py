@@ -6,7 +6,7 @@
     'website': 'https://www.pptssolutions.com/',
     'author': 'PPTS India Pvt Ltd',
     'summary': 'Canned Response',
-    'version': '1.1',
+    'version': '13.1',
     'license': 'LGPL-3',
     'description': """
     Canned Response

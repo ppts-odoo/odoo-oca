@@ -2,7 +2,7 @@
 
 {
     'name': 'Sale Quotation Mail Scheduler',
-    'version': '12',
+    'version': '13',
     'category': 'sale',
     'website': 'http://www.pptssolutions.com',
     'author': 'PPTS [India] Pvt. Ltd.',

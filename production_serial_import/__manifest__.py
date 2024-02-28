@@ -3,7 +3,7 @@
 
 {
     'name' : 'Serial Number Import on Production',
-    'version': '12.0',
+    'version': '13.0',
     'author': 'PPTS [India] Pvt.Ltd.',
     'website' : 'http://www.pptssolutions.com',
     'license': 'LGPL-3',

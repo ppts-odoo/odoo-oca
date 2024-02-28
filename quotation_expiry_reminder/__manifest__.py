@@ -1,6 +1,6 @@
 {
     'name': 'Quotation Expiry Reminder',
-    'version': '12.0',
+    'version': '13.0',
     'author': 'PPTS [India] Pvt.Ltd.',
     'category': 'Sale',
     'license': 'LGPL-3',

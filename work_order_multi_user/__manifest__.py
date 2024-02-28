@@ -3,7 +3,7 @@
 # this module contains the full copyright notices and license terms.
 {
     'name' : 'Work Order Multi User',
-    'version': '12.0',
+    'version': '13.0',
     'author': 'PPTS [India] Pvt.Ltd.',
     'category': 'Manufacturing',
     'website':  'https://www.pptssolutions.com',

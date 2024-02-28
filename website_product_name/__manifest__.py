@@ -7,7 +7,7 @@
     'website': 'https://www.pptssolutions.com/',
     'author': 'PPTS India Pvt Ltd',
     'summary': 'Website Product Name',
-    'version': '1.1',
+    'version': '13',
     'license': 'LGPL-3',
     'description': """
     Website Product Name
