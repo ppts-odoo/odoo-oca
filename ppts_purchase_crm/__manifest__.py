@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 {   
 	"name": "Purchase CRM",
-	"version": "14.0",
+	"version": "15.0",
 	'author': 'PPTS [India] Pvt.Ltd.',
     'website': 'https://www.pptssolutions.com',
     'license': 'LGPL-3',

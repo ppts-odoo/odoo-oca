@@ -2,7 +2,7 @@
 
 {
     'name': 'Stock Quant',
-    'version': '14.0',
+    'version': '15.0',
     'author': 'PPTS [India] Pvt.Ltd.',
     'website': 'https://www.pptssolutions.com',
     'category': 'stock',
