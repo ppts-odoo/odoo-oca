@@ -5,9 +5,9 @@
     'name': 'Website Product Name',
     'category': 'Website',
     'website': 'https://www.pptssolutions.com/',
-    'author': 'PPTS India Pvt Ltd',
+    'author': 'PPTS [India] Pvt.Ltd.',
     'summary': 'Website Product Name',
-    'version': '1.1',
+    'version': '12.0.1.1',
     'license': 'LGPL-3',
     'description': """
     Website Product Name

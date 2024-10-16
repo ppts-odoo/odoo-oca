@@ -7,8 +7,8 @@
     'sequence': 140,
     'website': 'http://www.pptssolutions.com',
     'summary': 'Website,Banner',
-    'version': '11.0',
-    'author' : 'PPTS [India] Pvt. Ltd.',
+    'version': '12.0',
+    'author' : 'PPTS [India] Pvt.Ltd.',
     'description': """
         Adding time based website banner
         """,

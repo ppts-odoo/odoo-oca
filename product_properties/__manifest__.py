@@ -21,7 +21,7 @@
 ##############################################################################
 {
     'name': 'Product Properties',
-    'version': '1.8',
+    'version': '12.0.1.8',
     'category': 'Products',
     'description': """
     This module makes the fields Inventory Valuation and Costing Method in Products
