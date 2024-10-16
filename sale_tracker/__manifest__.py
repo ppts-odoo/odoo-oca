@@ -3,7 +3,7 @@
 
 {
     'name' : 'Sales Tracking(Sales person wise)',
-    'version': '1.1',
+    'version': '10.0.1.1',
     'author': 'PPTS [India] Pvt.Ltd.',
     'website' : 'http://www.pptssolutions.com',
     'category': 'sales',

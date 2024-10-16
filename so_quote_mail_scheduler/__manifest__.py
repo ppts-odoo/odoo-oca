@@ -2,12 +2,12 @@
 
 {
     'name' : 'Sale Quotation Mail Scheduler',
-    'version' : '10',
+    'version' : '10.0',
     'summary': ' ',
     'description': """Sale Quotation Mail Scheduler""",
     'category': 'sale',
     'website': 'http://www.pptssolutions.com',
-    'author':'PPTS [India] Pvt. Ltd.',
+    'author':'PPTS [India] Pvt.Ltd.',
     'depends' : ['sale','sales_team','mail'],
     'data': [ 
         'data/mail_schedule_cron.xml',

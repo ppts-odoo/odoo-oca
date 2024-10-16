@@ -6,7 +6,7 @@
     'summary': 'Balance Sheet report extended',
     'author': 'PPTS [India] Pvt.Ltd.',
     "website": "http://www.pptssolutions.com",
-    'version': '1.0',
+    'version': '10.0.1.0',
     'license': 'LGPL-3',
     'support': 'business@pptservices.com',
     'description': """

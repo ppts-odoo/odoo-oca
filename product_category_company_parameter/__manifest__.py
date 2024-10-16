@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name' : 'Product Category Company Parameter',
-    'version' : '1.1',
+    'version' : '10.0.1.1',
     'category' : 'Product',
     "author": "PPTS [India] Pvt.Ltd.",
     "website": "http://www.pptssolutions.com",

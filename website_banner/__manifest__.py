@@ -8,7 +8,7 @@
     'summary': 'Website Banner',
     'website': 'http://www.pptssolutions.com',
     'author': 'PPTS [India] Pvt.Ltd.',
-    'version': '10.1',
+    'version': '10.0.1',
     'description': """
         Adding time based banner to the website
         """,

@@ -22,7 +22,7 @@
 
 {
     'name': 'Product on Asset Depreciation Expense',
-    'version': '1.0',
+    'version': '10.0.1.0',
     'category': 'Generic Modules/Others',
     'description': """        
         When an assets are depreciated, the product should be included on the depreciation expense in addition to the account in journal entries. 
