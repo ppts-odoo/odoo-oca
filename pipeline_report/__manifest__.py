@@ -4,10 +4,10 @@
 
     'summary': """Pipeline Report""",
 
-    'author': "PPTS [India] Pvt. Ltd.",
+    'author': "PPTS [India] Pvt.Ltd.",
     'website': "http://www.pptssolutions.com",
     'category': '',
-    'version': '13',
+    'version': '13.0',
     'depends': ['base', 'crm','sales_team','website'],
     'data': [
         "security/pipeline_report_security.xml",

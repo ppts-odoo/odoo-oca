@@ -2,7 +2,7 @@
 {
     'name': 'Month End Email Scheduler',
     'version': '13.0',
-    'author': 'PPTS [India] Pvt.Ltd',
+    'author': 'PPTS [India] Pvt.Ltd.',
     'category': 'General',
     'license': 'LGPL-3',
     'website': 'https://www.pptssolutions.com',
