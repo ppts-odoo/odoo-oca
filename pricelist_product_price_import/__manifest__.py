@@ -2,7 +2,7 @@
 {
     'name': 'Pricelist Product Price Import',
     'summary': ' This module allows you to import products to line items based on product category.',
-    'version': '11',
+    'version': '11.0',
     'category': 'sale',
     'description': """
        Configuration:

@@ -3,7 +3,7 @@
 
 {
     'name': 'Sales and Purchase Tax Split-up',
-    'version': '1.1',
+    'version': '11.1',
     'category': 'Sales/Purchase',
     'sequence': 0,
     'website': "http://www.pptssolutions.com",

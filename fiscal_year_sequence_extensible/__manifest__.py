@@ -16,7 +16,7 @@
     'support': 'business@pptservices.com',
     # for the full list
     'category': 'Account',
-    'version': '11',
+    'version': '11.0',
 
     # any module necessary for this one to work correctly
     'depends': ['base'],

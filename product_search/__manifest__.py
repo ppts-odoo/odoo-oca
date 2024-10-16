@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Product Global Search on website',
-    'version': '11',
+    'version': '11.0',
     'sequence':0,
     'category': 'Website',
     "author": "PPTS [India] Pvt.Ltd.",

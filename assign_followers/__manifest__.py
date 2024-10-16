@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 {
 	"name": "Assign and Unassign Followers",
-	"version": "11",
+	"version": "11.0",
 	"author": "PPTS [India] Pvt.Ltd.",
 	"website": "http://www.pptssolutions.com",
 	"sequence": 0,
