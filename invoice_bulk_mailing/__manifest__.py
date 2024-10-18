@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 {
     'name': 'Invoice Mass Mailing',
-    'version': '12.0',
+    'version': '14.0',
     'author': 'PPTS [India] Pvt.Ltd.',
     'category': 'Invoice',
     'website': 'https://www.pptssolutions.com',

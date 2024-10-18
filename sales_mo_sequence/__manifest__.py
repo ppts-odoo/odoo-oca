@@ -3,7 +3,7 @@
 
 {
     'name': 'SO and MO Reference',
-    'version': '13.0',
+    'version': '14.0',
     'author': 'PPTS [India] Pvt.Ltd.',
     'category': 'MRP',
     'sequence': 5,

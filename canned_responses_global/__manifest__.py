@@ -4,7 +4,7 @@
 {
     'name': 'Canned Response',
     'website': 'https://www.pptssolutions.com/',
-    'author': 'PPTS India Pvt Ltd',
+    'author': 'PPTS [India] Pvt.Ltd.',
     'summary': 'Canned Response',
     'version': '14.1',
     'license': 'LGPL-3',

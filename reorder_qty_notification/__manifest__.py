@@ -1,6 +1,6 @@
 {
     'name': 'Reorder Quantity Mail Notification',
-    'version': '13.0',
+    'version': '14.0',
     'author': 'PPTS [India] Pvt.Ltd.',
     'category': 'Purchase',
     'license': 'LGPL-3',
