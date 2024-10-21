@@ -5,13 +5,13 @@
     'name': 'Website Product Name',
     'category': 'Website',
     'website': 'https://www.pptssolutions.com/',
-    'author': 'PPTS India Pvt Ltd',
+    'author': 'PPTS [India] Pvt.Ltd.',
     'summary': 'Website Product Name',
     'version': '16.0',
     'license': 'LGPL-3',
     'description': """
-    Website Product Name
-     """,
+    Website Product Name 
+        """,
     'depends': ['website_sale', 'product'],
     'data': [
         'views/website_template.xml',
