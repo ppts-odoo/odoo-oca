@@ -11,7 +11,7 @@
     'license': 'LGPL-3',
     'description': """
     Website Product Name
-        """,
+     """,
     'depends': ['website_sale', 'product'],
     'data': [
         'views/website_template.xml',
