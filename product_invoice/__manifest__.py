@@ -1,6 +1,6 @@
 {
     'name' : 'Product Invoice',
-    'version' : '14.1',
+    'version' : '14.0.1',
     'summary': 'Product Invoicing',
     'sequence': 1,
     'description': """Calculating the total amount invoiced""",
