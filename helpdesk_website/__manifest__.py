@@ -6,7 +6,7 @@
 {
     "name": "Helpdesk Website",
     "summary": "Helpdesk Website",
-    "version": "15",
+    "version": "15.0",
     "author": "PPTS [India] Pvt.Ltd.",
     "maintainer": "PPTS [India] Pvt.Ltd.",
     "category": "Extra Tools",

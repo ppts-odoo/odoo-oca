@@ -4,7 +4,7 @@
 
     'summary': """Pipeline Report""",
 
-    'author': "PPTS [India] Pvt. Ltd.",
+    'author': "PPTS [India] Pvt.Ltd.",
     'website': "http://www.pptssolutions.com",
     'category': '',
     'version': '15.0',

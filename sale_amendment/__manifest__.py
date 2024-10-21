@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 {
     'name' : 'Sales Amendment',
-    'version' : '15',
+    'version' : '15.0',
     'summary': 'Sales Amendment',
     'sequence': 1,
     'description': """ Sales Order Amendment
