@@ -3,7 +3,7 @@
 
 {
     'name': 'SO Line Bulk products Add',
-    'version': '18.0',
+    'version': '17.0',
     'category': 'Sale',
     'depends': ['base', 'sale','product','stock'],
     'author': 'PPTS [India] Pvt.Ltd.',
